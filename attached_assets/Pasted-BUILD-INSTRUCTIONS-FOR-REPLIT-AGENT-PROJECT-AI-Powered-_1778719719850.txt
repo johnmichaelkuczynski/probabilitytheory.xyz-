@@ -1,0 +1,176 @@
+BUILD INSTRUCTIONS FOR REPLIT AGENT
+
+PROJECT: AI-Powered Self-Contained Course on Elementary Probability Theory
+
+================================================================
+1. PROJECT STRUCTURE
+================================================================
+
+Create a web application that displays course content from a single source 
+document (Clean_Probability_101_Course_Book.docx, which I will upload). 
+The course follows this exact structure:
+
+- 8 Discussions (numbered 1-8, 50 points each)
+- 5 Essays (interleaved with discussions, 50 points each)
+- 1 Term Paper Outline Assignment (100 points)
+- 1 Term Paper Assignment (100 points)
+
+Each Discussion and Essay has a Model Response following it.
+
+================================================================
+2. MATHEMATICAL NOTATION RENDERING
+================================================================
+
+This course contains heavy probability notation (summations, integrals, 
+fractions, Greek letters, conditional probability bars, binomial 
+coefficients, exponents). Use KaTeX to render all math.
+
+REQUIRED IMPLEMENTATION:
+
+Add to the <head> of every HTML page:
+
+  <link rel="stylesheet" 
+        href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer 
+          src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer 
+          src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+Add to the end of <body>:
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+
+Math is written inline as $...$ and display as $$...$$.
+
+NOTATION CONVENTIONS USED IN THIS COURSE:
+
+  Summation:               \sum_{i=1}^{n}
+  Integral:                \int_{a}^{b}
+  Fraction:                \frac{a}{b}
+  Square root:             \sqrt{x}
+  Intersection:            \cap
+  Union:                   \cup
+  Conditional probability: P(A \mid B)
+  Complement:              A^c
+  Greek letters:           \mu, \sigma, \rho, \Omega, \epsilon, \pi
+  Binomial coefficient:    \binom{n}{k}
+  Approximately equal:     \approx
+  Infinity:                \infty
+  Exponential:             e^{-x^2/2}
+  Greater/less than equal: \geq, \leq
+  Not equal:               \neq
+
+WHEN INGESTING THE DOCX:
+
+The course text is currently written in plain-text mathematical notation 
+(e.g., "P(A and B) / P(B)", "sigma", "sqrt(x)", "x^2"). Convert these to 
+proper LaTeX delimited by $...$ during ingestion. Specifically:
+
+  "P(A and B)"     -> $P(A \cap B)$
+  "P(A or B)"      -> $P(A \cup B)$
+  "P(A | B)"       -> $P(A \mid B)$
+  "sigma"          -> $\sigma$
+  "mu"             -> $\mu$
+  "sqrt(x)"        -> $\sqrt{x}$
+  "x^2"            -> $x^2$
+  "C(n, k)"        -> $\binom{n}{k}$
+  "sum over..."    -> $\sum$
+  "integral..."    -> $\int$
+  "<="             -> $\leq$
+  ">="             -> $\geq$
+  "infinity"       -> $\infty$
+  "approaches"     -> $\to$
+  "epsilon"        -> $\epsilon$
+
+================================================================
+3. API KEYS REQUIRED
+================================================================
+
+FOR MATH RENDERING: NONE. KaTeX is fully client-side.
+
+FOR AI TUTOR FEATURE (if implemented): 
+  Anthropic API key, stored as ANTHROPIC_API_KEY in Replit Secrets.
+  Use model: claude-sonnet-4-5 (or current default).
+
+================================================================
+4. CORE FEATURES TO IMPLEMENT
+================================================================
+
+a) NAVIGATION:
+   - Sidebar listing all 8 Discussions, 5 Essays, Term Paper Outline, 
+     Term Paper, each clickable.
+   - Each item expandable to show its Model Response as a separate 
+     sub-item (initially hidden, revealed by user click).
+
+b) CONTENT DISPLAY:
+   - Render Discussion/Essay prompts clearly.
+   - "Show Model Response" button on each assignment that toggles 
+     visibility of the model response.
+   - All math rendered via KaTeX.
+
+c) PROGRESS TRACKING (use localStorage):
+   - Track which assignments student has marked complete.
+   - Track which model responses have been viewed.
+   - Visual indicator (checkmark) next to completed items in sidebar.
+
+d) STUDENT SUBMISSION AREA:
+   - Each assignment has a text area where student can write their answer.
+   - Save drafts to localStorage automatically.
+   - "Submit" button that locks the answer and reveals the model response.
+
+e) OPTIONAL AI TUTOR (only if API key provided):
+   - Chat box on each assignment page.
+   - Student can ask questions about the material.
+   - Send conversation to Anthropic API with system prompt: 
+     "You are a probability theory tutor. The student is working on 
+     [assignment title]. The assignment is: [assignment text]. Help them 
+     understand the concepts without giving away the answer directly."
+
+================================================================
+5. STYLING REQUIREMENTS
+================================================================
+
+- Clean, readable serif font for body text (Georgia or similar).
+- Sans-serif for headings and UI elements.
+- Light background, high-contrast text.
+- Math should render at the same visual weight as surrounding text.
+- Responsive layout: works on desktop and tablet.
+- Wide enough margins for displayed equations not to feel cramped.
+
+================================================================
+6. TECH STACK
+================================================================
+
+- Frontend: HTML, CSS, vanilla JavaScript (or React if simpler for you).
+- Math: KaTeX (CDN, no install needed).
+- Optional backend: Node.js/Express if AI tutor feature is implemented.
+- Storage: localStorage for student progress (no database needed for v1).
+- Document ingestion: parse the uploaded .docx using mammoth.js or similar 
+  to extract text, then convert plain-text math notation to LaTeX as 
+  specified in Section 2.
+
+================================================================
+7. DELIVERABLE
+================================================================
+
+A working Replit web app where:
+1. Student opens the URL.
+2. Sees a sidebar with all course assignments.
+3. Clicks any assignment to view the prompt with properly rendered math.
+4. Can write their answer, save it, submit it.
+5. Can view the model response after submitting.
+6. (Optional) Can ask an AI tutor for help on any assignment.
+
+The course content (text of all discussions, essays, model responses, 
+term paper) comes from the uploaded .docx file. Do not generate course 
+content yourself; ingest it from the file.
