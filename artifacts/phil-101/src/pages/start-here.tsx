@@ -32,7 +32,7 @@ export default function StartHere() {
   const login = useLogin({
     mutation: {
       onSuccess: async () => {
-        toast.success("Welcome to Macroeconomics 101!");
+        toast.success("Welcome to Probability 101!");
         await qc.invalidateQueries({ queryKey: getGetCurrentStudentQueryKey() });
       },
       onError: (e) => toast.error(e.message),
@@ -59,8 +59,8 @@ export default function StartHere() {
 
   return (
     <PageShell
-      title="Welcome to Macroeconomics 101"
-      intro="An introduction to the major questions of macroeconomics — what drives growth, inflation, unemployment, and the policies that shape them."
+      title="Welcome to Probability 101"
+      intro="An introduction to the central ideas of probability — sample spaces and events, conditional probability and Bayes' theorem, random variables, the binomial and normal distributions, and the law of large numbers."
     >
       <Card>
         <CardHeader>
@@ -68,15 +68,18 @@ export default function StartHere() {
         </CardHeader>
         <CardContent className="prose prose-stone max-w-none">
           <p>
-            <strong>Macroeconomics 101: Introduction to Macroeconomics</strong>{" "}
-            is a fully online, asynchronous college-level course. Over 13
-            modules you will work through the core concepts of modern
-            macroeconomics — national income, inflation, unemployment,
-            fiscal and monetary policy, international trade, recessions,
-            long-run growth, and public debt — using both standard models
-            and real historical episodes. The course culminates in a short
-            term paper applying macroeconomic reasoning to a contemporary
-            policy question.
+            <strong>Probability 101: Introduction to Probability</strong>{" "}
+            is a fully online, asynchronous college-level course. Over 15
+            modules you will work through the core ideas of probability
+            theory — sample spaces and events, the axioms, conditional
+            probability and Bayes' theorem, random variables and
+            distributions, expected value and variance, the binomial and
+            normal distributions, the law of large numbers and the
+            central limit theorem, counting, joint distributions, and the
+            philosophical divide between Bayesians and frequentists. The
+            course culminates in a short term paper that uses
+            probabilistic reasoning to analyze a real-world case,
+            paradox, or controversy.
           </p>
           <p>
             Your <strong>instructor of record</strong> is Dr. Margaret Hsu,
@@ -128,7 +131,7 @@ export default function StartHere() {
         <InfoCard
           icon={<MessagesSquare className="h-5 w-5" />}
           title="Communication & Netiquette"
-          body="Respectful disagreement is at the heart of economics. Argue with the model and the evidence, not the person. Use clear, civil language in your AI Tutor sessions and submissions."
+          body="Respectful disagreement is at the heart of probabilistic reasoning. Argue with the math and the assumptions, not the person. Use clear, civil language in your AI Tutor sessions and submissions."
         />
         <InfoCard
           icon={<ShieldCheck className="h-5 w-5" />}
@@ -143,12 +146,13 @@ export default function StartHere() {
         </CardHeader>
         <CardContent className="prose prose-stone max-w-none">
           <p>
-            Dr. Margaret Hsu has taught introductory macroeconomics at the
-            college level for over two decades. Her teaching emphasises
-            working from data and historical episodes: progress comes from
-            confronting models with what actually happened, not from
-            memorising definitions. The AI Tutor on this site is configured
-            to teach in her voice and style.
+            Dr. Margaret Hsu has taught introductory probability and
+            statistics at the college level for over two decades. Her
+            teaching emphasises careful problem setup and reasoning from
+            first principles: progress comes from naming the sample
+            space, the events, and the assumptions clearly, then letting
+            the axioms do the work. The AI Tutor on this site is
+            configured to teach in her voice and style.
           </p>
         </CardContent>
       </Card>
@@ -236,7 +240,7 @@ export default function StartHere() {
           <CardContent className="space-y-3">
             <p className="text-sm text-stone-700">
               Tell the class (and your AI Tutor) a bit about yourself — what
-              brought you to economics, and what you hope to get out of this
+              brought you to probability, and what you hope to get out of this
               course. Your tutor will use this to personalise its questions.
             </p>
             <Textarea

@@ -44,29 +44,29 @@ ${mod.assignment}`;
     case "study-guide":
       return {
         system:
-          "You are a macroeconomics instructor preparing a concise study guide for a student. Output Markdown. Use these sections in order: '## Key concepts' (5–10 bulleted definitions), '## Core arguments' (the main reasoning moves and models in the reading), '## Common pitfalls' (3–5 mistakes students typically make on this topic, e.g. confusing nominal and real, mistaking correlation for causation, applying a model outside its conditions), '## Self-check questions' (5 questions a student should be able to answer). Keep it tight — under 500 words. Do not write the assignment for the student.",
+          "You are a probability instructor preparing a concise study guide for a student. Output Markdown. Use these sections in order: '## Key concepts' (5–10 bulleted definitions), '## Core formulas' (the main formulas and identities in the reading, written as LaTeX delimited by single dollar signs, e.g. $P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}$), '## Common pitfalls' (3–5 mistakes students typically make on this topic, e.g. confusing independence with mutual exclusivity, ignoring the base rate, treating dependent events as independent, the gambler's fallacy), '## Self-check questions' (5 questions a student should be able to answer). Keep it tight — under 500 words. Do not write the assignment for the student.",
         user: `Create the study guide for this module.\n\n${moduleContext}`,
         maxTokens: 2048,
       };
     case "tutorial":
       return {
         system:
-          "You are a macroeconomics instructor giving a step-by-step walkthrough that teaches the material in the reading. Output Markdown. Structure: a 1-paragraph plain-English intro, then 4–6 numbered steps, each with a heading, a 2–4 sentence explanation, and a short example drawn from real data or a historical episode. End with a short paragraph titled '## What to do next' that nudges the student toward the assignment WITHOUT writing any of it for them. Under 700 words.",
+          "You are a probability instructor giving a step-by-step walkthrough that teaches the material in the reading. Output Markdown. Structure: a 1-paragraph plain-English intro, then 4–6 numbered steps, each with a heading, a 2–4 sentence explanation, and a short worked example with concrete numbers. Use LaTeX delimited by single dollar signs (e.g. $P(A)$, $\\binom{n}{k}$, $E(X)$) for any probability notation. End with a short paragraph titled '## What to do next' that nudges the student toward the assignment WITHOUT writing any of it for them. Under 700 words.",
         user: `Write the tutorial for this module.\n\n${moduleContext}`,
         maxTokens: 2500,
       };
     case "podcast":
       return {
         system:
-          "You are scripting a short audio explainer (a 2–3 minute 'podcast') that a student can listen to while commuting. Write a single-host, conversational script. NO speaker labels, NO stage directions, NO headings, NO Markdown — just the spoken words, in flowing paragraphs. Open with a friendly hook ('Welcome back to Macroeconomics 101…'), explain the core ideas of the reading in plain language, weave in one concrete example from real data or a historical episode, and close by inviting the student to think about the assignment prompt. Aim for roughly 350–450 words.",
+          "You are scripting a short audio explainer (a 2–3 minute 'podcast') that a student can listen to while commuting. Write a single-host, conversational script. NO speaker labels, NO stage directions, NO headings, NO Markdown, NO LaTeX — just the spoken words, in flowing paragraphs (read formulas aloud in plain English, e.g. say 'the probability of A given B equals the probability of A and B divided by the probability of B'). Open with a friendly hook ('Welcome back to Probability 101…'), explain the core ideas of the reading in plain language, weave in one concrete worked example with numbers, and close by inviting the student to think about the assignment prompt. Aim for roughly 350–450 words.",
         user: `Write the podcast script for this module.\n\n${moduleContext}`,
         maxTokens: 1500,
       };
     case "rewrite":
       return {
         system:
-          "You are an editor rewriting a macroeconomics reading for maximum clarity for a first-time undergraduate. Preserve every economic claim, definition, equation, and example from the original — do not add new content or remove ideas. Use shorter sentences, simpler vocabulary, and clearer transitions. Output Markdown. Do not add commentary; output only the rewritten reading.",
-        user: `Rewrite this reading for clarity. Keep all the economics content; just make it easier to follow.\n\n# Original reading\n${mod.reading || "(none)"}\n\n# Module context\n${mod.title}\nObjectives:\n${mod.objectives.map((o) => `- ${o}`).join("\n")}`,
+          "You are an editor rewriting a probability reading for maximum clarity for a first-time undergraduate. Preserve every definition, formula, axiom, theorem, and worked example from the original — do not add new content or remove ideas. Keep all probability notation in LaTeX delimited by single dollar signs (e.g. $P(A \\mid B)$, $\\binom{n}{k}$). Use shorter sentences, simpler vocabulary, and clearer transitions. Output Markdown. Do not add commentary; output only the rewritten reading.",
+        user: `Rewrite this reading for clarity. Keep all the probability content; just make it easier to follow.\n\n# Original reading\n${mod.reading || "(none)"}\n\n# Module context\n${mod.title}\nObjectives:\n${mod.objectives.map((o) => `- ${o}`).join("\n")}`,
         maxTokens: 2500,
       };
     case "read-draft": {
@@ -76,7 +76,7 @@ ${mod.assignment}`;
       }
       return {
         system:
-          "You are the student's macroeconomics instructor giving formative feedback on a draft submission BEFORE they submit. Be honest and specific. Output Markdown with these sections in order: '## What is working' (2–4 bullets), '## What needs work' (2–5 bullets — be concrete: cite the exact phrase or claim that is weak and explain why), '## Questions to push your thinking' (2–3 probing questions), '## Suggested next revision step' (one short paragraph — concrete next move). Do NOT rewrite the draft for them. Do NOT supply the actual answer. Under 500 words.",
+          "You are the student's probability instructor giving formative feedback on a draft submission BEFORE they submit. Be honest and specific. Output Markdown with these sections in order: '## What is working' (2–4 bullets), '## What needs work' (2–5 bullets — be concrete: cite the exact phrase, calculation, or claim that is weak and explain why), '## Questions to push your thinking' (2–3 probing questions), '## Suggested next revision step' (one short paragraph — concrete next move). Use LaTeX delimited by single dollar signs for any probability notation. Do NOT rewrite the draft for them. Do NOT supply the actual answer. Under 500 words.",
         user: `Module: ${mod.title}\n\nAssignment prompt:\n${mod.assignment}\n\nStudent draft:\n${trimmed}\n\nProvide formative feedback.`,
         maxTokens: 2048,
       };

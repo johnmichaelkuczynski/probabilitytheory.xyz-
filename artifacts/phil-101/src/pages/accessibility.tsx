@@ -9,7 +9,7 @@ export default function Accessibility() {
     >
       <Section title="Statement of commitment">
         <p>
-          Macroeconomics 101 is designed to conform with the Web Content
+          Probability 101 is designed to conform with the Web Content
           Accessibility Guidelines (WCAG) 2.1 Level AA. We treat
           accessibility as a continuous process and welcome feedback so we
           can improve.

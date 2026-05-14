@@ -10,7 +10,7 @@ export default function Syllabus() {
   return (
     <PageShell
       title="Syllabus"
-      intro="Everything you need to know about how Macroeconomics 101 is taught, graded, and supported."
+      intro="Everything you need to know about how Probability 101 is taught, graded, and supported."
     >
       <div className="flex justify-end print:hidden">
         <Button
@@ -26,7 +26,7 @@ export default function Syllabus() {
       <Section title="Course information">
         <DefList
           items={[
-            ["Course", "ECON 101 — Introduction to Macroeconomics"],
+            ["Course", "STAT 101 — Introduction to Probability"],
             ["Credits", "3 semester credits"],
             ["Format", "Fully online, asynchronous"],
             ["Term", "Open enrollment / self-paced"],
@@ -39,6 +39,7 @@ export default function Syllabus() {
         <DefList
           items={[
             ["Instructor of record", "Dr. Margaret Hsu"],
+            ["Prerequisites", "Comfort with high-school algebra; no prior statistics required"],
             ["Office hours", "By appointment via the AI Tutor at any time"],
             [
               "Response time",
@@ -51,14 +52,17 @@ export default function Syllabus() {
 
       <Section title="Course description">
         <p className="text-stone-800">
-          Macroeconomics 101 introduces students to the central concepts and
-          debates of modern macroeconomics: national income accounting,
-          inflation, unemployment, fiscal and monetary policy, international
-          trade and exchange rates, recessions, long-run growth, and public
-          debt. Through readings, structured discussion, and short writing
-          assignments, students learn to interpret macroeconomic data, work
-          through standard models, and evaluate policy arguments using
-          evidence from real episodes.
+          Probability 101 introduces students to the central concepts of
+          probability theory: sample spaces and events, the Kolmogorov
+          axioms, conditional probability and independence, random
+          variables, expected value and variance, the binomial and normal
+          distributions, the law of large numbers and the central limit
+          theorem, counting and combinatorics, joint and conditional
+          distributions, and the philosophical divide between Bayesian and
+          frequentist interpretations. Through readings, discussion, and
+          short writing assignments, students learn to set up probability
+          problems carefully, work through the standard formulas, and
+          apply probabilistic reasoning to puzzles and real-world cases.
         </p>
       </Section>
 
@@ -66,32 +70,34 @@ export default function Syllabus() {
         <p className="mb-2 text-stone-800">By the end of this course, students will be able to:</p>
         <ol className="list-decimal space-y-2 pl-5 text-stone-800">
           <li>
-            Define and distinguish the core macroeconomic aggregates (GDP,
-            inflation, unemployment) and explain what each measures and
-            omits.
+            Set up a sample space, identify events, and apply the
+            Kolmogorov axioms (including inclusion–exclusion) to compute
+            probabilities of compound events.
           </li>
           <li>
-            Use the standard frameworks (the equation of exchange, the
-            fiscal multiplier, the Phillips curve, the Mundell-Fleming
-            trilemma) to analyze policy questions.
+            Use conditional probability, independence, the multiplication
+            rule, the law of total probability, and Bayes' theorem to
+            reason precisely about uncertain situations.
           </li>
           <li>
-            Compare the major schools of macroeconomic thought (Classical,
-            Keynesian, Monetarist, New Classical, New Keynesian) and apply
-            them to specific historical episodes.
+            Work confidently with discrete and continuous random
+            variables: PMFs, PDFs, expected value, variance, and standard
+            deviation, including the identity Var(X) = E(X²) − [E(X)]².
           </li>
           <li>
-            Interpret real macroeconomic data from sources such as FRED,
-            BEA, BLS, the IMF, and the World Bank, and evaluate empirical
-            evidence for competing claims.
+            Apply the binomial and normal distributions, the law of large
+            numbers, and the central limit theorem to model real
+            phenomena and to distinguish them from common fallacies.
           </li>
           <li>
-            Analyze the causes and consequences of recessions, long-run
-            growth differences, and public debt sustainability.
+            Use combinatorial counting (multiplication principle,
+            permutations, combinations) to solve elementary probability
+            problems where outcomes are equally likely.
           </li>
           <li>
-            Apply macroeconomic reasoning to a contemporary policy question
-            in a short argumentative term paper.
+            Compare the Bayesian and frequentist interpretations of
+            probability and defend a probabilistic argument about a
+            real-world case in a short term paper.
           </li>
         </ol>
       </Section>
@@ -106,7 +112,7 @@ export default function Syllabus() {
 
       <Section title="Grading & assessments">
         <p className="mb-3 text-stone-800">
-          Your final grade is the sum of your scores across all 13 modules
+          Your final grade is the sum of your scores across all 15 modules
           (total: <strong>{totalPoints} points</strong>). Submissions are
           reviewed by the instructor of record and feedback is provided via
           the AI Tutor. The course follows a standard 90/80/70/60 scale.

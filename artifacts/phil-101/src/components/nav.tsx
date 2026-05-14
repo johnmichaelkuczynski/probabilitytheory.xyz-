@@ -59,7 +59,7 @@ export function Nav() {
           className="font-serif text-lg font-semibold tracking-tight text-stone-900 hover:text-stone-700"
           data-testid="link-home"
         >
-          Macroeconomics 101
+          Probability 101
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">

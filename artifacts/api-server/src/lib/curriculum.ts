@@ -1,4 +1,4 @@
-// AUTO-GENERATED from attached_assets/Clean_MacroEcon_101_Course_Book.docx — verbatim curriculum content.
+// AUTO-GENERATED from attached_assets/Clean_Probability_101_Course_Book.docx — verbatim curriculum content.
 
 export interface Module {
   id: string;
@@ -16,862 +16,827 @@ export const modules: Module[] = [
   {
     id: "d1",
     number: 1,
-    title: "Discussion 1: What Does GDP Actually Measure?",
+    title: "Discussion 1: Sample Spaces, Events, and the Axioms of Probability",
     points: 50,
     type: "discussion",
     objectives: [
-      "Identify what GDP includes and excludes, and explain the reasoning behind those national-accounts conventions.",
-      "Evaluate the claim that GDP is a defensible proxy for national well-being.",
+      "Define a sample space, event, and probability measure, and recognize finite, countably infinite, and uncountable sample spaces.",
+      "Apply the three Kolmogorov axioms and the inclusion–exclusion formula to compute probabilities of compound events.",
     ],
-    reading: `Gross Domestic Product (GDP) is the total market value of all final goods and services produced within a country's borders during a specified period, usually a year or a quarter. It is the headline number of macroeconomics.
-
-There are three equivalent ways to compute GDP:
-- The expenditure approach: GDP = C + I + G + (X - M), where C is consumption, I is investment, G is government purchases, and (X - M) is net exports.
-- The income approach: sum all wages, rents, interest, and profits earned in production.
-- The production approach: sum the value added at each stage of production across all firms.
-
-Key distinctions:
-- Nominal GDP measures output at current prices. Real GDP measures output at constant prices, so it strips out inflation.
-- GDP counts final goods only. Intermediate goods (steel sold to a carmaker) are excluded to avoid double-counting.
-- GDP counts production inside a country. GNP (Gross National Product) counts production by a country's nationals, wherever located.
-- GDP does not count: household production, volunteer work, the underground economy, or non-market environmental damage.`,
+    reading: `Probability theory is the mathematical study of uncertainty. Before any calculation can be done, three things must be specified: what could happen, which collections of outcomes we care about, and how likely each collection is. These are the sample space, the events, and the probability measure.
+The sample space, denoted S (or $\\Omega$), is the set of all possible outcomes of an experiment. For a single coin flip, S = {H, T}. For the roll of a six-sided die, S = {1, 2, 3, 4, 5, 6}. For the daily closing price of a stock, S is the set of non-negative real numbers. The sample space must be exhaustive (every possible outcome is listed) and mutually exclusive (no two outcomes can occur together).
+An event is any subset of the sample space. The event "die shows an even number" is the subset {2, 4, 6}. The event "die shows a 7" is the empty set, which has probability zero. The event "die shows something" is the full sample space S, which has probability one.
+The Three Axioms of Probability (Kolmogorov, 1933)
+Non-negativity: For any event A, P(A) $\\geq$ 0. Probabilities are never negative.
+Normalization: P(S) = 1. The probability that something in the sample space happens is certain.
+Countable Additivity: If A1, A2, A3, ... are mutually exclusive events (no two can occur together), then $P(A1 \\cup A2 \\cup A3 \\cup ...)$ = P(A1) + P(A2) + P(A3) + ...
+From these three axioms, every formula in elementary probability theory is derived. The whole edifice rests on them.
+Immediate Consequences
+P(empty set) = 0. The impossible event has probability zero.
+P(not A) = 1 - P(A). The probability that A does not occur is one minus the probability that it does.
+If A is a subset of B, then P(A) $\\leq$ P(B). A smaller set cannot have higher probability than a set that contains it.
+For any event A, 0 $\\leq$ P(A) $\\leq$ 1.
+Inclusion-Exclusion (two events): $P(A \\cup B)$ = P(A) + P(B) - $P(A \\cap B)$. The intersection is subtracted because outcomes in both A and B would otherwise be counted twice.`,
     assignment: `Assignment (50 points):
-1. State whether each of the following would be included in U.S. GDP, and explain why or why not:
-   a. A used car sold by one private owner to another
-   b. A new car manufactured in Tennessee by Nissan (a Japanese firm)
-   c. A bottle of French wine purchased by a U.S. consumer
-   d. Unpaid childcare provided by a parent
-   e. The sale of corporate bonds issued by Apple
-2. Explain one major thing that GDP fails to measure that you believe matters for human welfare. Argue for or against the proposition that GDP is a defensible proxy for national well-being.`,
+
+Specify a sample space for the following experiments. State whether each is finite, countably infinite, or uncountable: (a) flipping a coin three times; (b) counting the number of customers who enter a store on a given day; (c) measuring the time until the next earthquake of magnitude 6 or greater.
+Two events A and B in a sample space satisfy P(A) = 0.4, P(B) = 0.5, $P(A \\cap B)$ = 0.2. Find: (a) $P(A \\cup B)$; (b) P(not A); (c) P(A but not B); (d) P(neither A nor B).
+Construct an example showing that the inclusion-exclusion formula extends to three events: $P(A \\cup B \\cup C)$ = P(A) + P(B) + P(C) - $P(A \\cap B)$ - $P(A \\cap C)$ - $P(B \\cap C)$ + $P(A \\cap B \\cap C)$. Explain in words why each subtraction and addition is needed.`,
     modelResponse: `Model Response
 
-GDP inclusions and exclusions:
-
-a. The used car sale is NOT counted in current GDP. The car was already counted in GDP during the year it was produced. Including it now would be double-counting. However, any dealer commission or service fee charged on the resale IS counted, because that service is being produced in the current period.
-
-b. The Nissan car manufactured in Tennessee IS counted in U.S. GDP. GDP is a measure of production within a country's geographic borders, regardless of who owns the firm. It would not be counted in Japan's GDP. The profits sent back to Japan would, however, reduce U.S. GNP relative to U.S. GDP.
-
-c. The French wine is NOT counted in U.S. GDP. It was produced in France and so contributes to French GDP. In the U.S. national accounts, it appears as an import, which enters with a negative sign in the expenditure equation: C goes up when the consumer buys the wine, but M goes up by the same amount, so the net contribution to GDP is zero.
-
-d. Unpaid childcare is NOT counted in GDP. Only market transactions are counted. This is a well-known limitation: paid daycare counts, but the same childcare provided by a parent does not. This produces strange artifacts. If two parents care for each other's children and pay one another, GDP rises; if they each care for their own, GDP does not change.
-
-e. The sale of corporate bonds is NOT counted in GDP. Financial transactions transfer ownership of claims; they do not produce goods or services. What IS counted is the underwriting and brokerage fees charged by the investment banks. Those fees are payment for a financial service produced in the current period.
-
-What GDP fails to measure:
-
-GDP omits environmental degradation, depletion of natural resources, leisure time, the distribution of income, household production, and the quality of goods produced. Two countries with identical GDPs may differ enormously in welfare. A country that produces $20 trillion by clear-cutting its forests is treated identically to one that produces $20 trillion through sustainable industry, even though the first is consuming its capital stock.
-
-My position: GDP is a defensible proxy for one thing only, namely the market value of current production. It was designed in the 1930s by Simon Kuznets for precisely that purpose, and Kuznets himself warned Congress that 'the welfare of a nation can scarcely be inferred from a measure of national income.' Treating GDP as a measure of well-being is a category error. It is roughly like measuring the health of a person by counting the calories they consume: more is not always better, and the composition matters as much as the total. A serious measure of welfare would need to incorporate distribution (a Gini coefficient or a median rather than a mean), environmental accounts (depletion treated as a negative investment), and non-market production. The Human Development Index and the Genuine Progress Indicator are attempts at this. None has displaced GDP, because GDP has the advantage of being computable from existing tax and business records, while welfare indices require value judgments about which factors to weight and how. GDP is useful precisely because it is narrow.`,
+Sample spaces:
+(a) Three coin flips. S = {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}. This is finite, with exactly 2^3 = 8 outcomes. Each outcome is a sequence, and order matters here because the first flip is distinguishable from the second.
+(b) Number of customers entering a store. S = {0, 1, 2, 3, ...}. This is countably infinite. There is no upper bound in principle, though in practice the number is bounded by something like 'people on earth.' We treat it as unbounded because the mathematics is cleaner and the probability of very large numbers is negligible.
+(c) Time until next earthquake. S = [0, infinity). This is uncountable. Time is continuous, so we cannot list outcomes. Individual time values have probability zero; we work with intervals instead.
+Probability calculations:
+(a) $$P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0.4 + 0.5 - 0.2 = 0.7.$$
+(b) $$P(not A) = 1 - P(A) = 1 - 0.4 = 0.6.$$
+(c) P(A but not B) = P(A) - $P(A \\cap B)$ = 0.4 - 0.2 = 0.2. The event 'A occurs' includes both 'A and B' and 'A but not B,' and these are mutually exclusive.
+(d) $$P(neither A nor B) = P(not (A or B)) = 1 - P(A \\cup B) = 1 - 0.7 = 0.3.$$
+Three-event inclusion-exclusion:
+Imagine a survey of 100 people. Let A be the event 'owns a dog,' B the event 'owns a cat,' C the event 'owns a bird.' If we just add P(A) + P(B) + P(C), people who own multiple pets are counted multiple times. So we subtract the pairwise overlaps: $P(A \\cap B)$, $P(A \\cap C)$, $P(B \\cap C)$. But people who own all three have been added three times in the original sum and subtracted three times in the pairwise corrections, so they have been entirely removed. We add $P(A \\cap B \\cap C)$ back to restore them. The pattern is alternating addition and subtraction based on the size of the intersection, and it generalizes to any number of events.
+Why This is a Model Response:
+Correctly distinguishes finite, countably infinite, and uncountable sample spaces, with explanation of why the distinction matters.
+Applies the axioms cleanly rather than reasoning informally.
+Uses inclusion-exclusion correctly and derives the 'A but not B' formula from first principles instead of guessing.
+Explains three-event inclusion-exclusion through a concrete counting example that makes the alternating sign pattern intuitive.
+Recognizes that individual outcomes in a continuous sample space have probability zero, which is a foundational fact often missed.`,
   },
   {
     id: "e1",
     number: 2,
-    title: "Essay 1: Inflation and the Quantity Theory of Money",
+    title: "Essay 1: The Monty Hall Problem",
     points: 50,
     type: "essay",
     objectives: [
-      "Explain the equation of exchange (MV = PY) and what it predicts about money and inflation.",
-      "Analyze the 2021-2023 U.S. inflation episode and evaluate Friedman's claim that inflation is always a monetary phenomenon.",
+      "State the Monty Hall problem precisely, including all of the host's behaviors, and compute the probability of winning under both the stay and switch strategies.",
+      "Use Bayes' theorem to confirm the intuitive answer and explain how the result depends on what the host knows.",
     ],
-    reading: `Inflation is a sustained increase in the general price level. It is measured by index numbers such as the Consumer Price Index (CPI), the Producer Price Index (PPI), and the GDP deflator.
-
-The classical explanation of inflation is the Quantity Theory of Money, captured in the equation of exchange:
-
-MV = PY
-
-Where M is the money supply, V is the velocity of money (the number of times a unit of currency changes hands per period), P is the price level, and Y is real output.
-
-If V and Y are roughly stable, then changes in M translate directly into changes in P. This is the foundation of Milton Friedman's famous claim that 'inflation is always and everywhere a monetary phenomenon.'
-
-Modern macroeconomists distinguish:
-- Demand-pull inflation: aggregate demand outstrips the productive capacity of the economy.
-- Cost-push inflation: supply shocks (oil prices, supply chains) raise production costs, which firms pass through to prices.
-- Built-in or expectations-driven inflation: workers demand higher wages because they expect higher prices, and firms raise prices because they expect higher wages. The expectation becomes self-fulfilling.`,
+    reading: ``,
     assignment: `Assignment (50 points):
-Write a 600-800 word essay addressing the following:
 
-1. Explain the equation of exchange (MV = PY) and what it predicts about the relationship between the money supply and inflation.
-2. Discuss the U.S. inflation episode of 2021-2023. Was it primarily demand-pull, cost-push, or expectations-driven? Defend your answer with reference to specific events (fiscal stimulus, supply chain disruptions, energy shocks, labor markets).
-3. Evaluate Friedman's claim that inflation is always a monetary phenomenon. Is the 2021-2023 episode consistent with that claim, or does it require modification?`,
+Write your essay for someone unfamiliar with probability theory, like a fellow student who has not taken this class. Clearly label each section.
+Section 1 (30 points) - The Problem and Its Solution
+State the Monty Hall problem precisely, including all of the host's assumed behaviors.
+Calculate the probability of winning if you stay with your original choice.
+Calculate the probability of winning if you switch.
+Explain why the answer is counterintuitive to most people.
+Section 2 (20 points) - Conditional Probability and Information
+Show explicitly how Bayes' theorem yields the same answer as the intuitive solution.
+Explain what changes if the host opens a door at random rather than knowingly avoiding the prize.`,
     modelResponse: `Model Response
 
-The Equation of Exchange and the 2021-2023 Inflation
-
-The equation of exchange, MV = PY, is an accounting identity. The total spending in an economy (M times V, the money supply times how fast it circulates) must equal the total nominal value of output (P times Y, the price level times real output). The identity becomes a theory only when assumptions are made about its terms. The classical Quantity Theory assumes that V is stable in the short run because it is governed by institutional features (payment habits, banking technology) that change slowly, and that Y is determined by real factors (technology, labor, capital) independent of M. Under those assumptions, percentage changes in M translate directly into percentage changes in P. Double the money stock, and the price level doubles.
-
-The U.S. inflation of 2021-2023 was the largest sustained inflation since the early 1980s. Headline CPI peaked at 9.1% year-over-year in June 2022, having sat near 2% for the previous decade. The causes were not monocausal.
-
-On the demand side, the federal government injected roughly $5 trillion in pandemic-era fiscal stimulus between March 2020 and March 2021, the largest peacetime fiscal expansion in U.S. history. The Federal Reserve simultaneously expanded its balance sheet from $4 trillion to nearly $9 trillion. M2 grew by approximately 40% between February 2020 and early 2022, an unprecedented monetary expansion. Households accumulated roughly $2.5 trillion in excess savings, and when the economy reopened, they spent it. Aggregate demand surged.
-
-On the supply side, the same period saw extraordinary disruptions. Global shipping container costs rose by a factor of six. Semiconductor shortages crippled auto production, driving used car prices up by 40% in 2021 alone. The Russian invasion of Ukraine in February 2022 sent energy and grain prices sharply higher; European natural gas reached ten times its pre-pandemic level. These were textbook cost-push shocks.
-
-Expectations played a smaller role than in the 1970s, partly because the Fed retained credibility and moved aggressively. The fastest rate-hiking cycle since Volcker (525 basis points in 18 months) brought five-year inflation expectations back into the 2-3% range even before inflation itself had fully normalized.
-
-My assessment: the 2021-2023 episode was primarily a collision of demand-pull inflation (driven by combined fiscal and monetary expansion meeting reopening demand) with cost-push shocks (supply chains and energy). The two reinforced each other. Excess demand made it easier for firms to pass through supply-side cost increases, because customers had the cash and the willingness to pay. A pure supply shock in a weak demand environment, as in 2008-2009 or in 2015 oil price spikes, tends not to produce sustained inflation because firms cannot raise prices without losing customers. In 2021-2022, they could.
-
-Friedman's claim survives in modified form. Inflation is always a monetary phenomenon in the trivial sense that sustained increases in P require sustained increases in M (or compensating drops in real output). Without the monetary and fiscal expansion of 2020-2021, the supply shocks alone would likely have produced a one-time price level adjustment, not the sustained inflation we observed. Conversely, monetary expansion in 2009-2014 did not produce inflation, partly because velocity collapsed: banks held reserves rather than lending them out, so MV did not rise. This is the major modification Friedman's framework requires. The equation MV = PY remains an identity, but V is not stable. It is endogenous to the financial system's appetite for risk and the public's appetite for transactions. Modern monetary theorists and post-Keynesians have made much of this. The 2021-2023 episode shows that when M expands AND V holds up (or rises) AND supply is constrained, the result is exactly what the Quantity Theory predicts. Friedman was right about the mechanism, but the timing depends on the behavior of velocity, which the original theory did not adequately address.`,
+Section 1: The Problem and Its Solution
+The Monty Hall problem is named after the host of the American game show Let's Make a Deal. The setup is this: three doors stand before the contestant. Behind one is a car. Behind the other two are goats. The contestant picks a door, say Door 1. The host, who knows what is behind every door, then opens one of the other two doors to reveal a goat. He always opens a door with a goat behind it, and if the contestant initially picked the car, he chooses at random between the two remaining goat doors. After the goat is revealed, the host offers the contestant a choice: stay with the original door, or switch to the other unopened door. The question is: should the contestant switch?
+The answer is yes, and it is not close. Switching wins the car two-thirds of the time. Staying wins one-third of the time.
+Probability of winning by staying: when the contestant first chooses a door, the car is behind that door with probability 1/3 (one of three doors). Nothing the host does afterward changes the contestant's initial choice, so staying wins with probability 1/3.
+Probability of winning by switching: with probability 2/3, the car is behind one of the other two doors. The host then reveals which of those two doors has a goat. The car must be behind whichever of those two doors he did not open. So switching takes the contestant directly to the car whenever the car was behind one of the other two doors, which is two-thirds of the time.
+Why it is counterintuitive: most people see two unopened doors at the end and assume the probability is split 50-50 between them. This reasoning ignores the information the host's behavior provides. The host is not a neutral source of information. He always reveals a goat, and he chooses which door to open based on knowledge the contestant lacks. The asymmetry between the contestant's door (chosen blindly at the start) and the other door (selected by the informed host) is the entire source of the 2/3 advantage.
+Section 2: Conditional Probability and Information
+Let C1, C2, C3 denote the events 'car is behind door 1, 2, 3.' Assume the contestant initially picks Door 1. Let H3 denote the event 'host opens Door 3.' We want $P(C2 \\mid H3)$, the probability the car is behind Door 2 given that the host opened Door 3.
+By Bayes' theorem:
+$$P(C2 \\mid H3) = P(H3 \\mid C2) * P(C2) / P(H3)$$
+The prior probabilities are P(C1) = P(C2) = P(C3) = 1/3. The conditional probabilities of the host's action are:
+$P(H3 \\mid C1)$ = 1/2. If the car is behind the contestant's door, the host picks randomly between Doors 2 and 3.
+$P(H3 \\mid C2)$ = 1. If the car is behind Door 2, the host must open Door 3, since he cannot open the contestant's door or the car's door.
+$P(H3 \\mid C3)$ = 0. The host cannot open Door 3 if the car is behind Door 3.
+By the law of total probability:
+$$P(H3) = P(H3 \\mid C1)P(C1) + P(H3 \\mid C2)P(C2) + P(H3 \\mid C3)P(C3) = (1/2)(1/3) + (1)(1/3) + (0)(1/3) = 1/6 + 1/3 = 1/2.$$
+$$Therefore: P(C2 \\mid H3) = (1)(1/3) / (1/2) = 2/3.$$
+$$And: P(C1 \\mid H3) = (1/2)(1/3) / (1/2) = 1/3.$$
+Bayes' theorem confirms the intuitive answer: switching to Door 2 wins with probability 2/3.
+What changes if the host opens at random: now the host might reveal the car. Suppose the host opens Door 3 and it happens to show a goat. In this version, $P(H3 \\mid C1)$ = 1/2, $P(H3 \\mid C2)$ = 1/2, $P(H3 \\mid C3)$ = 1/2 (he opens each non-contestant door equally often, regardless of what is behind it). Now P(H3) = (1/2)(1/3) + (1/2)(1/3) + (1/2)(1/3) = 1/2. So $P(C2 \\mid H3)$ = (1/2)(1/3) / (1/2) = 1/3, and $P(C1 \\mid H3)$ = 1/3 also. The probabilities are equal: switching gives no advantage.
+The lesson is that the value of switching depends entirely on what the host knows and how he uses that knowledge. The host's deliberate avoidance of the car is what transfers probability mass to the unopened non-contestant door. Strip away that intentionality, and the asymmetry disappears.`,
   },
   {
     id: "d2",
     number: 3,
-    title: "Discussion 2: Types of Unemployment and the Natural Rate",
+    title: "Discussion 2: Conditional Probability and Independence",
     points: 50,
     type: "discussion",
     objectives: [
-      "Distinguish frictional, structural, and cyclical unemployment and apply the categories to concrete cases.",
-      "Evaluate the usefulness of the headline unemployment rate as an indicator of labor-market health.",
+      "Compute conditional probabilities, apply the multiplication rule, and use the law of total probability.",
+      "Distinguish independence from mutual exclusivity and identify when each applies.",
     ],
-    reading: `Unemployment is the condition of being available for work, actively seeking work, and not currently employed. The unemployment rate is the number of unemployed persons divided by the labor force.
-
-Economists distinguish three primary types:
-- Frictional unemployment: short-term unemployment as workers move between jobs. New graduates, people who have just quit one job to find a better one, and workers in transition. This is unavoidable and arguably beneficial; it represents a healthy reallocation of labor.
-- Structural unemployment: a mismatch between worker skills and the jobs that exist. Coal miners in West Virginia after the coal industry's decline. Auto workers in Detroit after the rise of automation. This is more persistent and harder to address.
-- Cyclical unemployment: the unemployment that rises during recessions and falls during expansions. This is what monetary and fiscal policy aim to reduce.
-
-The 'natural rate of unemployment' is the level of unemployment that exists when cyclical unemployment is zero. It is the sum of frictional and structural unemployment. In the U.S., it is typically estimated at 3.5-4.5%.
-
-The labor force participation rate (LFPR) is the percentage of the working-age population in the labor force. It can fall when discouraged workers stop looking for work, in which case the unemployment rate drops without any improvement in employment.`,
+    reading: `Probability is a function of information. As new information arrives, probabilities must be updated. Conditional probability is the formal mechanism for this updating.
+The conditional probability of A given B, written $P(A \\mid B)$, is defined as:
+$P(A \\mid B)$ = $P(A \\cap B)$ / P(B), provided P(B) > 0.
+In words: the probability of A, restricted to the cases where B has already occurred. The sample space is effectively narrowed from S to B, and we ask what fraction of B is also A.
+Multiplication Rule
+Rearranging the definition: $P(A \\cap B)$ = $P(A \\mid B)$ * P(B) = $P(B \\mid A)$ * P(A).
+This generalizes: $P(A \\cap B \\cap C)$ = P(A) * $P(B \\mid A)$ * $P(C \\mid A \\cap B)$. Useful for sequential experiments where each step depends on what came before.
+Independence
+Two events A and B are independent if knowledge that B occurred does not change the probability of A. Formally:
+A and B are independent if and only if $P(A \\cap B)$ = P(A) * P(B).
+$$Equivalently, P(A \\mid B) = P(A), and P(B \\mid A) = P(B).$$
+Independence is not the same as mutual exclusivity. Mutually exclusive events with nonzero probability are actually dependent in the strongest possible way: if one occurs, the other cannot. The everyday confusion of these two concepts is one of the most common errors in probability.
+Law of Total Probability
+If B1, B2, ..., Bn partition the sample space (mutually exclusive and exhaustive), then for any event A:
+$$P(A) = P(A \\mid B1) * P(B1) + P(A \\mid B2) * P(B2) + ... + P(A \\mid Bn) * P(Bn).$$
+This decomposes a complicated probability into a weighted sum of conditional probabilities. It is the workhorse formula behind Bayes' theorem and behind expected value calculations under uncertainty.`,
     assignment: `Assignment (50 points):
-1. Classify each of the following as frictional, structural, or cyclical unemployment:
-   a. A 22-year-old college graduate looking for her first job
-   b. A travel agent laid off because customers now book online
-   c. A construction worker laid off during the 2008-2009 recession
-   d. A coal miner in Appalachia after the closure of a mine
-   e. A software engineer who quit to look for a higher-paying position
-2. The official U.S. unemployment rate was 3.7% in late 2023, near a 50-year low. Yet many commentators argued that the labor market was 'unhealthy.' What features of the labor market could be missed by looking only at the headline unemployment rate? In your view, is the unemployment rate a useful indicator?`,
+
+A factory has three machines producing widgets. Machine 1 produces 50% of widgets with a 2% defect rate. Machine 2 produces 30% of widgets with a 3% defect rate. Machine 3 produces 20% of widgets with a 5% defect rate. (a) What is the probability that a randomly chosen widget is defective? (b) Given that a widget is defective, what is the probability it came from Machine 3?
+Two cards are drawn in succession from a standard 52-card deck without replacement. Let A be the event 'first card is a heart' and B the event 'second card is a heart.' (a) Find $P(A \\cap B)$. (b) Find P(B). (c) Are A and B independent? Explain.
+Give an example of three events A, B, C that are pairwise independent (each pair is independent) but not mutually independent (the three together violate independence). Explain why this distinction matters.`,
     modelResponse: `Model Response
 
-Classifications:
-
-a. Frictional. New graduates entering the labor market for the first time are searching for a match. They are not unemployed because of an economy-wide downturn or because their skills have become obsolete. They are unemployed because the search process takes time.
-
-b. Structural. The travel agent's skills have been made obsolete by a technological shift. The job category has shrunk permanently. Reemployment will require either retraining or accepting a job in a different field.
-
-c. Cyclical. Construction employment is highly sensitive to the business cycle. In the 2008-2009 recession, residential construction collapsed by roughly 50%. When the economy recovered, much of this unemployment reversed.
-
-d. Structural. The decline of the coal industry reflects long-run shifts in energy markets (cheap natural gas, environmental regulation) rather than a temporary downturn. Coal mining employment is unlikely to recover even when the economy is at full capacity.
-
-e. Frictional. The software engineer is voluntarily transitioning between jobs. This is the textbook case of frictional unemployment: a worker briefly between employment relationships, searching for a better match.
-
-Why the headline rate can mislead:
-
-The headline unemployment rate (U-3, in BLS terminology) is the narrowest measure. It excludes several important groups. Discouraged workers, who have given up looking, are not counted as unemployed because they are not in the labor force. The U-6 measure includes them along with workers employed part-time who would prefer full-time work; U-6 is typically 2-3 percentage points higher than U-3.
-
-The labor force participation rate is the more revealing number in many cases. In late 2023, the U.S. LFPR was 62.7%, well below its 2000 peak of 67.3%. Some of this decline is demographic (boomer retirement), but a substantial portion reflects working-age men who have permanently left the labor force, often for reasons connected to opioid addiction, disability, and incarceration history. A society where the unemployment rate is low because millions of people have stopped trying is not the same as a society at full employment.
-
-Other features the headline rate misses: wage growth (a tight labor market should produce wage gains; if it does not, the tightness is suspect), the quits rate (high quits indicate worker confidence; low quits indicate fear), and underemployment (a PhD driving rideshare is technically employed).
-
-My view: the unemployment rate is useful but insufficient. It is best understood as one component of a labor market dashboard that includes LFPR, the employment-to-population ratio, U-6, real wage growth, and the quits rate. The 2023 labor market was genuinely tight by most of these measures, with wage growth at the bottom of the distribution outpacing inflation and quits remaining elevated. But the headline rate, taken in isolation, is a misleading metric in any period when participation is unusual. A country can have 'low unemployment' that is genuinely tight, or 'low unemployment' that conceals mass exit. Distinguishing the two requires looking past the headline.`,
+Defect problem:
+(a) By the law of total probability:
+$$P(defective) = P(def \\mid M1)P(M1) + P(def \\mid M2)P(M2) + P(def \\mid M3)P(M3)$$
+= (0.02)(0.50) + (0.03)(0.30) + (0.05)(0.20)
+= 0.010 + 0.009 + 0.010 = 0.029.
+So 2.9% of widgets are defective overall.
+(b) By Bayes' theorem:
+$$P(M3 \\mid def) = P(def \\mid M3) * P(M3) / P(def) = (0.05)(0.20) / 0.029 = 0.010 / 0.029 = 0.345.$$
+So about 34.5% of defective widgets come from Machine 3, even though Machine 3 produces only 20% of all widgets. The high defect rate inflates Machine 3's share of defective output.
+Cards problem:
+(a) $$P(A \\cap B) = P(A) * P(B \\mid A) = (13/52) * (12/51) = 156/2652 = 1/17.$$
+(b) P(B) by total probability, conditioning on the first card: P(B) = $P(B \\mid A)$P(A) + $P(B \\mid not A)$P(not A) = (12/51)(13/52) + (13/51)(39/52) = (12 * 13 + 13 * 39) / (51 * 52) = 13(12 + 39) / 2652 = 13 * 51 / 2652 = 663/2652 = 1/4.
+P(B) = 1/4, the same as P(A). This makes intuitive sense: before either card is drawn, each card has equal claim to being a heart.
+(c) Are A and B independent? P(A) * P(B) = (1/4)(1/4) = 1/16. $P(A \\cap B)$ = 1/17. These are not equal, so A and B are not independent. Knowing the first card was a heart reduces the probability the second card is a heart (only 12 hearts remain out of 51 cards). The dependence is small but real.
+Pairwise but not mutually independent:
+Flip two fair coins. Let A be 'first coin is heads,' B be 'second coin is heads,' C be 'the two coins match.' Each has probability 1/2. Check pairwise independence:
+$P(A \\cap B)$ = 1/4 = P(A)P(B). Independent.
+$P(A \\cap C)$ = P(both heads) = 1/4 = P(A)P(C). Independent.
+$P(B \\cap C)$ = P(both heads) = 1/4 = P(B)P(C). Independent.
+But $P(A \\cap B \\cap C)$ = P(both heads) = 1/4, while P(A)P(B)P(C) = 1/8. Not equal. So the three events are not mutually independent.
+Why this matters: any two of the events give no information about the third individually, but any two together completely determine the third. If you know A and B, then C is forced (if both coins are heads, they match). Pairwise independence is a strictly weaker condition than mutual independence, and statistical models that assume the wrong one produce wrong answers. This is the basis of many subtle errors in applied probability and statistics.
+Why This is a Model Response:
+Applies the law of total probability and Bayes' theorem correctly, with arithmetic shown step by step.
+Notices the conceptual point that high defect rate at Machine 3 inflates its share of defective output beyond its production share.
+Correctly handles dependence in card drawing without replacement, and uses total probability to find the marginal P(B).
+Constructs the classic two-coins counterexample to show pairwise vs. mutual independence.
+Connects the technical distinction to practical consequences in statistical modeling.`,
   },
   {
     id: "e2",
     number: 4,
-    title: "Essay 2: Fiscal Policy and the Multiplier",
+    title: "Essay 2: Bayes' Theorem and Medical Testing",
     points: 50,
     type: "essay",
     objectives: [
-      "Explain the logic of the fiscal multiplier and why it varies with economic conditions.",
-      "Compare the 2009 ARRA and the 2021 ARP and evaluate when fiscal stimulus is and is not effective.",
+      "Apply Bayes' theorem to a medical-testing scenario with low base rates and high test accuracy.",
+      "Explain why a positive test result is often weaker evidence than people assume, and what changes when the prevalence shifts.",
     ],
-    reading: `Fiscal policy is the use of government spending and taxation to influence aggregate demand. It is one of the two main tools of macroeconomic stabilization, alongside monetary policy.
-
-The fiscal multiplier is the ratio of the change in GDP to the change in government spending (or in tax revenue). The classical Keynesian multiplier is:
-
-Multiplier = 1 / (1 - MPC)
-
-Where MPC is the marginal propensity to consume. If households spend 80 cents of each additional dollar of income (MPC = 0.8), the multiplier is 5. A $100 billion increase in spending produces $500 billion in GDP.
-
-Real-world multipliers are smaller, for several reasons:
-- Crowding out: government borrowing raises interest rates, which reduces private investment.
-- Imports: spending leaks abroad through purchases of foreign goods.
-- Taxes: each round of spending generates tax payments that withdraw from circulation.
-- Ricardian equivalence: if households anticipate higher future taxes to repay the debt, they save more now, offsetting the spending.
-
-Empirical estimates of the multiplier vary widely. In recessions with slack capacity and accommodative monetary policy, multipliers above 1 are commonly observed. At full employment with constrained monetary policy, multipliers below 1 (or even negative) are possible.`,
+    reading: ``,
     assignment: `Assignment (50 points):
-Write a 600-800 word essay addressing the following:
 
-1. Explain the logic of the fiscal multiplier and why it varies with economic conditions.
-2. Compare two episodes of large U.S. fiscal stimulus: the American Recovery and Reinvestment Act of 2009 (~$800 billion in response to the financial crisis) and the American Rescue Plan of 2021 (~$1.9 trillion in response to the pandemic). What were the relevant economic conditions? Did the stimulus appear to multiply or crowd out?
-3. Evaluate the claim that fiscal stimulus is only effective during deep recessions, not during normal times.`,
+Write your essay for someone unfamiliar with probability theory. Clearly label each section.
+Section 1 (30 points) - Bayes' Theorem
+State Bayes' theorem and explain each term: prior, likelihood, marginal, posterior.
+Work through a medical testing example. Use a disease with prevalence 1% and a test with 99% sensitivity and 95% specificity.
+Compute the probability a person actually has the disease given a positive test.
+Explain why the answer is much lower than 99%.
+Section 2 (20 points) - Updating with Sequential Evidence
+Suppose the same person is tested a second time, independently, and tests positive again. Compute the updated probability they have the disease.
+Explain the general principle that today's posterior is tomorrow's prior.`,
     modelResponse: `Model Response
 
-The Fiscal Multiplier in Two Recoveries
-
-The fiscal multiplier is a measure of how far a dollar of government spending travels through the economy. If the government pays a contractor to build a bridge, the contractor pays workers, the workers spend at restaurants, the restaurants pay suppliers, and so on. Each round of spending is smaller than the last because some income is saved, some is taxed away, and some is spent on imports. The infinite geometric series 1 + MPC + MPC^2 + ... converges to 1/(1-MPC), which is the textbook multiplier. With MPC = 0.6, the multiplier is 2.5.
-
-Why the multiplier varies: in a recession with unemployed workers and idle factories, an extra dollar of spending mobilizes real resources that would otherwise sit unused. The bridge gets built without bidding workers away from other projects. At full employment, the same dollar bids resources away from private use. The bridge gets built but a factory expansion does not, because workers and materials had only one place to go. Monetary policy matters too. If the central bank holds interest rates constant in the face of fiscal expansion, the multiplier is larger; if the central bank raises rates to offset the stimulus, the multiplier is smaller.
-
-The 2009 ARRA was passed when U.S. unemployment was 7.8% and rising (it peaked at 10% later that year). Real GDP had contracted by 4% over the prior four quarters. The Federal Reserve was at the zero lower bound and had already moved to quantitative easing. Capacity utilization was below 70%. This was the textbook case for large multipliers: massive slack, accommodative monetary policy, and households eager to repair damaged balance sheets only if they had the income to do so. Estimates of the ARRA multiplier vary, with the CBO putting it in the range of 0.6 to 2.5 depending on the spending category. Direct transfers and aid to states had the highest multipliers; tax cuts for high-income households had the lowest, because high-income households save more of each marginal dollar. The CBO estimated ARRA added 1.5 to 3.3 percentage points to real GDP growth in 2010.
-
-The 2021 American Rescue Plan was a different animal. It was passed when unemployment was 6.2% and falling rapidly, the Fed was again at the zero lower bound, and household balance sheets were unusually strong (because the prior pandemic stimulus had been saved). At $1.9 trillion, it was more than twice the size of ARRA in nominal terms, on top of $3 trillion in prior pandemic legislation. Larry Summers and Olivier Blanchard, both Democrats, warned in early 2021 that the package was 'three or four times the size' of the output gap and would produce inflation pressures the Fed would struggle to contain.
-
-They were right. The 2021 multiplier on incremental output appears to have been low and to have spilled mostly into prices rather than real output. By the time the ARP money was being spent, the economy was already approaching capacity, and additional demand could not be absorbed by real output expansion. The result, combined with supply shocks, was the 2021-2023 inflation.
-
-The comparison illustrates the central point: the same dollar of stimulus does very different things in different conditions. ARRA in 2009, applied to a deeply slack economy with cooperative monetary policy, was probably under-sized given the magnitude of the demand shortfall. ARP in 2021, applied to a rapidly tightening economy with monetary policy constrained by the zero lower bound, was over-sized.
-
-Evaluation of the broader claim: it is too strong to say fiscal stimulus 'only' works in deep recessions, but it is correct that the case for fiscal stimulus weakens sharply as slack disappears. In a recession, fiscal policy is among the most powerful tools available, particularly when monetary policy is constrained. In a normal expansion, fiscal expansion mostly displaces private spending or causes inflation, depending on the credibility of the central bank's response. At full employment, the rationale for fiscal policy shifts from stabilization (smoothing the business cycle) to allocation (building public goods that the market underprovides). Those are legitimate roles, but they are not stimulus, and they should not be sold as such. The lesson of the two episodes is that economists need to talk about fiscal policy in terms of capacity utilization and monetary regime, not as a universally applicable demand-management tool. Stimulus is medicine for an economy that is sick. Medicine for a healthy person is a side-effect machine.`,
+Section 1: Bayes' Theorem
+Bayes' theorem is the rule for revising a probability in light of new evidence. It states:
+$$P(H \\mid E) = P(E \\mid H) * P(H) / P(E)$$
+The four terms each have a name:
+P(H) is the prior probability of the hypothesis H, before the evidence E is observed.
+$P(E \\mid H)$ is the likelihood: the probability of observing E if the hypothesis H is true.
+P(E) is the marginal probability of the evidence: how often E occurs, across all possible hypotheses.
+$P(H \\mid E)$ is the posterior probability of H given E: the updated belief after seeing the evidence.
+Bayes' theorem says: the new probability of H equals the old probability times an adjustment factor. The adjustment factor is the likelihood divided by the marginal. If the evidence is more likely under H than in general (likelihood greater than marginal), the probability of H goes up. If less likely, it goes down.
+Medical testing example. Disease prevalence is 1%. The test has sensitivity 99% (probability of a positive test given the disease) and specificity 95% (probability of a negative test given no disease). Let D be 'has disease,' Pos be 'tests positive.'
+Prior: P(D) = 0.01. P(not D) = 0.99.
+Likelihood: $P(Pos \\mid D)$ = 0.99. $P(Pos \\mid not D)$ = 1 - 0.95 = 0.05 (the false positive rate).
+Marginal probability of a positive test:
+$$P(Pos) = P(Pos \\mid D)P(D) + P(Pos \\mid not D)P(not D) = (0.99)(0.01) + (0.05)(0.99) = 0.0099 + 0.0495 = 0.0594.$$
+Posterior:
+$$P(D \\mid Pos) = P(Pos \\mid D) * P(D) / P(Pos) = (0.99)(0.01) / 0.0594 = 0.0099 / 0.0594 = 0.167.$$
+So a person who tests positive has only about a 16.7% probability of actually having the disease. Most positive results are false positives.
+Why this is much lower than 99%: the test sensitivity is the probability of a positive test given the disease, not the probability of the disease given a positive test. These are different quantities, and confusing them is the most common error in probabilistic reasoning. The reason the posterior is so much lower than the sensitivity is that the disease is rare. Out of 10,000 people, only 100 have the disease (and 99 of them test positive). The other 9,900 do not have the disease, but 5% of them, or 495, also test positive. So out of 99 + 495 = 594 positive tests, only 99 are true positives. That is 99/594 = 16.7%.
+The base rate, which most intuitive reasoners ignore, dominates the calculation. This is called base-rate neglect, and it is the most consequential cognitive bias in medical diagnosis, screening programs, and legal evidence.
+Section 2: Updating with Sequential Evidence
+Suppose the same person is tested again, with the second test independent of the first given disease status. The first positive test brought P(D) from 0.01 to 0.167. This 0.167 now becomes the prior for the second test.
+New prior: P(D) = 0.167. P(not D) = 0.833.
+$$Likelihoods unchanged: P(Pos \\mid D) = 0.99, P(Pos \\mid not D) = 0.05.$$
+$$New marginal: P(Pos) = (0.99)(0.167) + (0.05)(0.833) = 0.1653 + 0.0417 = 0.207.$$
+$$New posterior: P(D \\mid Pos) = (0.99)(0.167) / 0.207 = 0.1653 / 0.207 = 0.799.$$
+After two independent positive tests, the probability of disease has climbed from 1% to about 80%. Each test contributes information, and the information compounds when the tests are independent.
+General principle: today's posterior is tomorrow's prior. Bayesian updating is iterative. Each new piece of evidence shifts the probability, and the shifted probability becomes the starting point for processing the next piece of evidence. This is how rational belief is supposed to evolve over time. The same machinery applies to scientific hypotheses, criminal trials, weather forecasting, and machine learning. The key requirement is that the evidence be conditionally independent given the hypothesis. When that fails (correlated evidence, dependent measurements), the updates overstate the strength of evidence, and the posterior gets pushed too far.`,
   },
   {
     id: "d3",
     number: 5,
-    title: "Discussion 3: How Central Banks Conduct Monetary Policy",
+    title: "Discussion 3: Random Variables and Distributions",
     points: 50,
     type: "discussion",
     objectives: [
-      "Trace at least three distinct channels by which a policy rate change affects inflation.",
-      "Evaluate whether the 2022-2023 disinflation was a Fed-engineered soft landing or driven by other factors.",
+      "Distinguish discrete from continuous random variables and read off probabilities from PMFs and PDFs.",
+      "Compute and interpret cumulative distribution functions and basic distribution summaries.",
     ],
-    reading: `Central banks (the Federal Reserve in the U.S., the European Central Bank, the Bank of England, the Bank of Japan) influence the economy primarily through interest rates and the size of their balance sheets.
-
-Traditional tools:
-- Open market operations: buying or selling government securities to expand or contract the money supply.
-- The discount rate (or analogous lending rate): the rate at which the central bank lends directly to commercial banks.
-- Reserve requirements: the fraction of deposits banks must hold as reserves. Largely defunct in the U.S. since 2020.
-
-Post-2008 tools:
-- Interest on reserves (IORB): the rate the central bank pays banks on the reserves they hold at the central bank. This has become the primary policy rate in the modern 'floor system.'
-- Quantitative easing (QE): large-scale purchases of long-term securities to lower long-term interest rates when the short-term rate is already at zero.
-- Forward guidance: commitments about the future path of policy, intended to influence expectations.
-
-The transmission mechanism: lower policy rates lower borrowing costs for firms and households, raise asset prices (bonds, stocks, real estate), weaken the currency (boosting exports), and stimulate aggregate demand. Higher rates do the reverse.
-
-The dual mandate of the Federal Reserve, established by Congress, is 'maximum employment' and 'stable prices.' When these conflict (as in 2021-2023, when inflation was high but employment was strong), the Fed must choose.`,
+    reading: `A random variable is a function that assigns a number to each outcome in a sample space. It is the bridge between probability and arithmetic. Once outcomes have been converted to numbers, we can add them, multiply them, take averages, and compute moments.
+Formally, a random variable X is a function from the sample space S to the real numbers. If the experiment is 'roll two dice,' an outcome is a pair like (3, 5), and the random variable X = sum of the dice maps (3, 5) to the number 8.
+Discrete vs. Continuous Random Variables
+A discrete random variable takes values in a countable set (often integers). Examples: the number of heads in 10 coin flips, the number of customers arriving per hour, the outcome of a die roll.
+A continuous random variable takes values in an uncountable set (typically an interval of real numbers). Examples: the time until the next earthquake, the exact weight of a randomly chosen apple, the closing price of a stock.
+Probability Mass Function (PMF) -- discrete case
+For a discrete random variable X, the PMF is:
+$$p(x) = P(X = x).$$
+It must satisfy: p(x) $\\geq$ 0 for all x, and the sum of p(x) over all values of x equals 1.
+Probability Density Function (PDF) -- continuous case
+For a continuous random variable, individual values have probability zero. Instead we have a density function f(x), and probabilities are areas under the curve:
+P(a $\\leq$ X $\\leq$ b) = integral from a to b of f(x) dx.
+The density must satisfy: f(x) $\\geq$ 0 for all x, and the integral of f over the whole real line equals 1.
+Cumulative Distribution Function (CDF)
+For any random variable, the CDF is:
+$$F(x) = P(X \\leq  x).$$
+The CDF is non-decreasing, approaches 0 as x goes to negative infinity, and approaches 1 as x goes to positive infinity. It is defined for both discrete and continuous random variables and is the most general way to specify a distribution.`,
     assignment: `Assignment (50 points):
-1. Suppose the central bank wishes to combat inflation. Walk through, step by step, how raising the policy interest rate is supposed to translate into lower inflation. Identify at least three distinct channels.
-2. The 2022-2023 Fed tightening cycle raised rates by 525 basis points in 18 months, the fastest pace since 1980. Despite this, GDP did not contract and unemployment remained near 50-year lows. Inflation nonetheless fell substantially. Was this a 'soft landing' produced by the Fed, or was something else going on? Defend your interpretation.`,
+
+Let X be the number of heads in three flips of a fair coin. Write out the PMF of X as a table. Verify that the probabilities sum to 1. Compute P(X $\\geq$ 2).
+Let Y be a continuous random variable with density f(y) = 2y for 0 $\\leq$ y $\\leq$ 1 and f(y) = 0 elsewhere. (a) Verify that f is a valid density. (b) Find P(Y > 0.5). (c) Find the CDF F(y).
+Explain in your own words why P(X = x) = 0 for every individual value x when X is continuous, even though P(X is in some interval) can be positive. What does this mean for the interpretation of a density?`,
     modelResponse: `Model Response
 
-Transmission from rate hikes to lower inflation:
-
-Channel 1: the interest rate channel (direct). Higher policy rates raise borrowing costs across the economy. Mortgage rates rise, so housing demand cools and home prices stabilize or fall. Auto loan rates rise, so car purchases weaken. Business loan rates rise, so capital expenditure plans are deferred. Lower demand for these goods reduces price pressure. The shelter component of CPI, which has a long lag, eventually reflects the easing of rent and home price increases.
-
-Channel 2: the asset price and wealth channel. Higher rates lower the present value of future cash flows, which depresses stock prices and bond prices. Households whose wealth declines reduce consumption (the wealth effect). With less consumption demand, firms find it harder to raise prices.
-
-Channel 3: the exchange rate channel. Higher domestic interest rates attract foreign capital, which strengthens the domestic currency. A stronger dollar makes imports cheaper, which directly reduces CPI (since import prices feed into the index) and forces domestic firms to compete with cheaper foreign goods.
-
-Channel 4 (often cited separately): expectations. If the central bank is credible, the public believes that high inflation will be tamed and adjusts wage demands and pricing decisions accordingly. This can be the fastest channel of all, but it requires the central bank to have earned credibility through past behavior.
-
-Channel 5: the credit channel. Higher rates tighten lending standards. Banks become more cautious about who they lend to, and risk premia widen. This reduces the supply of credit beyond what the rate change alone would imply, particularly hitting small businesses and lower-income borrowers.
-
-Was 2022-2023 a soft landing produced by the Fed?
-
-Partially. The Fed deserves credit for moving quickly once it became clear that 2021 inflation was not transitory. The speed of the tightening (525 bp in 18 months) anchored long-run inflation expectations, which never broke significantly above 3% in the five-year-five-year forward measure. This is itself a major achievement; it is what failed in the 1970s.
-
-However, three factors made the disinflation less costly than the historical Phillips curve relationship would predict, and these factors were largely independent of Fed policy.
-
-First, supply chains healed. Container shipping costs fell roughly 80% from peak. Semiconductor production normalized. Energy prices fell from the post-Ukraine-invasion peak. A substantial part of 2021-2022 inflation was supply-side, and supply shocks reverse on their own as the disruptions resolve. The Fed did not heal supply chains; time did.
-
-Second, labor force participation rose. Workers who had left during the pandemic came back, particularly prime-age workers and women. Immigration also picked up sharply in 2022-2023, adding labor supply. This expanded the supply side without requiring the demand-side destruction that a Phillips-curve mechanism would imply.
-
-Third, fiscal policy turned contractionary as pandemic programs expired, even as the Fed was tightening. The two policies pushed in the same direction, which is unusual and helpful.
-
-My interpretation: the 2022-2023 episode was not a pure soft landing produced by monetary policy. It was a combination of (a) competent and aggressive Fed action that prevented expectations from unanchoring, (b) the natural healing of supply shocks, and (c) labor supply expansion. If the Fed had hiked aggressively into a pure demand-driven inflation with no supply healing, unemployment would have had to rise much more. The 'immaculate disinflation' was real, but it depended on supply-side factors the Fed did not control. This is consistent with the empirical pattern: most successful disinflations in modern history have involved favorable supply developments coinciding with restrictive monetary policy. Pure demand-killing disinflations, like Volcker's, produce much larger recessions. Powell got lucky as well as good, and the two are easy to confuse in retrospect.`,
+PMF of three coin flips:
+With three flips, there are 2^3 = 8 equally likely outcomes. Counting how many have 0, 1, 2, 3 heads:
+X = 0: only TTT. Count = 1. p(0) = 1/8.
+X = 1: HTT, THT, TTH. Count = 3. p(1) = 3/8.
+X = 2: HHT, HTH, THH. Count = 3. p(2) = 3/8.
+X = 3: HHH. Count = 1. p(3) = 1/8.
+Sum: 1/8 + 3/8 + 3/8 + 1/8 = 8/8 = 1. Valid.
+$$P(X \\geq  2) = p(2) + p(3) = 3/8 + 1/8 = 4/8 = 1/2.$$
+Continuous density f(y) = 2y on [0, 1]:
+(a) Validity: f(y) = 2y $\\geq$ 0 on [0, 1]. Integral from 0 to 1 of 2y dy = y^2 evaluated from 0 to 1 = 1 - 0 = 1. Valid density.
+(b) P(Y > 0.5) = integral from 0.5 to 1 of 2y dy = 1 - 0.25 = 0.75.
+(c) CDF: for 0 $\\leq$ y $\\leq$ 1, F(y) = integral from 0 to y of 2t dt = y^2. For y < 0, F(y) = 0. For y > 1, F(y) = 1.
+$$Why P(X = x) = 0 for continuous X:$$
+A continuous random variable takes uncountably many values. If each individual value had positive probability, the probabilities would sum (more precisely, integrate) to infinity, violating the second axiom. To make the axioms work, individual values must have probability zero. This sounds paradoxical: the variable certainly takes some value, yet the probability of taking any particular value is zero. The resolution is that probability for continuous variables is distributed over intervals, not concentrated at points. P(Y = 0.7) = 0, but P(0.69 $\\leq$ Y $\\leq$ 0.71) is positive.
+Interpretation of density: the value f(y) is not a probability; it is a probability per unit length. A density of 2 at y = 1 does not mean P(Y = 1) = 2 (which would be impossible). It means that near y = 1, probability is accumulating at a rate of 2 per unit increase in y. Densities can be larger than 1; only their integrals over intervals must be between 0 and 1. This is the most common confusion students have with continuous distributions, and grasping it is essential to making any further progress.
+Why This is a Model Response:
+Constructs the PMF by direct counting and verifies it sums to 1.
+Verifies the density's validity before using it, which is the right order of operations.
+Computes both probabilities and the CDF, and gives the CDF piecewise as required for completeness.
+Explains the conceptual difference between mass and density and identifies the specific axiom that forces individual continuous values to have probability zero.
+Connects the abstract formal point to a practical interpretive consequence (densities can exceed 1).`,
   },
   {
     id: "e3",
     number: 6,
-    title: "Essay 3: The Phillips Curve and the Lucas Critique",
+    title: "Essay 3: Expected Value and Expected Return",
     points: 50,
     type: "essay",
     objectives: [
-      "Explain the original and expectations-augmented Phillips curves and what the 1970s revealed.",
-      "Evaluate whether the flattening and re-steepening of the Phillips curve in the 2010s and 2020s confirms or refutes the Lucas Critique.",
+      "Define expected value and compute it for discrete and continuous distributions and for simple gambles.",
+      "Apply expected-return reasoning to a real decision and explain its limits as a basis for choice under risk.",
     ],
-    reading: `The Phillips Curve, introduced by A.W. Phillips in 1958, describes an empirical inverse relationship between unemployment and wage inflation. Lower unemployment corresponds to higher wage inflation, and the curve appeared remarkably stable in U.K. data from 1861 to 1957.
-
-In the 1960s, Samuelson and Solow popularized the Phillips curve as a policy menu: by accepting higher inflation, policymakers could permanently reduce unemployment.
-
-Friedman (1968) and Phelps (1967) argued this was wrong. The trade-off was only temporary. Workers and firms would eventually incorporate expected inflation into wage and price decisions, and the Phillips curve would shift up to deliver the same unemployment rate at a higher inflation rate. This led to the expectations-augmented Phillips curve:
-
-Actual inflation = Expected inflation + Phillips trade-off term
-
-The 1970s confirmed Friedman and Phelps. Inflation and unemployment rose together (stagflation), contradicting the original Phillips relationship.
-
-Robert Lucas (1976) went further with his Lucas Critique: any policy rule that exploits a historical statistical relationship will itself change the relationship, because economic actors will adjust their expectations and behavior in anticipation of the policy. The Phillips curve, in Lucas's view, was not a structural feature of the economy but a reduced-form artifact of a particular monetary regime.`,
+    reading: ``,
     assignment: `Assignment (50 points):
-Write a 700-900 word essay addressing the following:
 
-1. Explain the original Phillips Curve and the expectations-augmented version. What did the 1970s show?
-2. Explain the Lucas Critique. Why does it cast doubt on the use of historical statistical relationships for policy?
-3. The Phillips curve appeared 'flat' (low unemployment with low inflation) during the 2010s, then steepened dramatically in 2021-2023. Evaluate whether this confirms or refutes the Lucas Critique.`,
+Write your essay for someone unfamiliar with probability theory. Clearly label each section.
+Section 1 (30 points) - Expected Value
+Define expected value for a discrete random variable. State the formula.
+Compute the expected value of a single die roll, of the sum of two dice, and of a one-dollar bet on red in roulette.
+State and explain the linearity of expectation.
+Section 2 (20 points) - Expected Return in Finance
+Define expected return for an investment with multiple possible outcomes.
+Work out the expected return of a hypothetical stock investment with three scenarios.
+Explain why expected return alone is an incomplete guide to investment decisions, and what is missing.`,
     modelResponse: `Model Response
 
-The Phillips Curve and the Lucas Critique
-
-The original Phillips Curve was an empirical observation. Looking at British data from 1861 to 1957, Phillips noticed that years with low unemployment were also years with high wage inflation. The relationship was striking and stable. Samuelson and Solow, working with U.S. data, found the same pattern and presented it as a menu for policymakers: accept 4% inflation and you can have 3% unemployment; accept 2% inflation and you must accept 5% unemployment. Pick your point.
-
-Friedman and Phelps independently argued in the late 1960s that this menu was an illusion. The Phillips relationship held in the data because economic actors had not yet adjusted their expectations. If the central bank decided to permanently run higher inflation, workers would notice, anticipate the same in the future, and demand wage increases to compensate. Firms would build the expected inflation into their pricing. The Phillips curve would shift upward, and the original trade-off would vanish at the new, higher inflation rate. The only Phillips trade-off that exists is between unemployment and unexpected inflation. The natural rate of unemployment, in this view, is independent of the inflation rate in the long run.
-
-The 1970s settled the dispute. Inflation rose from below 2% in the mid-1960s to over 13% by 1980. Unemployment rose alongside it, reaching 9% in 1975 and again above 7% through much of the 1970s. The stagflation of the 1970s was incomprehensible on the original Phillips view (high inflation should have produced low unemployment) but exactly what the expectations-augmented version predicted: a shifted Phillips curve, with the same natural rate of unemployment but a higher inflation rate baked into expectations.
-
-The Lucas Critique pushed the argument further. Robert Lucas argued in 1976 that any econometric model estimated on historical data implicitly assumes that the policy regime is constant. The estimated coefficients are reduced-form expressions of underlying behavior, which itself depends on the policy regime agents expect to be in. Change the policy, and the coefficients change. The Phillips curve estimated under Volcker's regime should not have been expected to hold under Greenspan's, and the Phillips curve estimated during the Great Moderation should not have been expected to hold during pandemic policy.
-
-This is a profound point. It means that policy analysis based on historical statistical relationships is unreliable for any substantial change in policy. The relationships are conditional on the regime, not structural. To do policy analysis properly, the Lucas Critique implies, one needs models grounded in optimizing behavior with rational expectations, where the agents in the model reoptimize whenever the policy rule changes. This is the foundation of modern dynamic stochastic general equilibrium (DSGE) modeling.
-
-The 2010s and 2020s offer a remarkable test. From roughly 2012 to 2019, U.S. unemployment fell from 8% to 3.5%, and inflation stayed near or below 2% the entire time. The Phillips relationship looked dead; the curve appeared flat. Economists wrote papers titled 'Where Is the Inflation?' and concluded that perhaps the natural rate had fallen, or globalization had broken the wage-price spiral, or anchored expectations had simply absorbed any demand pressures.
-
-Then 2021 arrived. With unemployment around 4% and falling, inflation surged to 9%. The Phillips curve, dormant for a decade, suddenly produced a steep response. It was as if the curve had been hibernating and woke up. Economists wrote new papers explaining what had been hidden.
-
-Does this confirm or refute the Lucas Critique? It confirms it strongly. The Phillips curve looked flat in the 2010s because expectations were firmly anchored at 2%. Demand fluctuations did not move inflation much, because firms and workers believed the Fed would offset any sustained deviation. The flatness was a feature of the policy regime (a credible inflation-targeting central bank), not a structural feature of the economy. When the regime changed in 2020-2021 (massive coordinated fiscal-monetary stimulus, with the Fed initially declaring inflation 'transitory' and not responding), expectations began to drift. With expectations less firmly anchored, the Phillips relationship reasserted itself in classical form: tight labor markets produced wage inflation, which produced price inflation, which fed back into expectations.
-
-Then the Fed, late but eventually credible, hiked aggressively and re-anchored expectations. The Phillips curve flattened again. Inflation fell substantially while unemployment barely budged. By 2024-2025, the curve looked flat once more.
-
-What Lucas got exactly right: there is no stable Phillips curve to exploit. There is a relationship between unemployment and inflation, but its shape depends entirely on the credibility of the monetary regime and the state of expectations. A central bank that tries to systematically exploit the Phillips trade-off will destroy the very relationship it is trying to exploit. The only stable strategy is to anchor expectations through credible commitment to a target. Once you have done that, the trade-off looks flat in normal times and steep only when the anchor slips. The Phillips curve is real, but it is not a policy menu. It is a measure of how well a central bank has done its job. A well-anchored regime gets a flat curve. A poorly anchored one gets the 1970s.`,
+Section 1: Expected Value
+The expected value of a discrete random variable X is the probability-weighted average of its possible values:
+$$E(X) = sum over x of [ x * P(X = x) ].$$
+For a continuous random variable with density f(x):
+E(X) = integral over all x of [ x * f(x) dx ].
+The expected value is not necessarily a value the variable can actually take. A fair die has expected value 3.5, even though no face shows 3.5. The expected value is the long-run average of the variable over many independent trials. Roll a fair die ten thousand times and average the outcomes; the average will be very close to 3.5. The expected value is what 'the average outcome' converges to as the number of trials grows.
+Single die roll. The variable X takes each of the values 1, 2, 3, 4, 5, 6 with probability 1/6. So:
+$$E(X) = (1)(1/6) + (2)(1/6) + (3)(1/6) + (4)(1/6) + (5)(1/6) + (6)(1/6) = 21/6 = 3.5.$$
+Sum of two dice. Let X1 and X2 be the two dice, and S = X1 + X2. We could compute E(S) by enumerating all 36 outcomes, but linearity of expectation gives the answer immediately:
+$$E(S) = E(X1) + E(X2) = 3.5 + 3.5 = 7.$$
+Bet on red in American roulette. The wheel has 38 slots: 18 red, 18 black, 2 green. A one-dollar bet on red pays one dollar if red wins, and loses one dollar otherwise. Let X be the net payoff.
+P(red) = 18/38. P(not red) = 20/38.
+$$E(X) = (1)(18/38) + (-1)(20/38) = -2/38 = -1/19 = -0.0526.$$
+The expected net payoff is about -5.26 cents per dollar wagered. This is the casino's house edge on red/black bets. Bet long enough and you lose, on average, 5.26% of every dollar staked.
+Linearity of expectation. For any random variables X and Y and constants a and b:
+E(aX + bY) = a * E(X) + b * E(Y).
+Crucially, this holds whether X and Y are independent or not. Most probability formulas require independence; linearity of expectation does not. This is what makes it the single most useful identity in elementary probability theory. It reduces the expected value of a sum to a sum of expected values, and that decomposition is almost always tractable even when the joint distribution is complicated.
+Section 2: Expected Return in Finance
+In finance, the return on an investment is the percentage change in its value over a period. Expected return is the probability-weighted average of possible returns:
+$$E(R) = P1 * R1 + P2 * R2 + ... + Pn * Rn,$$
+where Ri are the possible returns and Pi the probabilities of each.
+Stock example. A stock has three possible outcomes over the next year:
+Boom (probability 0.25): return +30%.
+Normal (probability 0.50): return +10%.
+Recession (probability 0.25): return -20%.
+Expected return:
+$$E(R) = (0.25)(30\\%) + (0.50)(10\\%) + (0.25)(-20\\%) = 7.5\\% + 5.0\\% - 5.0\\% = 7.5\\%.$$
+Why expected return is incomplete. Two investments can have the same expected return while differing radically in risk. Consider Investment B: guaranteed +7.5% return with no uncertainty. Its expected return is also 7.5%, but its risk is zero. The first investment swings between -20% and +30%; the second sits at 7.5%. A risk-averse investor will prefer B.
+What is missing from expected return is a measure of dispersion. The standard measure is variance (and its square root, standard deviation). Variance for the stock above:
+$$\\mathrm{Var}(R) = (0.25)(30 - 7.5)^2 + (0.50)(10 - 7.5)^2 + (0.25)(-20 - 7.5)^2$$
+= (0.25)(506.25) + (0.50)(6.25) + (0.25)(756.25)
+= 126.56 + 3.125 + 189.06 = 318.75.
+$$Standard deviation = \\sqrt{318.75} = 17.85\\%.$$
+So the stock has expected return 7.5% with standard deviation 17.85%. The 7.5% is the center of the distribution; the 17.85% is the typical magnitude of deviation from that center. Modern portfolio theory and the entire risk management apparatus of finance start from the recognition that expected return without variance is not enough. Investors are paid for bearing risk, and the risk-return tradeoff is the central object of finance.
+There is a deeper criticism still: expected return assumes the probabilities are known. In reality they are estimated, often from limited historical data, and the estimates can be far from the true values. Decisions based on point estimates of expected return can be catastrophically wrong if the probability distribution itself is misspecified, especially in its tails. This is the territory of Knightian uncertainty and of fat-tailed distributions, and it is where elementary probability theory hands the problem off to more advanced statistics and economics.`,
   },
   {
     id: "d4",
     number: 7,
-    title: "Discussion 4: Comparative Advantage and Trade Deficits",
+    title: "Discussion 4: Variance, Standard Deviation, and Risk",
     points: 50,
     type: "discussion",
     objectives: [
-      "Use comparative advantage and the saving-investment identity to explain why trade deficits are not by themselves a sign of weakness.",
-      "Trace the effects of import tariffs on consumers, workers, input-using industries, and the trade balance.",
+      "Compute variance and standard deviation, and use the identity Var(X) = E(X^2) − [E(X)]^2.",
+      "Explain how covariance and correlation make diversification work and why standard deviations do not simply add.",
     ],
-    reading: `David Ricardo's theory of comparative advantage (1817) is one of the most counter-intuitive results in economics. It states that two countries can both gain from trade even if one country is more productive than the other in every good. What matters for trade is not absolute advantage but the relative (opportunity) cost of producing different goods.
-
-Example: Suppose Country A can produce 10 cars or 100 bushels of wheat with a given amount of labor. Country B can produce 4 cars or 60 bushels of wheat. Country A is absolutely more productive in both goods. But the opportunity cost of a car in Country A is 10 bushels of wheat; in Country B, it is only 15 bushels. Country B has a comparative advantage in cars (relative to wheat), and Country A has a comparative advantage in wheat. If A specializes in wheat and B in cars, and they trade at any ratio between the two opportunity costs, both countries end up with more of both goods than they could produce in isolation.
-
-The trade balance: exports minus imports. A trade deficit means a country imports more than it exports; a trade surplus means the reverse. The U.S. has run trade deficits continuously since the mid-1970s.
-
-By accounting identity, the current account (roughly the trade balance) must equal the difference between national saving and national investment:
-
-Current Account = (S - I)
-
-Where S is national saving and I is national investment. A country that invests more than it saves must, by identity, import the difference. This is one of the most under-appreciated relationships in macroeconomics.`,
+    reading: `Expected value tells you the center of a distribution. Variance tells you how widely the distribution is spread around that center. Two random variables can have the same expected value but very different variances, and the difference often matters more than the average.
+The variance of a random variable X is defined as:
+$$\\mathrm{Var}(X) = E[(X - E(X))^2].$$
+In words: the expected value of the squared deviation from the mean. Squaring serves two purposes. It makes deviations non-negative (otherwise positive and negative deviations would cancel out), and it penalizes large deviations more heavily than small ones.
+A useful computational identity:
+$$\\mathrm{Var}(X) = E(X^2) - [E(X)]^2.$$
+Often easier to apply than the definition.
+Standard Deviation
+The standard deviation of X is:
+$$\\mathrm{SD}(X) = sqrt(\\mathrm{Var}(X)).$$
+The advantage of standard deviation over variance is that it is expressed in the same units as X. If X is measured in dollars, Var(X) is in dollars squared (an awkward unit), but SD(X) is back in dollars.
+Properties
+Var(X) $\\geq$ 0, with equality if and only if X is a constant (no variation).
+Var(aX + b) = a^2 * Var(X). Adding a constant does not change the spread; multiplying by a constant scales the variance by its square (and the standard deviation by its absolute value).
+For independent random variables: Var(X + Y) = Var(X) + Var(Y). Variances add. Standard deviations do not.
+For dependent random variables: Var(X + Y) = Var(X) + Var(Y) + 2 * Cov(X, Y), where the covariance Cov(X, Y) = E[(X - E(X))(Y - E(Y))].
+Risk in Finance
+Standard deviation is the workhorse measure of risk in finance. A portfolio's expected return is the weighted average of its components' expected returns. A portfolio's variance, however, depends on the covariances between components. This is why diversification works: by combining assets that are not perfectly correlated, the portfolio's overall standard deviation can be lower than the weighted average of its components' standard deviations. Holding two negatively correlated assets is the strongest case: their swings partially cancel.`,
     assignment: `Assignment (50 points):
-1. The United States has run persistent trade deficits for nearly 50 years. Common political rhetoric describes this as evidence that 'America is losing' in trade. Using comparative advantage AND the saving-investment identity, explain why a trade deficit is not, by itself, a sign of economic weakness. What WOULD be a sign of weakness?
-2. Suppose the U.S. imposes tariffs on all imports from China. Trace through the likely effects on: (a) U.S. consumers, (b) U.S. workers in industries that compete with Chinese imports, (c) U.S. workers in industries that use Chinese imports as inputs, (d) the U.S. trade deficit. Does the tariff achieve its stated goal of reducing the trade deficit?`,
+
+Compute the variance and standard deviation of a single roll of a fair six-sided die.
+Two stocks have the following return distributions: Stock A returns +20% or -10% with equal probability. Stock B returns +5% or 0% with equal probability. (a) Compute expected return and standard deviation for each. (b) Which is riskier? Which has the higher expected return? (c) Suppose a portfolio holds 50% A and 50% B, and the returns are independent. Compute the portfolio's expected return and standard deviation.
+Explain in your own words why diversification reduces risk only when the assets are not perfectly correlated, and why holding two perfectly correlated assets gives no diversification benefit.`,
     modelResponse: `Model Response
 
-Why a trade deficit is not by itself a sign of weakness:
-
-First, the comparative-advantage argument. The United States is more productive than most of its trading partners in absolute terms. According to Ricardo's logic, the U.S. should specialize in goods where its productivity advantage is largest (high-tech services, software, finance, pharmaceuticals, aerospace, advanced manufacturing) and import goods where its advantage is smaller (textiles, simple manufactured goods, low-end electronics). The fact that the U.S. imports T-shirts from Bangladesh and exports Boeing jets is exactly what comparative advantage predicts. The alternative, producing T-shirts domestically, would require pulling labor and capital away from higher-value uses. The trade deficit reflects the U.S. specializing in the right things.
-
-Second, the saving-investment identity. The U.S. runs a trade deficit because it invests more than it saves. The deficit is financed by foreigners holding U.S. financial assets: Treasury bonds, corporate stock, real estate. From this perspective, the trade deficit is the mirror image of foreigners wanting to hold U.S. assets. They earn dollars by selling us goods, and they choose to hold those dollars (and dollar-denominated assets) rather than spending them on U.S. exports. This reflects the desirability of U.S. assets, not a weakness.
-
-The political claim 'we are losing' confuses the trade account with a profit-and-loss statement. A grocery store has a 'trade deficit' with its suppliers (it buys more from them than it sells to them) and a 'trade surplus' with its customers. Nobody thinks the store is losing because it buys vegetables from a farm without selling lawyers in return. Bilateral trade balances reflect specialization, not victory.
-
-What WOULD be a sign of weakness?
-
-A trade deficit becomes worrisome if it reflects:
-- Borrowing to fund consumption rather than investment. The U.S. partly does this; pandemic-era stimulus is an example. Borrowing from abroad to fund a productive investment that earns more than its cost is sustainable; borrowing to fund current consumption is not.
-- Loss of competitiveness in goods where the country should have advantage. If U.S. high-tech exports were declining as a share of world high-tech trade, that would be a worry.
-- Sudden capital flight (the deficit suddenly cannot be financed). This is the emerging-markets pattern, e.g., Mexico 1994, Asia 1997. The U.S. dollar's reserve currency status makes this much less likely.
-- A 'twin deficits' pattern where fiscal deficits drive the trade deficit through the saving-investment identity. The U.S. has this. Federal deficits reduce national saving, which by identity widens the trade deficit. This is a problem of fiscal policy, not trade policy. Tariffs cannot fix it.
-
-The effects of a U.S. tariff on Chinese imports:
-
-a. U.S. consumers face higher prices. The empirical literature on the 2018-2019 Trump tariffs (Amiti, Redding, Weinstein 2019; Fajgelbaum et al. 2020) found that the tariffs were passed through almost entirely to U.S. consumers. The tariff is effectively a tax on American buyers. Lower-income households are hit harder because they spend more of their income on tradable goods.
-
-b. U.S. workers in directly competing industries (steel, washing machines) gain in the short run. Steel employment rose modestly after the 2018 steel tariffs. However, even in these industries, the gains are limited because foreign producers absorb some of the price difference and consumers shift to substitutes.
-
-c. U.S. workers in industries that use Chinese imports as inputs lose. This is the largest effect by employment. Manufacturers that use steel as an input (auto parts, machinery, construction) face higher input costs and lose competitiveness. The Federal Reserve estimated that the 2018-2019 tariffs caused a net loss in manufacturing employment, because the input-cost effects outweighed the protection effects.
-
-d. The U.S. trade deficit. Almost no effect. The tariffs reduce imports from China, but the same dollar shortfall in saving relative to investment still has to be financed from somewhere. Imports shift to Vietnam, Mexico, India, or other suppliers. The bilateral deficit with China shrinks; the multilateral deficit barely changes. The U.S. trade deficit barely moved during the 2018-2019 tariff war and continued widening through 2021.
-
-Conclusion: tariffs are an industrial policy tool, not a trade-balance tool. They can plausibly support specific industries or address specific non-economic concerns (national security, dependence on adversarial powers). They are an extraordinarily blunt and costly tool for reducing trade deficits. To actually reduce the trade deficit, the U.S. would need to either save more or invest less. Higher national saving could come from a smaller federal deficit, higher household saving, or both. Lower investment would mean a smaller capital stock and slower long-run growth, which is not a desirable goal. The case for reducing the trade deficit through saving (fiscal consolidation) is real; the case for doing it through tariffs is largely incoherent.`,
+Die roll variance:
+$$E(X) = 3.5.$$
+$$E(X^2) = (1 + 4 + 9 + 16 + 25 + 36)/6 = 91/6 = 15.167.$$
+$$\\mathrm{Var}(X) = E(X^2) - [E(X)]^2 = 15.167 - 12.25 = 2.917.$$
+$$\\mathrm{SD}(X) = \\sqrt{2.917} = 1.708.$$
+Two stocks:
+Stock A: E(A) = (0.5)(20) + (0.5)(-10) = 5%. E(A^2) = (0.5)(400) + (0.5)(100) = 250. Var(A) = 250 - 25 = 225. SD(A) = 15%.
+Stock B: E(B) = (0.5)(5) + (0.5)(0) = 2.5%. E(B^2) = (0.5)(25) + (0.5)(0) = 12.5. Var(B) = 12.5 - 6.25 = 6.25. SD(B) = 2.5%.
+Stock A has higher expected return (5% vs 2.5%) and higher risk (SD 15% vs 2.5%). The classic risk-return tradeoff: more expected return comes with more variability.
+Portfolio of 50% A and 50% B, independent returns:
+$$E(P) = 0.5 * E(A) + 0.5 * E(B) = 0.5(5) + 0.5(2.5) = 3.75\\%.$$
+$$\\mathrm{Var}(P) = (0.5)^2 * \\mathrm{Var}(A) + (0.5)^2 * \\mathrm{Var}(B) = 0.25(225) + 0.25(6.25) = 56.25 + 1.5625 = 57.8125.$$
+$$\\mathrm{SD}(P) = \\sqrt{57.8125} = 7.60\\%.$$
+The portfolio has expected return 3.75% and standard deviation 7.6%. Compare this to a naive average of the two SDs: (15 + 2.5)/2 = 8.75%. The portfolio's actual standard deviation (7.6%) is lower than this naive average, which is the diversification effect. Variances add (weighted by squared weights), not standard deviations.
+Why diversification requires imperfect correlation:
+Two assets are perfectly positively correlated when their returns move in lockstep: when one is up x%, the other is up some constant times x%. In that case, combining them gives a portfolio whose return is just a weighted average of the two returns, with no offsetting movement. The standard deviation of the portfolio is then the weighted average of the individual standard deviations. There is no reduction.
+When correlation is less than perfect (correlation coefficient less than 1), the two assets sometimes move in opposite directions. The losses on one are partly offset by gains on the other. The squared variance contribution from each is reduced by their imperfect coupling. The lower the correlation, the more the offsetting, and the greater the reduction in portfolio standard deviation.
+The extreme case is correlation of -1 (perfect negative correlation). Then a properly weighted portfolio of the two assets has zero variance: the swings cancel exactly. This is the theoretical limit of diversification. In practice, finding perfectly negatively correlated assets is nearly impossible, but even modest reductions in correlation provide substantial risk reduction. This is the entire mathematical basis of modern portfolio construction.
+Why This is a Model Response:
+Uses the computational identity Var(X) = E(X^2) - [E(X)]^2 rather than the definitional form, demonstrating fluency with both.
+Compares two stocks on both expected return and risk, recognizing the tradeoff.
+Correctly applies the formula Var(aX + bY) = a^2 Var(X) + b^2 Var(Y) for independent variables, including the squared weights.
+Notices the discrepancy between the portfolio SD (7.6%) and the naive average of the component SDs (8.75%) and identifies that gap as the diversification effect.
+Explains the role of correlation in determining whether diversification produces any benefit at all.`,
   },
   {
     id: "e4",
     number: 8,
-    title: "Essay 4: What Causes Recessions?",
+    title: "Essay 4: The Law of Large Numbers and the Gambler's Fallacy",
     points: 50,
     type: "essay",
     objectives: [
-      "Summarize the major theories of recession causation and apply them to specific U.S. postwar episodes.",
-      "Defend a position on whether recessions have a single dominant cause or different causes across episodes.",
+      "State the Law of Large Numbers precisely and distinguish it from the Gambler's Fallacy.",
+      "Explain why averages converge while individual deviations need not, using a worked numerical example.",
     ],
-    reading: `A recession is conventionally defined as two consecutive quarters of negative real GDP growth, though the NBER (the official U.S. dating committee) uses a broader definition: a significant decline in economic activity spread across the economy, lasting more than a few months, visible in GDP, real income, employment, industrial production, and retail sales.
-
-Economists have proposed several theories of what causes recessions:
-
-- Real Business Cycle theory (Kydland and Prescott, 1982): recessions are caused by negative shocks to productivity (technology, weather, oil prices). Markets clear continuously; recessions are optimal responses to shocks. This view has trouble explaining the magnitude of Great Depression-style downturns.
-
-- Keynesian theory: recessions are caused by deficient aggregate demand. When households and firms reduce spending (because of pessimism, balance sheet damage, or coordination failures), the economy can become stuck in a low-output equilibrium that requires government action to escape.
-
-- Monetarist theory: recessions are caused by central bank errors. Friedman and Schwartz argued that the Great Depression was caused primarily by the Fed allowing the money supply to contract by one-third during 1929-1933.
-
-- Financial cycle theories (Minsky, Kindleberger): recessions are caused by the unwinding of credit booms. Periods of stability breed risk-taking; risk-taking leads to overextension; the inevitable correction produces a 'Minsky moment' of forced deleveraging.
-
-- Sectoral shift theories: recessions are caused by structural changes (energy shocks, technology disruptions) that require large reallocations of labor and capital, with high unemployment during the transition.`,
+    reading: ``,
     assignment: `Assignment (50 points):
-Write a 700-900 word essay addressing the following:
 
-1. Briefly summarize the major theories of recession causation.
-2. Pick three U.S. recessions from the postwar period: 1973-1975, 1981-1982, 2008-2009, 2020. Analyze each one. Which theory or combination of theories best explains it?
-3. Defend an overall position. Is there a single dominant cause of recessions, or do different recessions have different causes?`,
+Write your essay for someone unfamiliar with probability theory. Clearly label each section.
+Section 1 (30 points) - The Law of Large Numbers
+State the (weak) law of large numbers.
+Explain what it does say and what it does not say.
+Illustrate with a concrete example involving coin flips.
+Section 2 (20 points) - The Gambler's Fallacy
+Define the gambler's fallacy.
+Explain in detail why it is a misreading of the law of large numbers.
+Give a real-world example where the fallacy leads to costly decisions.`,
     modelResponse: `Model Response
 
-What Causes Recessions: Three Episodes
-
-Recessions resist single-cause explanations. The major theories each capture something real, but applying any one of them universally produces obviously bad readings of obviously different episodes. The question is better posed as: which mechanism dominated in a given recession, and how should that change our priors for the next one?
-
-The 1973-1975 recession was triggered by the Arab oil embargo of October 1973, which roughly quadrupled the price of oil in three months. This was the textbook supply shock: a sudden negative shift in productive capacity. The U.S. economy was structured around cheap oil; everything from manufacturing to transportation suddenly became more expensive. Real GDP fell 3.2% from peak to trough, and unemployment rose from 4.6% to 9.0%. The episode was difficult for Keynesian theory because the conventional aggregate-demand framework had no good response to stagflation; cutting interest rates or expanding fiscal policy could reduce unemployment but only by accepting still higher inflation, since the problem was supply rather than demand. The 1973-1975 episode fits the Real Business Cycle and sectoral-shift theories best. Sectors heavily dependent on cheap energy (autos, steel, aviation) had to shrink while energy-efficient sectors expanded. The transition was costly.
-
-The 1981-1982 recession was, by contrast, a monetary policy recession by design. Paul Volcker became Fed chair in August 1979 with inflation at 11% and rising. He raised the federal funds rate from 11% to 20% by mid-1981, then held it there. The intent was to break inflation by killing demand. It worked. Unemployment rose to 10.8%, the highest since the Great Depression. Inflation fell from 14% to under 3% by 1983. This episode fits the monetarist theory cleanly, with a twist: it was not a central bank error but a deliberate central bank choice. The recession was the price paid to re-anchor inflation expectations after a decade of monetary accommodation. The Volcker recession also fits an expectations-channel reading of the Phillips curve: once Volcker proved willing to tolerate severe unemployment to restore price stability, expectations adjusted permanently and the next forty years saw inflation rarely exceeding 4%.
-
-The 2008-2009 recession was a financial crisis. The proximate cause was the collapse of a credit boom in U.S. housing, but the deeper cause was the leverage cycle Minsky and Kindleberger described. From roughly 2002 to 2006, easy credit, low interest rates, and innovations in mortgage securitization fueled a doubling of U.S. home prices. The financial system became increasingly opaque and increasingly leveraged. When defaults began to rise in 2007, the value of mortgage-backed securities became uncertain, then collapsed. Major financial institutions were exposed: Bear Stearns failed in March 2008, Lehman Brothers in September. The credit system froze. Households and firms could not borrow; existing debts had to be repaid; consumption and investment collapsed. Unemployment rose from 5% to 10%, GDP fell 4%, and the recovery was the slowest in postwar history. This was a Minsky-Kindleberger episode in its purest postwar form. Keynesian deficient-demand mechanisms operated alongside the financial mechanisms, and the policy response (fiscal stimulus and quantitative easing) was Keynesian in inspiration. But the cause was financial.
-
-The 2020 recession was sui generis. A pandemic forced the deliberate shutdown of large parts of the economy. This was not a demand shock, a supply shock, a monetary shock, or a financial shock in any conventional sense. It was a real shock of a kind the macroeconomic literature had not anticipated. Real GDP fell at an annualized rate of 31% in Q2 2020, the largest single-quarter decline on record. Unemployment spiked from 3.5% to 14.7% in two months. The recession ended almost as quickly as it began, as restrictions eased and massive fiscal-monetary policy supported incomes. The episode does not fit any standard theory; the closest is a one-time productivity shock (RBC) combined with massive policy response (Keynesian). It is a reminder that recessions can be caused by events that no macroeconomic model contains as a state variable.
-
-Overall position: there is no single cause of recessions, and theories that claim there is are reading their own commitments back into the data. The U.S. postwar record contains supply-shock recessions (1973-1975, arguably 1990-1991), policy-induced recessions (1981-1982), financial-cycle recessions (2007-2009), and exogenous-shock recessions (2020). The dot-com recession of 2001 was something else again, primarily an unwinding of capital investment in technology. Honest macroeconomic analysis has to be eclectic: different mechanisms dominate different episodes, and the relevant theory depends on the recession.
-
-What does seem to be a near-universal feature is that recessions involve a failure of coordination. Whether the trigger is an oil shock or a credit collapse or a pandemic, the recession itself is a state in which firms, workers, and households all simultaneously pull back from commitments they would each individually prefer to maintain, because they correctly anticipate that the others are pulling back too. This is the Keynesian insight that survives every shift in fashion: aggregate demand is a coordination problem, and once coordination breaks, the economy can be stuck in a worse equilibrium than is necessary, until something (a policy response, an exogenous improvement, the simple passage of time) restores it. The various theories of recession causation are mostly theories of what triggers the coordination failure. The coordination failure itself is the recession, and it is the same animal regardless of what set it loose.`,
+Section 1: The Law of Large Numbers
+Let X1, X2, X3, ... be independent and identically distributed random variables with common expected value $\\mu$. Let Xbar(n) = (X1 + X2 + ... + Xn) / n denote the sample mean of the first n variables. The weak law of large numbers states:
+For any positive $\\epsilon$, P(|Xbar(n) - $\\mu$| > $\\epsilon$) approaches 0 as n approaches infinity.
+In words: as the number of trials grows, the sample mean converges in probability to the expected value. The chance that the running average is more than any specified distance from the true mean becomes arbitrarily small.
+What the law does say: averages stabilize. If you flip a fair coin 10,000 times, the proportion of heads will be very close to 0.5, almost certainly between 0.49 and 0.51. The wider the deviation, the lower the probability. Sample averages converge to expected values, given enough data.
+What the law does not say: it does not say that the deviation from the expected value shrinks in absolute terms; it says that the deviation per trial shrinks. The total number of heads can drift further and further from half the trials, even as the proportion drifts toward 0.5. For example, after 10,000 flips you might have 5,050 heads (50 above the expected 5,000). After a million flips you might have 500,500 heads (500 above expected). The absolute gap has grown from 50 to 500, but the proportion has gone from 0.505 to 0.5005, closer to 0.5. The law constrains the proportion, not the absolute difference.
+Coin flip example. Flip a fair coin 100 times. The expected number of heads is 50, with standard deviation about 5 (using results from the binomial distribution, which we will cover in Discussion 5). So getting 45 to 55 heads is unsurprising, and getting 40 to 60 heads is still well within the range of normal variability. Flip the coin 10,000 times. The expected count is 5,000, with standard deviation about 50. So 4,950 to 5,050 heads is normal, and 4,900 to 5,100 is unremarkable. Note that the absolute deviation in flips is larger for the longer run, but as a proportion it is smaller (1% deviation for the long run versus 10% for the short run).
+The law of large numbers is the foundation of frequentist probability: the claim that probability is the long-run frequency of an event. Without the law (and its quantitative refinements like the central limit theorem), there would be no rigorous justification for inferring probabilities from observed frequencies.
+Section 2: The Gambler's Fallacy
+The gambler's fallacy is the belief that, in a sequence of independent random events, recent outcomes affect the probability of future outcomes. A roulette wheel has landed on red five times in a row; the gambler believes black is now 'due' and bets accordingly. A coin has come up heads ten times; the next flip is felt to be more likely than 50% to be tails.
+The fallacy is a misreading of the law of large numbers. The gambler reasons: 'Over the long run, the proportions must balance out to 50-50. We have had an unusual streak of heads. To get back to balance, tails must come up more often.' This reasoning has the form right but the mechanism wrong.
+Here is the correct version: the proportion does converge to 0.5, but not because some hidden bookkeeping force adds tails to compensate for past heads. It converges because the influence of past outcomes is diluted by the sheer volume of future outcomes. Suppose ten heads have come up in a row. After another ten thousand flips, the total will be about 5,010 heads out of 10,010 flips, which is 0.5005, much closer to 0.5 than the initial 1.0. The drift back to 0.5 happens not by the coin producing extra tails, but by the early imbalance becoming an ever smaller fraction of a much larger denominator. Each individual flip remains a fair 50-50 trial, completely indifferent to its predecessors.
+This is what 'independent trials' means: the next outcome does not depend on the previous outcomes. A fair coin has no memory. Believing otherwise is believing in a kind of conservation law for outcomes that probability theory explicitly denies.
+Real-world example: the Monte Carlo Casino, August 18, 1913. On a roulette table, black came up 26 times in a row. As the streak lengthened, gamblers bet enormous sums on red, convinced it was overwhelmingly likely. The casino made millions that night. Each individual spin had a probability of about 18/37 of red (in European roulette with one green zero), regardless of what had come before. The gamblers' losses were not due to bad luck; they were the predictable result of a mistaken probability model applied with growing confidence as the streak grew. The episode gave the fallacy one of its standard names: the Monte Carlo fallacy.
+A subtler version operates in financial markets. After a long bull run, investors often feel that a crash is overdue, and reduce equity exposure. This can be correct reasoning if there is genuine mean reversion in the underlying process. But for the random-walk component of price movements, it is the gambler's fallacy applied to assets. Mean reversion needs to be demonstrated empirically; it cannot be assumed merely on the grounds that prices have moved a lot recently. Confusing genuine mean reversion with the gambler's fallacy, in either direction, produces costly trades.`,
   },
   {
     id: "d5",
     number: 9,
-    title: "Discussion 5: What Drives Long-Run Growth?",
+    title: "Discussion 5: The Binomial Distribution",
     points: 50,
     type: "discussion",
     objectives: [
-      "Apply the major growth frameworks (Solow, endogenous, institutional, geographic) to a specific cross-country divergence.",
-      "Defend a position on which framework does the most explanatory work for cross-country growth differences.",
+      "Identify when the binomial distribution is the right model and use its formula to compute probabilities.",
+      "Compute the mean, variance, and standard deviation of a binomial random variable and apply them to a real scenario.",
     ],
-    reading: `Long-run economic growth is the increase in the productive capacity of an economy over decades, distinct from short-run fluctuations around trend. A country growing at 2% per year doubles its output in 36 years; at 5% per year, it doubles in 14 years. Compounding makes growth differences enormous over generations.
-
-The Solow model (1956) provides the basic neoclassical framework. Output is a function of capital, labor, and a productivity term: Y = A * f(K, L). Capital accumulates through investment, but exhibits diminishing returns. In the long run, growth in output per worker depends on growth in A, the productivity term, which is treated as exogenous.
-
-Endogenous growth theory (Romer, 1990; Lucas, 1988) tries to explain A. Knowledge and human capital are produced by the economy itself, and may exhibit increasing returns. R&D spending, education, and patent systems matter.
-
-Institutional theories (North, 1990; Acemoglu and Robinson, 2012) argue that the deepest determinant of long-run growth is institutions: the rules of the game. Inclusive institutions (rule of law, secure property rights, broad political participation) promote investment and innovation. Extractive institutions (concentrated political power, weak property rights, predation) discourage them. Countries with similar resources can have wildly different growth trajectories because of institutional differences.
-
-Geographic theories (Diamond, Sachs) emphasize endowments: latitude, soils, disease environment, access to coasts.
-
-Demographic factors: labor force size, age structure, and quality (human capital).`,
+    reading: `The binomial distribution is the distribution of the number of successes in a fixed number of independent yes-or-no trials, each with the same probability of success. It is the simplest non-trivial distribution and the model for an enormous range of practical problems: quality control, polling, medical trials, opinion surveys.
+The Setup
+Conduct n independent trials. Each trial results in 'success' with probability p, 'failure' with probability 1 - p. Let X be the total number of successes. Then X has a binomial distribution with parameters n and p, written X ~ Binomial(n, p).
+The Formula
+$$P(X = k) = \\binom{n}{k} * p^k * (1 - p)^{n - k}, for k = 0, 1, 2, ..., n,$$
+where $\\binom{n}{k}$ = n! / [k! (n - k)!] is the binomial coefficient: the number of ways to choose k items from n.
+The formula has three factors:
+p^k: the probability of getting k specific successes in their designated trials.
+(1 - p)^(n - k): the probability of the remaining n - k trials all being failures.
+$\\binom{n}{k}$: the number of different ways k successes could be distributed among n trials.
+Mean and Variance
+E(X) = np. Var(X) = np(1 - p). SD(X) = sqrt(np(1 - p)).
+These follow from linearity of expectation and variance, applied to the n independent indicator variables (one per trial).`,
     assignment: `Assignment (50 points):
-1. Two countries, A and B, are observed in 1960 with the same per capita GDP of $1,000. By 2020, Country A is at $30,000 and Country B is at $2,500. Both countries had similar initial resources. Walk through what would have to be true, in each of the major theoretical frameworks, to produce this divergence. Use a real-world example (e.g., South Korea vs. North Korea, Singapore vs. Indonesia, etc.) to anchor your discussion.
-2. In your view, which of these frameworks does the most work in explaining cross-country differences in long-run growth? Defend your position.`,
+
+A basketball player makes 60% of her free throws. She attempts 10 free throws. (a) What is the probability she makes exactly 7? (b) What is the probability she makes at least 7? (c) What is the expected number of made free throws? The standard deviation?
+A factory's quality control process tests batches of 20 widgets. Each widget is independently defective with probability 0.05. A batch is rejected if more than 2 widgets are defective. What is the probability of rejection?
+Explain in your own words why the binomial formula has the three factors it has, and why each of them must be present. What would go wrong if any factor were omitted?`,
     modelResponse: `Model Response
 
-The most striking real-world example is the Korean peninsula. North and South Korea were a single country until 1945 and shared an identical culture, language, history, ethnic composition, and geography. They were partitioned arbitrarily along the 38th parallel. By 1960, both were poor, with North Korea actually somewhat ahead (it had inherited more of the industrial base built during Japanese colonization). By 2020, South Korea's GDP per capita was approximately $32,000 and North Korea's was estimated at $1,300-$1,700 (the estimate is rough because North Korea publishes no usable data). This is roughly a 20-to-1 ratio between two halves of what was a single country in living memory.
-
-What each framework requires:
-
-The Solow model: South Korea must have accumulated much more capital per worker than North Korea, with similar productivity, OR experienced much higher productivity growth. In fact, both. South Korea's savings rate was 30-40% of GDP for most of the post-1960 period, one of the highest in the world, financing massive investment in physical capital. Productivity also rose, partly through importing foreign technology and partly through learning-by-doing in export industries. North Korea's savings and investment were directed by central planners toward heavy industry and military production with low returns on capital. The Solow model can fit the Korean data, but it does not explain WHY savings rates and productivity growth differed.
-
-Endogenous growth: South Korea invested heavily in education. By the 1980s, South Korean students were among the top scorers internationally on standardized math and science tests. R&D spending rose from negligible levels in 1960 to over 4% of GDP by 2020, the highest in the OECD. Samsung Electronics began as a small trading company in 1969 and was the world's largest semiconductor manufacturer by 2017. Endogenous growth captures the role of accumulated human and knowledge capital, but again, why did one country invest in it and the other not?
-
-Institutional theory: this seems to be where the deepest explanation lies. South Korea evolved (slowly, with a long authoritarian period through the 1980s) toward institutions that protected property rights, enforced contracts, allowed competitive private firms, and after 1987 supported democratic accountability. North Korea developed a totalitarian dynasty that nationalized everything, suppressed all market activity, and treated the economy as an extension of the state. Acemoglu and Robinson would say South Korea's institutions became increasingly inclusive, while North Korea's remained extractive in the extreme.
-
-Geographic theory: clearly cannot explain Korea. The two halves of the peninsula have essentially identical geography. The same point holds for East and West Germany (which diverged by a factor of three or more during the Cold War despite identical geography and culture), and for the U.S./Mexico border, where two sides of a fence have radically different incomes despite similar climate and geography.
-
-My position:
-
-Institutions do the most explanatory work, particularly for divergences within otherwise comparable countries. The Korean case, the German case, and the natural experiments along the U.S.-Mexico and Israel-Egypt borders all point in the same direction: when you hold geography, culture, language, ethnicity, and history nearly constant, what you can vary is institutions, and the institutional variation produces the variation in outcomes.
-
-This does not mean geography and demography are unimportant. They matter enormously for the level effects of disease, navigable rivers, arable land, and so on. But they do not explain the divergence among countries that started similar and ended different. Tropical countries are on average poorer than temperate ones, partly because of disease environment and partly because tropical agriculture is genuinely harder. But Singapore is tropical, and so are Hong Kong, Taiwan, and the Gulf states. These cases show that institutions can override geography.
-
-The Solow and endogenous growth models, in my view, are proximate rather than ultimate explanations. They tell you that more capital and more human capital produce more output, which is true and important, but they do not explain why some societies generate the savings, the investments in education, and the productive use of capital that others fail to generate. The institutional view does explain this, by pointing to the incentive structures that either encourage or discourage long-term investment. Why save and invest in a country where the government can seize your assets? Why innovate when there is no patent protection? Why educate your children if there are no good jobs for skilled workers?
-
-The most parsimonious model: institutions explain why countries differ in their capacity to accumulate capital and develop human capital and adopt productivity-enhancing technologies. The Solow and endogenous-growth models describe the proximate mechanics. The institutional framework explains why those mechanics operate differently in different places. This is what Korea, Germany, and the U.S.-Mexico border collectively demonstrate, and it is the framework that has held up best in the recent empirical literature.`,
+$$Basketball free throws, n = 10, p = 0.6.$$
+(a) $$P(X = 7) = \\binom{10}{7} * (0.6)^7 * (0.4)^3 = 120 * 0.0279936 * 0.064 = 0.2150.$$
+So about 21.5% probability of exactly 7 made shots.
+(b) $$P(X \\geq  7) = P(X = 7) + P(X = 8) + P(X = 9) + P(X = 10).$$
+P(X = 7) = 0.2150 (from above).
+$$P(X = 8) = \\binom{10}{8} * (0.6)^8 * (0.4)^2 = 45 * 0.0167962 * 0.16 = 0.1209.$$
+$$P(X = 9) = \\binom{10}{9} * (0.6)^9 * (0.4)^1 = 10 * 0.0100777 * 0.4 = 0.0403.$$
+$$P(X = 10) = \\binom{10}{10} * (0.6)^{10} * (0.4)^0 = 1 * 0.0060466 * 1 = 0.0060.$$
+$$Sum: 0.2150 + 0.1209 + 0.0403 + 0.0060 = 0.3822.$$
+About 38.2% probability of making at least 7 of 10.
+(c) E(X) = np = 10 * 0.6 = 6. SD(X) = sqrt(np(1 - p)) = $\\sqrt{10 * 0.6 * 0.4}$ = $\\sqrt{2.4}$ = 1.549.
+$$Factory rejection, n = 20, p = 0.05.$$
+Reject if X > 2, i.e., X $\\geq$ 3. Equivalent: P(reject) = 1 - P(X $\\leq$ 2).
+$$P(X = 0) = \\binom{20}{0} * (0.05)^0 * (0.95)^{20} = 1 * 1 * 0.3585 = 0.3585.$$
+$$P(X = 1) = \\binom{20}{1} * (0.05)^1 * (0.95)^{19} = 20 * 0.05 * 0.3774 = 0.3774.$$
+$$P(X = 2) = \\binom{20}{2} * (0.05)^2 * (0.95)^{18} = 190 * 0.0025 * 0.3972 = 0.1887.$$
+$$P(X \\leq  2) = 0.3585 + 0.3774 + 0.1887 = 0.9246.$$
+$$P(reject) = 1 - 0.9246 = 0.0754.$$
+So about 7.5% of batches are rejected.
+Why the three factors:
+Consider P(X = k). We need: k successes among n trials. The probability of any single specific arrangement (say, successes on trials 1 through k and failures on the rest) is p^k * (1-p)^(n-k). The factor p^k handles the k specific trials where success occurred; (1-p)^(n-k) handles the remaining trials where failure occurred. This is the probability of one particular sequence.
+But we do not care which trials succeed; we only care that exactly k of them do. Any of $\\binom{n}{k}$ different arrangements of k successes among n trials would also produce exactly k successes, and each has the same probability p^k * (1-p)^(n-k) by independence. So we multiply by $\\binom{n}{k}$ to count all the arrangements.
+If we omitted p^k or (1-p)^(n-k), we would be ignoring the probability of the actual outcomes. If we omitted $\\binom{n}{k}$, we would be counting only one specific arrangement, drastically undercounting the cases that yield k successes (unless k = 0 or k = n, in which case there is only one arrangement and $\\binom{n}{k}$ = 1). Each factor answers a distinct question: what is the probability of any one specific success-failure pattern (p^k * (1-p)^(n-k)), and how many such patterns are there ($\\binom{n}{k}$)? Multiplying combines the counting with the per-pattern probability.
+Why This is a Model Response:
+Performs the binomial calculations cleanly, showing the binomial coefficient, the success probability raised to k, and the failure probability raised to n-k.
+Computes a tail probability by complementation, the standard technique for 'at least' or 'more than' questions.
+Identifies the conceptual role of each factor in the formula, distinguishing the per-arrangement probability from the count of arrangements.
+Recognizes that the binomial coefficient becomes 1 in the edge cases (k = 0 or k = n), making the formula consistent with direct intuition there.`,
   },
   {
     id: "e5",
     number: 10,
-    title: "Essay 5: Public Debt and the Limits of Government Borrowing",
+    title: "Essay 5: The Normal Distribution and the Central Limit Theorem",
     points: 50,
     type: "essay",
     objectives: [
-      "Explain the debt dynamics equation and what determines whether a country's debt-to-GDP ratio is stable.",
-      "Compare Japan and Greece and evaluate the likelihood of a U.S. fiscal crisis in the next decade.",
+      "Describe the Normal distribution, its parameters, and its standardization to z-scores.",
+      "State the Central Limit Theorem and explain why it makes the Normal distribution central to applied statistics.",
     ],
-    reading: `Government debt is the accumulated stock of past deficits. The U.S. federal debt held by the public was approximately $26 trillion in 2024, roughly 95% of GDP, and rising. Total federal debt including intragovernmental holdings exceeded $34 trillion.
-
-Key concepts:
-- Primary deficit/surplus: the deficit excluding interest payments on existing debt.
-- Debt-to-GDP ratio: the standard measure of debt burden, because economies grow over time.
-- Debt dynamics: the debt-to-GDP ratio evolves as d' = d * (1 + r - g) + primary deficit / GDP, where r is the real interest rate and g is the real growth rate. If r > g, debt grows even with a balanced primary budget. If g > r, debt can shrink relative to GDP even with primary deficits.
-
-Major debates:
-- Ricardian equivalence (Barro): in some models, government debt is irrelevant because households save in anticipation of future taxes. Most economists believe this only partially holds.
-- Sovereign debt crises: countries with their own currency (U.S., U.K., Japan) face different constraints than countries borrowing in foreign currency (Argentina, Greece). The latter can default; the former can at worst monetize debt and produce inflation.
-- Functional finance (Lerner) vs. sound finance (mainstream): should governments aim to balance budgets at all, or just to use fiscal policy to maintain full employment with stable prices?
-- Modern Monetary Theory: a heterodox view that monetarily sovereign governments are constrained only by inflation, not by debt levels.
-
-Japan's example: gross debt-to-GDP exceeds 250%, the highest in the developed world, yet Japan has experienced low inflation and low borrowing costs for decades.`,
+    reading: ``,
     assignment: `Assignment (50 points):
-Write a 700-900 word essay addressing the following:
 
-1. Explain the basic debt dynamics equation and what determines whether a country's debt-to-GDP ratio is stable or rising.
-2. Why does Japan, with debt of 250% of GDP, borrow at near-zero interest rates, while Greece, with lower debt-to-GDP ratios in the late 2000s, faced a sovereign debt crisis? What are the key structural differences?
-3. Evaluate the claim that the U.S. faces an imminent debt crisis. What conditions would have to hold for a U.S. fiscal crisis to occur, and how likely are those conditions?`,
+Write your essay for someone unfamiliar with probability theory. Clearly label each section.
+Section 1 (30 points) - The Normal Distribution
+Describe the shape of the normal distribution and its two parameters.
+State the 68-95-99.7 rule.
+Give three real-world examples of quantities that are approximately normally distributed and explain why.
+Section 2 (20 points) - The Central Limit Theorem
+State the central limit theorem in plain language.
+Explain why this theorem is the foundation of statistical inference.
+Discuss one limitation: when the central limit theorem fails or is misleading.`,
     modelResponse: `Model Response
 
-Public Debt: Mechanics, Limits, and the U.S. Outlook
-
-The arithmetic of public debt is governed by a simple identity. If we let d be the debt-to-GDP ratio, the change in d from one period to the next equals d * (r - g) + the primary deficit as a share of GDP, where r is the real interest rate the government pays on its debt and g is the real growth rate of the economy. The intuition: existing debt grows at the interest rate, GDP grows at g, so debt as a share of GDP rises by (r - g) of itself, plus any new primary deficit. When r > g, debt has positive momentum; even a balanced primary budget produces a rising debt ratio. When g > r, debt has negative momentum; debt as a share of GDP shrinks even with modest primary deficits.
-
-For most of the post-1945 period, the U.S. and other advanced economies had g > r. The U.S. debt-to-GDP ratio fell from roughly 110% in 1946 to 30% in 1980 despite continuous deficits, because nominal growth exceeded nominal interest rates. The condition r < g is called 'financial repression' in some literatures because it implicitly taxes bond holders to benefit borrowers. Since the late 2010s, real interest rates have risen, and the r-versus-g gap has narrowed or reversed for some countries.
-
-Japan and Greece: same debt ratio, different outcomes.
-
-Japan's gross debt-to-GDP exceeds 250%, the highest among major economies. Yet 10-year Japanese government bonds have yielded under 1% for most of the past two decades. Greece, at much lower debt levels, was paying 30%+ yields at the height of its 2010-2012 crisis. The differences are structural.
-
-First, currency sovereignty. Japan issues debt in yen, which the Bank of Japan can create at will. Japan cannot default on yen-denominated debt in any meaningful sense; in the limit, it can monetize the debt and accept the inflation. Greece does not issue debt in drachma; it issues debt in euros, which the European Central Bank controls and which Greece cannot create. Greece is in the position of a U.S. state, which can run out of money, rather than the U.S. federal government, which cannot. This is the single most important distinction.
-
-Second, the holder base. Approximately 90% of Japanese government debt is held domestically, mostly by Japanese banks, pension funds, and the Bank of Japan itself. There is no class of foreign holders who could trigger a flight by dumping bonds. Greece's debt was held mostly by foreign banks, particularly German and French ones, who could and did flee at the first sign of trouble.
-
-Third, the savings glut. Japan has high domestic savings, low investment, and runs a current account surplus. This generates a continuous domestic demand for safe assets that the government can satisfy by issuing bonds. Greece has the opposite pattern: low savings, current account deficits, dependence on foreign capital.
-
-Fourth, central bank behavior. The Bank of Japan has been a major buyer of JGBs for two decades, and has explicitly capped 10-year yields under yield-curve control. The European Central Bank in 2010-2012 was constrained by its mandate and by political resistance from northern Europe; it did not act as backstop until Mario Draghi's 'whatever it takes' speech in July 2012, after which Greek yields fell rapidly.
-
-The U.S. outlook.
-
-The U.S. has the structural advantages of Japan (its own currency, deep capital markets, the dollar's reserve currency status, ability to monetize) plus large domestic savings, though smaller than Japan's. The U.S. cannot run out of dollars and cannot be forced to default on dollar-denominated debt. The constraint is inflation, not solvency.
-
-What an actual U.S. fiscal crisis would look like: persistent borrowing pushes interest rates up enough that the share of GDP needed for interest payments crowds out other spending or requires politically intolerable tax increases. Foreign holders lose confidence in the dollar, demand higher yields, or shift to other currencies. The Fed faces a dilemma: hold rates low to keep interest costs manageable, accepting higher inflation, or fight inflation by raising rates, accepting fiscal strain. Either choice damages confidence in dollar assets. The reserve-currency premium erodes.
-
-How likely is this in the next decade? Probably low, but no longer negligible. Federal interest payments are projected to exceed $1 trillion annually in 2025, surpassing defense spending. The CBO projects debt-to-GDP rising from 100% today to over 180% by 2050 under current policy. If real interest rates settle higher than they were in the 2010s (which seems plausible given demographics, deglobalization, and capital demand from energy transition), the debt dynamics turn against the U.S. for the first time since the 1980s.
-
-However, the path to a crisis is not a knife-edge event. The U.S. retains enormous flexibility: it can raise taxes (U.S. tax burden is well below European levels), cut spending, or accept somewhat higher inflation. None of these are politically easy, but they are economically available. The dollar's reserve status is sticky; no plausible alternative exists at current scale. China's currency is not convertible, the euro suffers from its structural fragmentation, and gold/crypto are too small. The U.S. likely has at least a decade of cushion before the constraint binds.
-
-What is more likely than a sudden crisis is a long, slow deterioration: rising interest costs squeezing the rest of the budget, fiscal policy losing the ability to respond to recessions because the starting debt level is too high, intergenerational transfers becoming politically harder to sustain. The danger is not Greek-style sudden death but Japanese-style chronic disease: persistent low growth, demographic strain, gradual loss of economic dynamism. Whether this happens depends on choices that have not yet been made. The arithmetic is unforgiving, but the U.S. is not yet at the wall.`,
+Section 1: The Normal Distribution
+The normal distribution, also called the Gaussian distribution or 'bell curve,' is a continuous probability distribution defined by two parameters: the mean $\\mu$ (the center of the bell) and the standard deviation $\\sigma$ (the width). Its density function is:
+$$f(x) = (1 / (\\sigma  * \\sqrt{2*pi})) * exp(-(x - \\mu )^2 / (2*\\sigma ^2)).$$
+The shape is a symmetric bell. Most of the probability mass sits near the mean. The probability density falls off rapidly as you move away from the mean, with the rate of falloff controlled by $\\sigma$. A small $\\sigma$ gives a tall, narrow bell. A large $\\sigma$ gives a wide, flat bell.
+The 68-95-99.7 rule (also called the empirical rule):
+About 68% of the probability lies within one standard deviation of the mean.
+About 95% lies within two standard deviations.
+About 99.7% lies within three standard deviations.
+So observations more than three standard deviations from the mean occur less than 0.3% of the time under a normal distribution. This is what makes the normal distribution have 'thin tails': extreme events are very rare.
+Three examples of approximately normal quantities:
+Heights of adult humans within a single sex and population. Height is determined by a large number of genetic and environmental factors, each contributing a small effect. The sum of many small independent factors tends to be approximately normal, as the central limit theorem predicts. A population of adult women in the US has mean height about 64 inches with standard deviation about 2.5 inches; the distribution is close to normal in the central region, though it deviates somewhat in the tails.
+Measurement errors in physical experiments. When measuring some quantity with a careful instrument, the error from any one measurement is the sum of many independent small effects: vibrations, electrical noise, small temperature changes, observer reading variations, etc. Each is small and independent of the others, so the total error tends toward normality. This is why so much statistical theory assumes normal errors.
+IQ test scores. IQ is constructed to be approximately normal by design (test items are calibrated so that the resulting scores fit a normal distribution with mean 100 and standard deviation 15). The underlying trait may or may not be exactly normal in the population, but the test scores are standardized to look that way, which makes them mathematically convenient to work with.
+Section 2: The Central Limit Theorem
+The central limit theorem (CLT) states: if X1, X2, ..., Xn are independent, identically distributed random variables with finite mean $\\mu$ and finite variance $\\sigma$^2, then the distribution of the sample mean Xbar(n) approaches a normal distribution with mean $\\mu$ and standard deviation $\\sigma$ / $\\sqrt{n}$ as n grows large. This holds regardless of the original distribution of the Xi.
+In plain language: if you average enough independent samples from almost any distribution, the average will be approximately normally distributed, even if the original distribution is far from normal. Sum together enough independent random quantities, and the sum is approximately normal.
+Why this is the foundation of statistical inference: most statistical procedures depend on knowing the distribution of a sample mean, or some closely related statistic. The CLT gives us this distribution for free, no matter what the population looks like, provided the sample is large enough. Confidence intervals, hypothesis tests, regression standard errors, and most of frequentist statistics are built on the CLT. Without it, every statistical procedure would have to be redesigned for each new population shape, an impossible task.
+The CLT also explains why the normal distribution is ubiquitous in nature. So many real-world quantities are sums of many small independent influences, and the CLT says these sums tend toward normality. Heights, errors, sums of many random rolls, the position of a particle after many small random kicks: all approximately normal, all by the same mechanism.
+A limitation: the CLT fails when the underlying distribution has infinite variance (so-called fat-tailed or heavy-tailed distributions). The Cauchy distribution is the textbook example: its variance is infinite, and the sample mean of n Cauchy variables has the same distribution as a single Cauchy variable. Averaging does nothing. More generally, distributions with finite mean but very heavy tails approach normality only very slowly, so for the sample sizes available in practice, the CLT-based approximation can be badly wrong.
+This matters enormously in finance and risk management. Stock returns, particularly daily returns, have heavier tails than the normal distribution. Extreme moves are much more frequent than a normal model predicts. Risk models built on the assumption that returns are normal systematically underestimate tail risk. The 1987 crash, the 2008 financial crisis, the COVID crash of 2020: all involved daily moves so large that under a normal model they should not have happened in the lifetime of the universe. Yet they happened. The lesson is that the CLT is a powerful theorem with a precise scope, and applying it outside that scope produces conclusions that look mathematically rigorous but are wildly wrong about the world.`,
   },
   {
     id: "d6",
     number: 11,
-    title: "Discussion 6: Exchange Rates and the Trilemma",
+    title: "Discussion 6: Counting — Permutations and Combinations",
     points: 50,
     type: "discussion",
     objectives: [
-      "Explain the Mundell-Fleming trilemma and why a country cannot satisfy all three constraints simultaneously.",
-      "Apply the trilemma to Hong Kong's currency peg and analyze its costs and benefits.",
+      "Use the multiplication principle, permutations, and combinations to count outcomes in finite sample spaces.",
+      "Distinguish problems where order matters from problems where it does not, and explain the relationship between C(n, k) and P(n, k).",
     ],
-    reading: `An exchange rate is the price of one currency in terms of another. The euro-dollar rate of 1.10 means one euro buys $1.10. Exchange rates are determined by supply and demand for currencies, which in turn reflects trade flows, capital flows, interest rate differentials, and expectations.
-
-Two major exchange-rate regimes:
-- Floating: the rate is determined by market forces. The U.S. dollar, euro, yen, pound, and most major currencies float against each other.
-- Fixed: the central bank commits to maintain a specific rate against another currency or a basket. The Hong Kong dollar is pegged to the U.S. dollar. The Chinese yuan is managed.
-
-Purchasing Power Parity (PPP): in the long run, exchange rates should adjust so that a basket of goods costs the same in different countries. If a Big Mac costs $5 in the U.S. and 30 yuan in China, PPP would predict 6 yuan per dollar. Actual rates often diverge from PPP, sometimes by 30-50%.
-
-Interest rate parity: high-interest currencies should depreciate relative to low-interest currencies, so that returns are equalized after adjusting for exchange rate changes. This is the 'covered' version with forwards; the 'uncovered' version often fails empirically.
-
-The Mundell-Fleming Trilemma: a country cannot simultaneously have all three of:
-- A fixed exchange rate
-- Free movement of capital across borders
-- An independent monetary policy
-
-It must give up one. The U.S. has free capital movement and independent monetary policy, so it has a floating exchange rate. Hong Kong has a fixed rate and free capital movement, so it has no independent monetary policy. China has historically had limited capital mobility, allowing it to manage both the exchange rate and monetary policy.`,
+    reading: `Many elementary probability problems reduce to counting: how many outcomes in the sample space, how many in the event of interest, and the probability is the ratio. When outcomes are equally likely, counting is everything. The systematic study of counting is called combinatorics.
+The Multiplication Principle
+If one thing can happen in m ways, and after it happens a second thing can happen in n ways, then the two things together can happen in m * n ways.
+Example: a menu offers 4 appetizers, 6 entrees, and 3 desserts. The number of three-course meals is 4 * 6 * 3 = 72.
+Permutations (order matters)
+The number of ways to arrange n distinct objects in order is n! = n * (n - 1) * (n - 2) * ... * 1.
+The number of ways to arrange k objects chosen from n distinct objects in order is:
+$$P(n, k) = n! / (n - k)!$$
+Example: 5 horses race; the number of possible first-second-third finishes is 5 * 4 * 3 = 60.
+Combinations (order does not matter)
+The number of ways to choose k objects from n distinct objects, ignoring order, is:
+$$\\binom{n}{k} = n! / [k! (n - k)!]$$
+This is read 'n choose k' and is the binomial coefficient. It is also written as a vertical pair (n over k) in mathematical notation.
+Example: a 5-card poker hand from a 52-card deck has $\\binom{52}{5}$ = 2,598,960 possible hands.
+Key Distinction
+Order matters: permutations. Order does not matter: combinations. The classic case is arranging vs. selecting. Three runners finishing in different orders are different permutations (gold-silver-bronze matters) but the same combination (the three medalists are the same group regardless of order).`,
     assignment: `Assignment (50 points):
-1. Explain the Mundell-Fleming trilemma in your own words. Why can a country not have all three?
-2. Hong Kong has maintained a peg to the U.S. dollar since 1983 (7.75-7.85 HKD per USD). Walk through the consequences: what does Hong Kong gain by pegging? What does it give up? Use the trilemma to structure your answer. What would happen if Hong Kong tried to run a more independent monetary policy?`,
+
+A committee of 5 is to be chosen from a group of 12 people. (a) How many committees are possible? (b) How many ordered slates of officers (President, VP, Secretary, Treasurer, Member-at-large) can be chosen? (c) Why are the answers different, and what general principle is at work?
+A standard 5-card poker hand is dealt from a shuffled 52-card deck. Compute: (a) the probability of being dealt four of a kind; (b) the probability of being dealt a full house (three of one rank and two of another).
+Explain why $\\binom{n}{k}$ = $\\binom{n}{n - k}$ using a combinatorial argument (not just algebra). What does this identity tell you about choosing vs. leaving out?`,
     modelResponse: `Model Response
 
-Why all three cannot coexist:
-
-Suppose a country has a fixed exchange rate against the dollar and allows free capital movement. Now suppose its central bank wants to set domestic interest rates lower than U.S. rates. Capital will instantly flow out of the country: investors can borrow at low rates domestically and invest at higher rates in the U.S. This creates downward pressure on the domestic currency. To maintain the peg, the central bank must sell dollars from its reserves to buy back the domestic currency, which contracts the money supply and pushes domestic interest rates back up. The attempt to set independent rates is futile; the rates are forced to track foreign rates by the capital flows the peg cannot stop.
-
-Conversely, if rates are set higher than abroad, capital flows in, the currency appreciates, and the central bank must buy foreign currency to maintain the peg, expanding the money supply and pushing domestic rates back down.
-
-The escape valves: if the country imposes capital controls, the flows stop and monetary policy can diverge from foreign rates even with a peg. This is the historical Chinese model. Alternatively, if the country lets the currency float, capital flows can be absorbed by exchange rate changes rather than reserve changes, and monetary policy can diverge from foreign rates. This is the U.S. model.
-
-What you cannot do is run a fixed rate, allow free capital flows, AND set rates independently. The trilemma is a trilemma because any two of the three constraints can be satisfied, but never all three.
-
-Hong Kong's choices:
-
-Hong Kong chose option (b): fixed exchange rate plus free capital movement, with monetary policy as the sacrifice. The peg has been maintained since October 1983, when it was set in response to political uncertainty surrounding the Sino-British negotiations over Hong Kong's handover. The peg is operated through a currency board: every Hong Kong dollar in circulation is backed by US dollar reserves, and the Hong Kong Monetary Authority (HKMA) is obligated to convert at the peg rate.
-
-What Hong Kong gains:
-
-First, credibility and stability. Hong Kong is a small open economy with extensive trade and financial flows. A volatile exchange rate would impose enormous costs on cross-border business. The peg has been operated transparently and consistently for over 40 years, making the Hong Kong dollar essentially a tokenized version of the U.S. dollar.
-
-Second, low transaction costs in international trade. Importers and exporters denominated in U.S. dollars (which is most international trade) face minimal exchange rate risk in Hong Kong.
-
-Third, the credibility of Hong Kong's status as an international financial center. The peg is part of the institutional infrastructure that has made Hong Kong a global hub for capital flows, particularly into and out of China. Free capital movement is non-negotiable for this function, so the peg-with-free-capital was the appropriate choice.
-
-What Hong Kong gives up:
-
-Independent monetary policy entirely. Hong Kong's interest rates track U.S. interest rates almost perfectly. When the Fed raises rates by 25 basis points, Hong Kong rates move by approximately 25 basis points. The HKMA does not have meaningful discretion to set rates differently.
-
-The cost of this is countercyclical policy. When Hong Kong is in a different business-cycle position than the U.S., its monetary policy is forced to be procyclical. During the U.S. zero-rate period (2008-2015 and 2020-2022), Hong Kong rates were also near zero, even when Hong Kong's economy was overheating and its property market was bubbling. The result was a major property price inflation that the HKMA could not contain through interest rates; it had to use macroprudential tools (loan-to-value limits, stamp duties) instead. Property prices roughly tripled between 2008 and 2018.
-
-If Hong Kong tried to run independent monetary policy:
-
-It cannot, while maintaining the peg with free capital flows. If the HKMA tried to hold rates lower than U.S. rates, capital would flow out, downward pressure on the Hong Kong dollar would build, and the HKMA would have to sell its U.S. dollar reserves to defend the peg. Eventually, with finite reserves, the peg would break. The classic mechanism of a currency crisis.
-
-Hong Kong has approximately $400 billion in foreign reserves, more than its M2 money supply, so a speculative attack is harder than against most pegged currencies. But the math is the same in principle: any attempt to diverge from U.S. monetary policy bleeds reserves and eventually fails.
-
-The 2018-2019 stress test: when U.S. rates rose rapidly, Hong Kong rates lagged briefly, the Hong Kong dollar approached the weak side of the peg, and the HKMA had to intervene heavily to absorb Hong Kong dollars and maintain the rate. The system worked, but it demonstrated the constraint. Hong Kong cannot be in a different monetary regime from the U.S., regardless of whether that regime suits Hong Kong's domestic conditions.
-
-The verdict: Hong Kong's peg is the textbook example of choosing currency stability over monetary autonomy. The choice was rational given Hong Kong's role as a financial entrepôt, but it forces Hong Kong to bear procyclical monetary policy whenever U.S. and Hong Kong cycles diverge. The cost is real but has been accepted as the price of the financial-center function. As long as Hong Kong values that function and maintains adequate reserves, the peg will hold. If the political or economic basis of Hong Kong as a financial center erodes, the peg could become a luxury rather than a necessity, and the question of regime change would arise.`,
+Committee problem:
+(a) Choose 5 from 12 without regard to order: $\\binom{12}{5}$ = 12! / (5! * 7!) = 792 committees.
+(b) Choose 5 with order (5 distinct roles): P(12, 5) = 12 * 11 * 10 * 9 * 8 = 95,040 slates.
+(c) The slate-count is exactly 5! = 120 times larger than the committee-count, because each committee of 5 can be arranged into 5! different orderings of officers. The principle: when order matters, multiply by k! to convert combinations into permutations, or divide by k! to go the other way.
+Poker probabilities:
+$$Total 5-card hands: \\binom{52}{5} = 2,598,960.$$
+(a) Four of a kind: choose the rank for the four cards (13 ways), choose all four cards of that rank ($\\binom{4}{4}$ = 1), then choose the fifth card from the remaining 48 cards. Total favorable hands: 13 * 1 * 48 = 624. Probability = 624 / 2,598,960 = 0.000240, or about 1 in 4,165.
+(b) Full house: choose the rank for the three-of-a-kind (13 ways), choose 3 of the 4 cards of that rank ($\\binom{4}{3}$ = 4), choose the rank for the pair from the remaining 12 ranks (12 ways), choose 2 of the 4 cards of that rank ($\\binom{4}{2}$ = 6). Total: 13 * 4 * 12 * 6 = 3,744. Probability = 3,744 / 2,598,960 = 0.00144, or about 1 in 694.
+Note that the three-of-a-kind rank and the pair rank are not interchangeable: a full house with three kings and two queens is distinct from a full house with three queens and two kings. This is why we use 13 * 12 rather than $\\binom{13}{2}$. The cards of the same rank within a triple or pair are interchangeable, hence the $\\binom{4}{3}$ and $\\binom{4}{2}$ for them.
+$\\binom{n}{k}$ = $\\binom{n}{n - k}$ by combinatorial argument:
+Choosing k objects to include from n objects is the same act as choosing the n - k objects to leave out. Every choice of who is in determines exactly one choice of who is out, and vice versa. So the number of ways to do one equals the number of ways to do the other.
+Concrete example: from a group of 10 friends, the number of ways to choose 3 to invite to dinner ($\\binom{10}{3}$ = 120) is the same as the number of ways to choose 7 to leave at home ($\\binom{10}{7}$ = 120). Inviting 3 is exactly the same operation as not inviting 7. The identity is not a coincidence; it is the algebraic shadow of a single combinatorial fact.
+This identity, called the symmetry of binomial coefficients, is one of the simplest examples of a deep principle in combinatorics: many algebraic identities have direct combinatorial interpretations, and those interpretations are usually more illuminating than the algebra. Each side of an algebraic identity counts the same set in a different way.
+Why This is a Model Response:
+Distinguishes permutations from combinations clearly and uses each in the right context.
+Recognizes the exact factor (5! = 120) relating the two answers to the committee problem, making the conversion explicit.
+Handles the full house carefully: distinguishes ordered selection of triple-rank vs. pair-rank (which are not interchangeable) from unordered selection within ranks (which are).
+Gives a combinatorial proof of $\\binom{n}{k}$ = $\\binom{n}{n - k}$ using the inclusion-exclusion idea (who is in vs. who is out), rather than an algebraic manipulation.
+Connects the specific identity to the broader principle that combinatorial identities reflect different ways of counting the same set.`,
   },
   {
     id: "d7",
     number: 12,
-    title: "Discussion 7: Keynesian vs. Classical Economics",
+    title: "Discussion 7: Joint, Marginal, and Conditional Distributions",
     points: 50,
     type: "discussion",
     objectives: [
-      "Compare Keynesian and Classical positions on unemployment, fiscal stimulus, and the role of expectations.",
-      "Defend a position on which school's predictions have held up better against the postwar U.S. record.",
+      "Read joint, marginal, and conditional probability distributions from a table or formula.",
+      "Determine independence of two random variables and compute conditional expectations and probabilities.",
     ],
-    reading: `The two major schools of macroeconomic thought have argued for nearly a century about how economies work and what governments should do.
-
-Classical economics (pre-Keynes, plus modern revivals in monetarism, real business cycle theory, and New Classical economics):
-- Markets clear continuously through price adjustment. Unemployment is voluntary or frictional.
-- Say's Law: supply creates its own demand. General gluts are impossible.
-- Money is a veil: changes in the money supply affect prices but not real variables in the long run.
-- Government intervention is generally counterproductive. The economy self-corrects.
-- The long run is what matters; short-run fluctuations average out.
-
-Keynesian economics (post-1936, John Maynard Keynes, General Theory):
-- Prices and wages are sticky in the short run; markets do not clear instantly.
-- Aggregate demand can be deficient; involuntary unemployment is real and persistent.
-- Animal spirits and expectations can produce coordination failures.
-- Monetary and especially fiscal policy can stabilize output.
-- 'In the long run we are all dead' - the short run matters.
-
-The synthesis: New Keynesian economics (Mankiw, Romer, Woodford) combines rational expectations and microeconomic foundations with sticky prices. New Classical economics (Lucas, Sargent, Prescott) rejects sticky prices but accepts that information frictions can produce business cycles. The two camps converged on a common toolkit (DSGE models with various frictions) by the 2000s, though they continue to disagree about which frictions matter most.`,
+    reading: `When two random variables are studied together, their relationship is described by their joint distribution. From the joint distribution we can extract the marginal distribution of each variable individually and the conditional distribution of one given the other. These three concepts are the basic vocabulary of multivariate probability.
+Joint Distribution
+For two discrete random variables X and Y, the joint probability mass function is:
+$$p(x, y) = P(X = x \\cap Y = y).$$
+Specifies the probability of every combination of values. Must be non-negative and sum to 1 over all pairs.
+For two continuous random variables, the joint density f(x, y) gives:
+$$P((X, Y) in region A) = double integral over A of f(x, y) dx dy.$$
+Marginal Distributions
+The marginal distribution of X, ignoring Y, is obtained by summing or integrating out Y:
+$$Discrete: p_X(x) = sum over y of p(x, y).$$
+Continuous: f_X(x) = integral over all y of f(x, y) dy.
+The word 'marginal' comes from the practice of writing the row sums and column sums of a joint probability table in the margins.
+Conditional Distributions
+The conditional distribution of Y given X = x is:
+$$p(y | x) = p(x, y) / p_X(x), for p_X(x) > 0.$$
+Same definition as conditional probability, applied at the level of distributions. The conditional distribution describes how Y is distributed once X is fixed.
+Independence Revisited
+X and Y are independent if and only if their joint distribution factors as a product:
+p(x, y) = p_X(x) * p_Y(y) for all x, y.
+Equivalently, the conditional distribution of Y given X does not depend on X.
+Covariance and Correlation
+Covariance measures the linear association between X and Y:
+$$\\mathrm{Cov}(X, Y) = E[(X - E(X)) * (Y - E(Y))] = E(XY) - E(X) * E(Y).$$
+Positive covariance: when X is above its mean, Y tends to be above its mean. Negative covariance: opposite directions. Zero covariance: no linear association (but possibly other kinds).
+Correlation rescales covariance to a number between -1 and 1:
+$$\\rho (X, Y) = \\mathrm{Cov}(X, Y) / (\\mathrm{SD}(X) * \\mathrm{SD}(Y)).$$
+Correlation 1 means perfect positive linear relationship. Correlation -1 means perfect negative linear relationship. Correlation 0 means no linear relationship.`,
     assignment: `Assignment (50 points):
-1. Compare the Keynesian and Classical views on the following questions:
-   a. Can the economy be stuck in prolonged unemployment without policy intervention?
-   b. Does government spending stimulate output?
-   c. What is the role of expectations in determining outcomes?
-2. Looking at the actual postwar U.S. economic record, which school's predictions have held up better? Defend your answer with reference to specific episodes.`,
+
+A joint distribution of X and Y is given by the following table:
+$$Y = 0       Y = 1       Y = 2$$
+$$X = 0          0.10        0.15        0.05$$
+$$X = 1          0.20        0.25        0.25$$
+(a) Find the marginal distributions of X and Y. (b) Find the conditional distribution of Y given X = 1. (c) Are X and Y independent? Why or why not?
+Compute E(X), E(Y), Cov(X, Y), and the correlation between X and Y for the distribution in problem 1.
+Construct an example of two random variables that have zero correlation but are not independent. What does this show about the limitations of correlation as a measure of dependence?`,
     modelResponse: `Model Response
 
-Comparison on the three questions:
+Marginal and conditional distributions:
+(a) Marginal of X: sum each row.
+$$p_X(0) = 0.10 + 0.15 + 0.05 = 0.30. p_X(1) = 0.20 + 0.25 + 0.25 = 0.70.$$
+Marginal of Y: sum each column.
+$$p_Y(0) = 0.10 + 0.20 = 0.30. p_Y(1) = 0.15 + 0.25 = 0.40. p_Y(2) = 0.05 + 0.25 = 0.30.$$
+(b) Conditional distribution of Y given X = 1: divide row 2 by p_X(1) = 0.70.
+$P(Y = 0 \\mid X = 1)$ = 0.20 / 0.70 = 2/7. $P(Y = 1 \\mid X = 1)$ = 0.25 / 0.70 = 5/14. $P(Y = 2 \\mid X = 1)$ = 0.25 / 0.70 = 5/14.
+Check: 2/7 + 5/14 + 5/14 = 4/14 + 5/14 + 5/14 = 14/14 = 1. Good.
+(c) Independence check: X and Y are independent if p(x, y) = p_X(x) * p_Y(y) for all combinations.
+Test p(0, 0) = 0.10 vs. p_X(0) * p_Y(0) = 0.30 * 0.30 = 0.09. Not equal, so not independent. (The full table would need every cell to factor; one failure suffices to refute independence.)
+Moments and correlation:
+$$E(X) = 0 * 0.30 + 1 * 0.70 = 0.70.$$
+$$E(Y) = 0 * 0.30 + 1 * 0.40 + 2 * 0.30 = 0 + 0.40 + 0.60 = 1.00.$$
+E(XY) = sum over all (x, y) of x * y * p(x, y). Only terms where both x and y are nonzero contribute:
+$$E(XY) = (1)(1)(0.25) + (1)(2)(0.25) = 0.25 + 0.50 = 0.75.$$
+$$\\mathrm{Cov}(X, Y) = E(XY) - E(X) * E(Y) = 0.75 - 0.70 * 1.00 = 0.05.$$
+For correlation, need SD(X) and SD(Y).
+E(X^2) = 0 * 0.30 + 1 * 0.70 = 0.70. Var(X) = 0.70 - 0.49 = 0.21. SD(X) = 0.458.
+E(Y^2) = 0 * 0.30 + 1 * 0.40 + 4 * 0.30 = 0 + 0.40 + 1.20 = 1.60. Var(Y) = 1.60 - 1.00 = 0.60. SD(Y) = 0.775.
+$$\\rho (X, Y) = 0.05 / (0.458 * 0.775) = 0.05 / 0.3550 = 0.141.$$
+Small positive correlation.
+Zero correlation but not independent:
+Let Z be uniform on {-1, 0, 1}, each with probability 1/3. Let W = Z^2. Then:
+E(Z) = 0. E(W) = E(Z^2) = (1 + 0 + 1)/3 = 2/3.
+$$E(ZW) = E(Z^3) = ((-1)^3 + 0 + 1^3)/3 = 0.$$
+$$\\mathrm{Cov}(Z, W) = E(ZW) - E(Z)E(W) = 0 - 0 = 0.$$
+So Z and W have zero covariance, hence zero correlation.
+But Z and W are obviously not independent. If you know Z = 0, then W = 0 for certain. If you know Z is nonzero, then W = 1 for certain. The value of Z completely determines W. They are functionally related, just not linearly.
+What this shows: correlation measures only the linear component of dependence. Two variables can be perfectly determined by each other through a nonlinear relationship and still have zero correlation. This is a serious limitation in financial modeling, where two assets may be related through complex nonlinear dynamics (option payoffs, regime-dependent behavior, tail dependence) that show up as small correlations in calm markets but explode together in crises. Risk models that rely solely on correlation matrices miss these dependencies entirely, and that gap is one of the main reasons why correlation-based portfolio diversification can fail at the worst possible time.
+Why This is a Model Response:
+Computes marginals correctly by summing rows and columns, with verification that the conditional distribution sums to 1.
+Tests independence by direct comparison of one cell to the product of marginals, recognizing that one failure is sufficient evidence.
+Computes covariance from the joint distribution using E(XY) - E(X)E(Y) and then normalizes by standard deviations to get correlation.
+Constructs the standard Z, Z^2 counterexample to show that zero correlation does not imply independence.
+Connects the technical limitation of correlation to a practical consequence in financial risk modeling, where nonlinear dependencies cause correlation-based diversification to fail in crises.`,
+  },
+  {
+    id: "d8",
+    number: 13,
+    title: "Discussion 8: Bayesian vs. Frequentist Interpretations of Probability",
+    points: 50,
+    type: "discussion",
+    objectives: [
+      "Distinguish the frequentist and Bayesian interpretations of probability and identify the questions each is well suited to answer.",
+      "Evaluate which interpretation is most defensible in a given practical setting and explain the cost of using the other.",
+    ],
+    reading: `Probability is a mathematical object: a function that assigns numbers to events according to the Kolmogorov axioms. The axioms tell us how probabilities behave, but they do not tell us what probability is. That question is interpretive, not mathematical, and it has divided statisticians and philosophers for centuries.
+The two main interpretations are the frequentist and the Bayesian. They agree on the mathematics but disagree on what the numbers mean and what kinds of questions probability can answer.
+Frequentist Interpretation
+Probability is the long-run frequency of an event in repeated independent trials. P(heads) = 0.5 means: if you flip the coin many times, the proportion of heads approaches 0.5 in the limit. The law of large numbers makes this rigorous: averages converge to expectations under independence.
+Strengths:
+Objective: anyone observing the same long sequence of trials will arrive at the same probability estimate.
+Well-defined for repeatable experiments: coin flips, dice rolls, manufacturing defects, polling.
+Provides clean, testable predictions: the observed frequency in a long run either matches the claimed probability or it does not.
+Weaknesses:
+Many real-world probability claims are not about repeatable experiments. 'The probability the Republican wins the next election is 0.6' cannot be cashed out as a long-run frequency: the election happens once.
+Cannot assign probabilities to fixed-but-unknown facts. 'What is the probability that the millionth digit of pi is a 7?' Either it is or it is not; there is no random process being repeated. The frequentist can only say the probability is 0 or 1, never knows which.
+Confidence intervals and p-values are routinely misinterpreted by users, who treat them in Bayesian terms even when the underlying theory is frequentist.
+Bayesian Interpretation
+Probability is a degree of belief: a quantification of an agent's uncertainty about a proposition, given the information available. P(heads) = 0.5 means: given what I know, I am indifferent between betting on heads and betting on tails at even odds. Probabilities can be assigned to any well-defined proposition, including ones about fixed but unknown facts and one-time events. Probabilities can be updated as new information arrives, using Bayes' theorem.
+Strengths:
+Applies to single events: elections, military operations, scientific hypotheses.
+Probabilities about unknown facts (the millionth digit of pi, the truth of a scientific theory) are perfectly meaningful.
+Updating with evidence is built into the framework; learning from data is mechanical.
+Decision theory under uncertainty integrates naturally with Bayesian probability.
+Weaknesses:
+Subjective: different agents with the same evidence can assign different probabilities if they have different priors. There is no unique 'right' probability for a proposition.
+Choice of prior can dominate the posterior when data is scarce, making conclusions sensitive to potentially arbitrary starting assumptions.
+Communication: 'my probability is 0.7' carries less rhetorical force than 'this experiment shows a frequency of 0.7,' even when the situations are otherwise similar.`,
+    assignment: `Assignment (50 points):
 
-a. Prolonged unemployment without intervention.
+State three probability claims that are naturally frequentist and three that are naturally Bayesian. Explain why each is more suited to its interpretation.
+In each of the following cases, explain whether the interpretation is frequentist, Bayesian, or both, and why: (a) a weather forecaster says 'there is a 70% chance of rain tomorrow'; (b) a manufacturer says 'this part has a 99% reliability rate over 10 years of use'; (c) a juror says 'I am 90% certain the defendant is guilty'; (d) a physicist says 'a radioactive atom has a 0.5 probability of decaying in the next half-life.'
+In your view, are the two interpretations compatible (both legitimate in their proper domains), or is one fundamentally correct and the other a substitute used where the right one cannot be applied? Defend your answer.`,
+    modelResponse: `Model Response
 
-Classical view: no. Wages and prices will eventually fall to clear the labor market. Sustained unemployment must reflect either frictional/structural causes (workers searching, mismatched skills) or wage rigidities imposed from outside the market (minimum wages, unions, unemployment insurance that reduces job search). The classical solution is to wait, or to remove the rigidities.
+Frequentist examples:
+'A fair die has probability 1/6 of showing a 6.' This is naturally frequentist because the die can be rolled many times under similar conditions, and the frequency of 6 will converge to 1/6 by the law of large numbers.
+'The annual mortality rate for adult women in this insurance pool is 0.4%.' Naturally frequentist: it is computed from a large pool of repeated similar events (deaths in a population over time).
+'A widget from this factory has a 2% probability of being defective.' Naturally frequentist: many widgets are produced, and the defect rate is a long-run frequency.
+Bayesian examples:
+'I am 90% confident that the murder suspect is the same person as the man caught on the security camera.' Naturally Bayesian: it is a degree of belief about a single specific question, not a long-run frequency.
+'The probability that this scientific theory is true, given the current evidence, is 0.85.' Naturally Bayesian: there is no repeatable experiment in which theories are tested over and over; we are quantifying our confidence in a particular proposition based on accumulated evidence.
+'The probability that the next presidential election will be won by the incumbent party is 0.55.' Naturally Bayesian: a single specific event, not a repeatable experiment, but one we can quantify our uncertainty about.
+Case-by-case analysis:
+(a) Weather forecast (70% chance of rain). This is somewhere between the two interpretations. It can be defended frequentistically: 'over many days I have called 70% chance of rain, about 70% of them have rained' (calibration). It can also be defended Bayesianly: 'given the current atmospheric data, my degree of belief that it will rain tomorrow is 0.7.' Most working forecasters operate in both modes; the philosophical purity is less important than the practical question of whether the forecasts are well-calibrated.
+(b) Manufacturer reliability claim (99% over 10 years). Naturally frequentist. The claim is based on testing many parts, observing their failure times, and computing a frequency. A specific part will either fail or not, but the 99% comes from a population of parts.
+(c) Juror's certainty (90% guilty). Naturally Bayesian. There is no population of similar cases over which we can compute a frequency; it is a degree of belief about a particular defendant based on the evidence presented. Note that many people find numerical probability claims awkward in legal contexts precisely because the Bayesian interpretation is what is naturally meant, but the law treats 'beyond a reasonable doubt' as if it were a threshold to be crossed rather than a probability.
+(d) Radioactive decay probability (0.5 in next half-life). This is the rare case where the two interpretations seem to coincide perfectly. Frequentistically: in a large sample of identical atoms, half will have decayed after one half-life. Bayesianly: my belief about whether this particular atom will decay is 0.5. Quantum mechanics provides an objective probability that both interpretations agree on. Whether this is genuinely objective or whether there is some hidden variable structure underneath is one of the open philosophical questions of physics.
+My view on the compatibility question:
+I think the two interpretations are compatible, and both are legitimate in their proper domains. They are answering different questions, not competing for the same answer. The frequentist interpretation is about the physical world: what happens in repeated trials of a stable process. The Bayesian interpretation is about an agent's reasoning: how an agent should quantify uncertainty given evidence. These are different things, and both are real.
+The conflict between them comes from imperialist tendencies in both camps. Strict frequentists try to make sense of single-event probability claims by talking about 'reference classes' of similar events, which often feels strained. Strict Bayesians try to recover frequentist results as long-run averages of Bayesian beliefs, which works mathematically but loses the practical objectivity that frequentist methods are valued for.
+In practice, most working statisticians and scientists use whichever framework fits the problem at hand: frequentist methods for designed experiments and quality control, Bayesian methods for inference under prior knowledge and decision theory. The mathematics is the same; the interpretation changes with the context. Anyone who insists on one interpretation for all situations is paying a real cost in clarity and practical usefulness for the sake of philosophical consistency, and the cost is usually not worth it.
+Why This is a Model Response:
+Distinguishes naturally frequentist claims (repeatable processes) from naturally Bayesian claims (single events, propositions about fixed unknowns) with clear examples.
+Analyzes the weather case as genuinely intermediate, recognizing that real-world claims often blend the two interpretations.
+Notices the quantum mechanics case as one where the two interpretations are unusually well aligned and connects this to genuine open questions in physics.
+Takes a substantive philosophical position rather than refusing to choose, but defends it pragmatically rather than dogmatically.
+Identifies the source of conflict between the camps as imperialist over-extension by both, not genuine incompatibility of the underlying ideas.`,
+  },
+  {
+    id: "tpo",
+    number: 14,
+    title: "Term Paper Outline Assignment",
+    points: 100,
+    type: "termpaper",
+    objectives: [
+      "Identify a defensible question or thesis in probability theory or its applications.",
+      "Sketch a coherent paper structure that names the concepts, examples, and arguments you intend to use.",
+    ],
+    reading: ``,
+    assignment: `Assignment (100 points):
 
-Keynesian view: yes. Wages are sticky downward because of money illusion, contract structures, fairness norms, and the unwillingness of workers to accept pay cuts. Even when wages eventually fall, the falling wages may worsen the problem in the short run by reducing aggregate demand (the paradox of thrift applied to wages). The economy can settle into a low-output, high-unemployment equilibrium and stay there for years without policy action. The Great Depression was the canonical case.
+Submit a detailed outline for your term paper. The paper itself will be due at the end of the course. The outline should be 600-900 words and should:
+Identify a specific question or thesis in probability theory or its applications.
+Sketch the structure of your paper: what you will argue, what concepts you will draw on from the course, and what conclusions you expect to reach.
+Identify at least one specific real-world application, paradox, or contested claim that the paper will analyze.
+List the main probability concepts that will be central to the analysis: distributions, theorems, formulas, etc.
+The outline does not need to be a polished essay. It should give the reader a clear sense of where the paper is going and what tools it will use. Bullet points and partial paragraphs are acceptable.`,
+    modelResponse: `Model Response
 
-b. Does government spending stimulate output?
-
-Classical view: not really. Government spending crowds out private spending. If the government borrows to spend, the borrowing pushes up interest rates and reduces private investment. If the government taxes to spend, households spend less. In Ricardian equivalence, even debt-financed spending leads households to save more in anticipation of future taxes. The multiplier is at most 1, and often less.
-
-Keynesian view: yes, especially in a recession with idle resources. Government spending puts unemployed workers and idle capital back to work. The workers spend their earnings, generating second-round demand, and the multiplier exceeds 1. The classical objection (crowding out) only binds at full employment. When there is slack, fiscal stimulus mobilizes real resources rather than redistributing them.
-
-c. The role of expectations.
-
-Classical view: expectations are rational and consistent with the underlying model. If the central bank announces a credible policy, expectations adjust instantly. If a fiscal stimulus is anticipated, its effects are pre-priced. Policy surprises matter; anticipated policy does not.
-
-Keynesian view: expectations are partly rational but also influenced by 'animal spirits,' confidence, and coordination among heterogeneous agents. Expectations can be self-fulfilling in ways that produce multiple equilibria; the same economy can settle into a high-confidence boom or a low-confidence slump depending on what people expect. Policy works partly by coordinating expectations.
-
-Which school has held up better?
-
-Neither cleanly. Both have been forced to absorb empirical findings that initially seemed to refute them. But on the specific questions, the record favors Keynesian predictions in important cases.
-
-The Great Depression. Classical theory predicted that the U.S. economy would self-correct after the 1929 crash. It did not. Unemployment remained above 10% for an entire decade, hitting 25% at the worst. Wages fell substantially, exactly as classical theory predicted they would, yet unemployment did not fall correspondingly. This is the single most important data point in modern macroeconomics, and it broke the pre-Keynesian consensus. Friedman and Schwartz argued in 1963 that the Depression was caused by monetary contraction rather than aggregate demand failure, but this is a partial vindication of Keynes rather than a refutation; it concedes that monetary failure can produce sustained mass unemployment, which the pre-Keynesian classical view had denied.
-
-The 2008-2009 financial crisis and aftermath. Classical theory predicted a sharp but brief downturn followed by recovery. Keynesian theory predicted persistent unemployment without aggressive policy response. The fiscal stimulus (ARRA, 2009) and especially the unprecedented monetary response (QE, near-zero rates) were Keynesian in inspiration. Without them, most estimates suggest unemployment would have been substantially higher for substantially longer. The recovery from 2009 was slow, but it would have been much slower without the policy response. The 'liquidity trap' Keynes described in 1936 became visible reality from 2008 to 2015: interest rates at zero, more monetary expansion not stimulating much demand, the economy stuck at high unemployment for years.
-
-The 2020 pandemic. Classical theory has no answer to a pandemic-induced shutdown; it is not a recession that classical mechanisms describe. The Keynesian response (massive income support to maintain demand during the shutdown, plus monetary accommodation) prevented what could have been a depression. The U.S. recovered faster than nearly any other major economy, partly because its policy response was the most aggressive.
-
-Where classical theory has scored points:
-
-The 1970s stagflation. Pure Keynesian theory had no good account of inflation rising alongside unemployment. The classical critique (Friedman, Phelps) on expectations-augmented Phillips curves was correct and shifted the field permanently.
-
-Government failure. Public choice analysis (Buchanan, Tullock) showed that political incentives can lead to systematically bad fiscal policy: deficits in good times rather than just bad, regulatory capture, etc. This was a damaging critique of naive Keynesian fine-tuning.
-
-The Lucas Critique. The structural relationships Keynesian macromodels relied on were not stable across policy regimes. This was a profound methodological challenge that reshaped how economists model the economy.
-
-My assessment: the empirical record on whether economies self-correct from major demand shocks is decisively in favor of the Keynesian view. The 1930s, 2008-2009, and 2020 all show that economies can be stuck at high unemployment for extended periods without aggressive policy response. The classical view that markets clear continuously simply does not survive these data. The Keynesian view of how fiscal and monetary policy can help is broadly vindicated, though with the modifications Friedman, Phelps, and Lucas forced on the framework.
-
-The classical insights on expectations, on the limits of policy at full employment, and on the importance of long-run supply factors are also vindicated. The synthesis that emerged by the 1990s (New Keynesian economics) accepts both: Keynesian short-run dynamics with rational-expectations long-run constraints. This synthesis has its own problems, especially around financial crises, but it is the best macroeconomic framework we have. The most honest position is that both schools captured something real, and that anyone who claims one of them has the complete truth is selling something.`,
+Working Title: Why Risk Models Failed in 2008: The Limits of Normal-Distribution Assumptions in Finance
+Thesis
+The widespread use of the normal distribution to model asset returns and portfolio risk gave the financial industry a false sense of security in the years before the 2008 financial crisis. Specifically, value-at-risk (VaR) models and copula-based methods for pricing credit derivatives both assumed thin-tailed, weakly correlated distributions. When the crisis arrived, both assumptions were violated simultaneously, and losses occurred at frequencies and magnitudes that the models declared essentially impossible. The paper argues that this was not a freak event but a predictable failure of probability models applied outside their proper domain.
+Structure
+Section 1: Background on probability distributions in finance. Brief recap of the normal distribution, the central limit theorem, and the rationale for treating asset returns as approximately normal. Discussion of why this assumption is convenient (closed-form formulas, well-understood properties, easy aggregation) and the empirical track record showing it is approximately right in calm market conditions.
+Section 2: How risk models use the normal distribution. Detailed discussion of value-at-risk (VaR), the most widely used risk measure in banking. VaR at confidence level alpha is the loss such that there is only an alpha probability of losing more. Under a normal model, VaR is computable from the mean and standard deviation. The paper will show specifically how a daily VaR of, say, 1% under a normal model translates to an expected frequency of about 2.5 days per year with losses worse than the VaR. Compare to actual frequencies observed in the 2007-2009 period.
+Section 3: The empirical failure of normality. Stock returns and especially credit-related returns have fat tails: extreme moves are much more common than a normal model predicts. The paper will document this with specific historical episodes: October 19, 1987 (a move so extreme it should occur once every 10^50 years under a normal model), the 1998 LTCM crisis, the 2008 crisis. Discussion of the t-distribution and other fat-tailed alternatives, and why the industry largely did not adopt them despite mounting empirical evidence.
+Section 4: The copula problem in CDO pricing. The Gaussian copula model, popularized by David Li, was used to price collateralized debt obligations. The model assumed that the dependence between defaults of different mortgages could be captured by a single correlation parameter. This dramatically underestimated tail dependence: the tendency for defaults to cluster when the economy weakens. In the crisis, default correlations spiked far above the values assumed in the models, and CDO losses were orders of magnitude worse than the models predicted.
+Section 5: Why the failure was predictable. The paper will argue that the failures were not a bolt from the blue but were anticipated in the academic literature (Mandelbrot in the 1960s on fat tails, Taleb on the limits of normal-distribution risk modeling). The failure was institutional: thin-tailed models were preferred because they produced confident-sounding numbers, regulatory capital requirements could be easily computed from them, and traders' bonuses depended on showing low VaR. The mathematics did not lie; the institutional incentives drove the choice of mathematics.
+Section 6: Conclusions and implications. The paper will conclude that probability theory, properly applied, is one of the most powerful tools in finance, but that the choice of distribution and dependence structure is not a technical detail; it is the most consequential modeling choice. Models built on the central limit theorem and the normal distribution are valid in their domain but fail in the regions that matter most for risk management: the tails. Post-crisis reforms (stressed VaR, expected shortfall, more conservative correlation assumptions in stress scenarios) partly address the issue, but the underlying tension between tractability and realism remains.
+Course Concepts to Be Used
+Expected value and variance: foundation for risk measures.
+Normal distribution: the assumed distribution under attack.
+Central limit theorem: the standard justification for normality assumptions.
+Joint distributions, correlation, and the limitations of correlation as a dependence measure (from Discussion 7): central to the copula failure.
+Conditional probability and Bayesian updating: how risk estimates should have been revised as evidence accumulated.
+Tail probabilities and quantiles: the mathematical formulation of VaR.
+Specific Real-World Application
+The 2008 crisis as a case study. Specific examples will include AIG Financial Products (losses far in excess of VaR estimates), the rapid downgrade and collapse of AAA-rated CDO tranches that were modeled as having effectively zero default probability, and the failure of correlation-based diversification in the days following the Lehman bankruptcy.`,
   },
   {
     id: "tp",
-    number: 13,
-    title: "Term Paper (Outline + Final)",
-    points: 200,
+    number: 15,
+    title: "Term Paper Assignment",
+    points: 100,
     type: "termpaper",
     objectives: [
-      "Construct a structured term-paper outline with a clear thesis, section plan, sources, and counter-arguments.",
-      "Defend an original thesis on a major macroeconomic episode or policy question in a complete, well-cited term paper.",
+      "State and defend a clear thesis using at least four major concepts from the course, applied precisely.",
+      "Engage seriously with a counterargument and ground the analysis in a concrete real-world case.",
     ],
     reading: ``,
-    assignment: `PART 1 — TERM PAPER OUTLINE (100 points)
+    assignment: `Assignment (100 points):
 
-The term paper is the capstone assignment for this course. It will be a 2,500-3,500 word essay analyzing a major macroeconomic episode, policy debate, or theoretical question of your choice.
-
-The outline is a structured plan for the term paper. It is not the paper itself, but a roadmap that demonstrates you have selected a topic, formulated a thesis, identified your major arguments, and surveyed the relevant literature.
-
-Sample topics:
-- The 2008 financial crisis: a Minsky moment, a regulatory failure, or both?
-- Was the post-2021 inflation primarily a monetary phenomenon?
-- The decline in labor force participation among prime-age men: causes and consequences
-- Does deficit spending crowd out private investment? Empirical evidence
-- Should the Federal Reserve target nominal GDP rather than inflation?
-- The euro: an optimal currency area, or a political project that ignored economics?
-- The China growth miracle: institutional reform, demographic dividend, or export-led growth?
-- Universal basic income: a macroeconomic assessment
-- The case for and against modern monetary theory
-
-Or propose your own topic, subject to instructor approval.
-
-Submit an outline containing the following sections:
-
-1. Title and thesis statement (one paragraph). State clearly what the paper will argue.
-2. Significance (one paragraph). Why does this question matter? Why now?
-3. Section-by-section structure (typically 4-6 sections). For each section, state in 2-3 sentences what it will cover and how it advances the argument.
-4. Key sources (annotated bibliography of 8-12 sources). Include both academic literature and primary-source data (e.g., FRED, BEA, BLS, IMF, World Bank). For each source, write 1-2 sentences on what you will use it for.
-5. Anticipated counter-arguments (one paragraph). What are the strongest objections to your thesis, and how will you address them?
-
----
-
-PART 2 — TERM PAPER (100 points)
-
-Write a 2,500-3,500 word term paper on the topic for which you submitted an approved outline.
-
-Requirements:
-- Clear thesis stated in the introduction.
-- Organized argument with section headings.
-- Engagement with the relevant academic literature (cite at least 8 sources).
-- Use of primary data where appropriate (FRED, BEA, BLS, IMF, World Bank).
-- Acknowledgment of and response to the strongest counter-arguments.
-- Clear conclusion that does more than restate the introduction.
-
-Formatting:
-- Double-spaced, 12-point font, 1-inch margins.
-- Citations in any consistent style (Chicago, APA, MLA).
-- Bibliography at the end.
-
-Write the term paper that fully realizes the outline you submitted. Use the section structure, the sources, and the thesis from your approved outline. Engage seriously with the counter-arguments you identified. The paper should be the developed version of the plan, not a new document.`,
+Write a term paper of 2,500 to 3,500 words on the topic developed in your outline. The paper should:
+State a clear thesis and defend it with reasoned argument.
+Draw on at least four major concepts from the course, applying them precisely and correctly.
+Engage seriously with at least one counterargument or limitation of the position you defend.
+Use a real-world example, paradox, or controversy as the central case study.
+Be written for an intelligent reader without specialized background in probability or its applications.`,
     modelResponse: `Model Response
 
-PART 1 — MODEL OUTLINE
-
-Title: 'The Federal Reserve's 2021-2023 Inflation Episode: A Failure of Framework, Not Forecast'
-
-Thesis statement: The Federal Reserve's slow response to the 2021-2023 inflation was not a forecasting error but a framework error. The 2020 'flexible average inflation targeting' framework was designed for a world of persistent disinflation and could not accommodate the rapid emergence of supply-side inflation. The Fed's framework predicted what its forecasts subsequently produced. To prevent a recurrence, the Fed needs not better forecasts but a framework that responds symmetrically to inflation surprises in both directions and that does not premise its strategy on the expectation that inflation will remain below target indefinitely.
-
-Significance: The 2021-2023 inflation was the largest sustained U.S. inflation episode in 40 years. The Fed's response was widely criticized as too slow, leading to inflation peaks of 9% and an aggressive subsequent tightening cycle. Understanding what went wrong matters because the Fed adopted its 2020 framework in response to the disinflationary 2010s, and similar frameworks have been adopted by other central banks. If the framework itself contributed to the failure, that has implications well beyond the U.S. Federal Reserve. The 2025 Fed framework review provides an immediate policy-relevant context for reassessment.
-
-Section-by-section structure:
-
-Section 1: The 2020 Framework. Describes the August 2020 Jackson Hole framework change to 'flexible average inflation targeting' (FAIT). Explains the motivation (decade of below-target inflation; concern about deflationary trap; perceived bias in conventional inflation targeting). Documents the explicit commitment to 'make up' for past undershooting by allowing modest overshooting.
-
-Section 2: The Sequence of Events, 2021-2022. Traces the actual policy decisions through 2021 and into 2022. Documents the 'transitory' language and its evolution. Identifies the points at which the Fed could have moved earlier and chose not to. Distinguishes between cases where the Fed had a clear signal it ignored (April-June 2021 CPI prints) and cases where the data were genuinely ambiguous.
-
-Section 3: Why the Framework Mattered. Argues that the 2020 framework structurally biased the Fed toward delayed response by (a) committing in advance to tolerate above-target inflation as 'making up' for past shortfalls, (b) emphasizing employment shortfalls as the relevant trigger for tightening, with the labor market participation rate as the focus, and (c) defining 'transitory' inflation as inflation arising from supply factors that would self-correct. Each of these features delayed response when they should have prompted it.
-
-Section 4: The Counterfactual. Considers what a different framework would have produced. The pre-2020 'flexible inflation targeting' framework would likely have produced earlier action, since 4% inflation in mid-2021 would have triggered a response. The Taylor rule benchmark, applied mechanically, would have called for substantial tightening by late 2021. Acknowledges the uncertainty: hindsight makes the case appear cleaner than the real-time decision problem was.
-
-Section 5: Cross-Country Comparison. Compares Fed response to that of the Bank of England, ECB, Bank of Canada, and Reserve Bank of Australia. The Fed was not uniquely slow; central banks with similar frameworks responded similarly. This supports the framework explanation over the forecasting-error explanation.
-
-Section 6: Implications for the 2025 Framework Review. Argues that the Fed's framework review needs to address the asymmetry baked into FAIT. Specifically: (a) restoring a symmetric response to inflation surprises in both directions, (b) abandoning the make-up commitment, (c) being more cautious about defining inflation as 'transitory' based on supply origins, and (d) maintaining the dual mandate without privileging the employment side in periods of clear inflation. Discusses the cost of these changes: losing some flexibility to support employment in genuine slack situations.
-
-Section 7: Conclusion. The 2021-2023 episode was a framework failure, not a forecasting failure. Better forecasts would not have helped because the framework would still have called for delayed response. The lesson is that framework design must be robust across inflation regimes, not optimized for the one that just happened. Drawing a framework from the disinflationary 2010s and applying it in the inflationary 2020s was a category error that the Fed needs to acknowledge openly to restore credibility.
-
-Key sources (annotated):
-
-1. Powell, Jerome H. 'New Economic Challenges and the Fed's Monetary Policy Review.' Jackson Hole, August 27, 2020. -- The framework speech itself; primary source for the 2020 change.
-2. Federal Reserve Board. 'Statement on Longer-Run Goals and Monetary Policy Strategy.' Revised August 27, 2020. -- The official framework document.
-3. Blanchard, Olivier and Lawrence Summers. 'In Defense of Concerns Over the $1.9 Trillion Relief Plan.' Peterson Institute, February 2021. -- The most prominent early warning that the ARP would generate inflation; relevant for showing what was forecastable in real time.
-4. Bernanke, Ben S. and Olivier Blanchard. 'What Caused the U.S. Pandemic-Era Inflation?' Brookings, May 2023. -- Decomposition of the inflation surge into demand, supply, and labor market components.
-5. Reis, Ricardo. 'The Burst of High Inflation in 2021-22: How and Why Did We Get Here?' BIS Working Paper No. 1060, December 2022. -- Comprehensive academic account; argues for the role of monetary policy errors specifically.
-6. Federal Reserve Bank of St. Louis. FRED data series PCEPI, CPIAUCSL, UNRATE, FEDFUNDS. -- Primary data for inflation, unemployment, and policy rates 2018-2024.
-7. Bureau of Labor Statistics. CPI press releases, 2021-2023. -- Real-time data the Fed had available; identifies the specific months at which inflation became unambiguous.
-8. Federal Open Market Committee statements and minutes, January 2021 through July 2022. -- Primary source for tracking the Fed's evolving assessment in real time.
-9. Taylor, John B. 'It's Time to Get Back to Rules-Based Monetary Policy.' Hoover Institution, March 2022. -- The counterfactual Taylor rule analysis.
-10. Summers, Lawrence H. and Alex Domash. 'A Labor Market View on the Risks of a U.S. Hard Landing.' NBER Working Paper 29910, April 2022. -- Argument that the Fed faced a much harder choice by mid-2022 than it had earlier.
-11. Bank for International Settlements Annual Economic Report 2022, Chapter II. -- Cross-country comparison of central bank responses.
-12. Mishkin, Frederic. 'Inflation Targeting in a World of Pandemic and War.' Manhattan Institute, June 2022. -- Argument for retaining inflation targeting in modified form; useful for the implications section.
-
-Anticipated counter-arguments:
-
-The strongest objection to my thesis is that the supply shocks of 2021-2022 (Ukraine war, energy crisis, supply chain disruptions) were unforecastable, and any framework would have produced delayed response in their face. I will address this in two ways: first, by showing that inflation was clearly elevated before the Ukraine invasion (CPI was 7.5% in January 2022, before the war), so the supply shocks compounded rather than caused the failure; second, by arguing that a framework committed to symmetric response would have responded to the early 2021 demand-side inflation regardless of subsequent supply shocks. A second objection is that the Fed's framework allowed flexibility and did not require waiting; the framework should not be blamed for how it was applied. I will respond that the framework's structure (the make-up commitment, the employment emphasis) made early action both legally permitted but practically very difficult, since departing from the announced framework would have signaled instability. The pressure was structural, even if individual decisions were not predetermined.
-
----
-
-PART 2 — MODEL TERM PAPER
-
-The Federal Reserve's 2021-2023 Inflation Episode: A Failure of Framework, Not Forecast
-
-Introduction
-
-In August 2020, the Federal Reserve announced a fundamental change in its monetary policy framework. The Federal Open Market Committee adopted what it called Flexible Average Inflation Targeting (FAIT), under which the Fed would aim for inflation that averaged 2% over time rather than 2% in every period. In practice, this meant that after periods when inflation ran below 2%, the Fed would aim to keep inflation 'moderately above' 2% for some time to compensate. The framework was the culmination of a multi-year review motivated by a decade of inflation running persistently below the 2% target, and by Federal Reserve research suggesting that this persistent shortfall risked anchoring inflation expectations too low.
-
-Less than a year later, the U.S. economy experienced the largest sustained inflation in four decades. Headline CPI inflation rose from 1.4% in January 2021 to 5% in May 2021, to 7% by year-end, and ultimately peaked at 9.1% in June 2022. The Federal Reserve, after maintaining for most of 2021 that the inflation was 'transitory,' began raising the federal funds rate in March 2022 from near zero, eventually reaching 5.25-5.50% by July 2023, the fastest tightening cycle since Paul Volcker's in the early 1980s.
-
-The conventional account of this episode treats the Fed's slow response as a forecasting error. The Fed underestimated the persistence of inflation; better forecasts would have produced earlier action. This paper argues that the forecasting-error account is inadequate. The Fed's response was slow because the framework it had adopted in 2020 systematically biased its decisions toward inaction. Better forecasts would not have produced earlier action because the framework, applied consistently, would have called for tolerance of above-target inflation regardless of the forecast. The 2021-2023 episode was a framework failure, not a forecasting failure, and the implications for monetary policy reform run deeper than improved econometrics.
-
-I. The 2020 Framework
-
-The framework adopted at Jackson Hole in August 2020 had three key features that distinguished it from conventional inflation targeting. First, the inflation objective was reframed as an average over time rather than a target for each period. Following a period of below-target inflation, the Fed would aim to overshoot 2% for some compensating period. Powell did not specify how this average would be computed or over what window, deliberately preserving flexibility, but the qualitative shift was clear: a make-up commitment.
-
-Second, the framework explicitly elevated the employment side of the dual mandate. The previous strategy statement had committed to addressing 'deviations' of employment from its maximum level. The 2020 statement changed this to 'shortfalls,' meaning the Fed would tighten policy in response to employment falling below maximum but not in response to employment exceeding it. This was a one-sided change motivated by the post-2008 experience, when the Fed had repeatedly tightened policy in anticipation of inflation that never materialized, costing real economic gains. The 2020 change explicitly committed the Fed not to repeat that pattern.
-
-Third, the framework retained reference to expectations as the central transmission channel for inflation. Inflation that arose from temporary factors, the FOMC reasoned, should be ignored as long as long-run expectations remained anchored. This was the conceptual basis for the 'transitory' framing that would dominate Fed communications throughout 2021.
-
-All three features were defensible given the conditions of 2020. Inflation had averaged 1.5% over the prior decade. Five-year-five-year forward inflation expectations had drifted as low as 1.2% in March 2020. Unemployment had reached 14.7% in April 2020. The case for a framework biased toward supporting employment and tolerating modest inflation overshoots was strong. The error lay not in adopting such a framework but in not building in adequate provisions for the case where conditions changed rapidly.
-
-II. The Sequence of Events, 2021-2022
-
-In January 2021, with the new framework five months old, the FOMC projected core PCE inflation of 1.8% for 2021. The American Rescue Plan was signed into law in March 2021, injecting $1.9 trillion into an economy that was already recovering. By April, headline CPI was running at 4.2% year-over-year. The Fed maintained that this would be transitory, attributable to base effects (low prices a year earlier inflating the comparison) and to one-time supply disruptions.
-
-In May 2021, CPI was 5.0%. The Fed described it as transitory. In June, 5.4%. Transitory. In November 2021, with CPI at 6.8% and core CPI (excluding food and energy) at 4.9%, Powell finally announced that the term 'transitory' should be retired. The Fed began tapering its asset purchase program in November but did not raise the federal funds rate until March 2022, by which point CPI had reached 8.5%.
-
-The pace of subsequent tightening was historically rapid. Between March 2022 and July 2023, the Fed raised rates by 525 basis points, including a sequence of four consecutive 75-basis-point hikes. By the end of 2023, inflation had fallen substantially (CPI 3.4% in December 2023, core PCE 2.9%) but had not returned to the 2% target. Powell's testimony repeatedly emphasized that the Fed would maintain restrictive policy 'for some time' to ensure that inflation expectations remained anchored.
-
-The crucial question is not whether the Fed eventually acted appropriately but why it took so long to begin acting. The answer cannot be that the data were ambiguous. By August 2021, CPI had been above 5% for four consecutive months. Wage growth had accelerated. Used car prices had risen by 40%. Rents were rising in a way that would clearly feed through to the persistent components of inflation. The Fed had ample real-time information that inflation was running well above target.
-
-III. Why the Framework Mattered
-
-The argument that the framework drove the delay rests on three observations. First, the make-up commitment created an explicit reason to tolerate above-target inflation. The Fed had committed in August 2020 to aim for inflation 'moderately above' 2% to compensate for the prior decade of undershooting. Inflation running at 4-5% in mid-2021 was, by this commitment, partly desirable. The framework did not require the Fed to specify how long or how much overshooting it would tolerate, but it had announced that some overshooting was the goal.
-
-Second, the 'shortfalls' framing on employment meant that the Fed was paying close attention to indicators of remaining labor market slack rather than to inflation indicators that might require tightening. Through 2021, the Fed repeatedly emphasized the labor force participation rate (which remained below its February 2020 level) as evidence of unutilized labor capacity. This focus on a single labor market indicator (LFPR) made it psychologically and institutionally easier to tolerate rising inflation as long as that indicator remained depressed. Other indicators of labor market tightness (the quits rate, wage growth, vacancies-to-unemployment ratio) painted a very different picture, but the framework directed attention toward the variable most likely to suggest patience.
-
-Third, the framework's commitment to long-run expectations as the relevant inflation variable provided cover for treating short-run inflation as transitory. As long as five-year-five-year forward inflation expectations remained near 2%, the framework could be read to suggest that current inflation, however high, did not require action. This logic is defensible in principle but creates a perverse asymmetry in practice: actual inflation has to break through to expectations before policy responds, which means the framework systematically waits until expectations are at risk, by which point the inflation problem is much larger and harder to address.
-
-The combined effect of these three features was a framework that, applied honestly, called for patience in the face of rising inflation throughout 2021. The Fed was not making forecasting errors so much as following its own framework.
-
-IV. The Counterfactual
-
-What would a different framework have produced? Several alternative regimes can be analyzed.
-
-Conventional inflation targeting (the pre-2020 Fed framework, or the framework of the European Central Bank or Bank of Canada) would have responded to inflation as soon as it deviated significantly from target. Under conventional targeting, 4-5% inflation in mid-2021 would have triggered a clear response. The Fed would likely have begun tapering asset purchases by mid-2021 and would have raised rates by late 2021. The eventual peak in rates might have been lower because the inflation problem would have been smaller.
-
-A Taylor rule benchmark, applied mechanically, would have called for federal funds rates of 4-5% by late 2021, far above the actual near-zero rate. The Taylor rule is a benchmark, not a recipe, but the gap between it and actual policy through 2021 was as large as it had been at any point in the rule's 30-year history.
-
-A nominal GDP targeting framework, advocated by Scott Sumner and others, would have responded to the rapid growth in nominal GDP through 2021. Nominal GDP grew at 10% in 2021. A nominal GDP target of 4-5% would have called for substantial monetary tightening as the year progressed.
-
-All three alternative frameworks would have produced earlier action. The framework adopted in 2020 did not. This is not a forecasting issue; it is a framework issue. Even with perfect foresight that inflation would peak at 9% in mid-2022, the 2020 framework, applied consistently, would have been slow to act, because it explicitly committed to tolerate above-target inflation for some compensating period.
-
-V. Cross-Country Comparison
-
-The framework explanation is strengthened by cross-country comparison. Central banks with similar frameworks to the Fed's responded similarly to the 2021-2022 inflation. The European Central Bank, which had similarly emphasized employment recovery and supply-side patience, did not begin raising rates until July 2022. The Bank of England, which retained conventional inflation targeting, began raising rates in December 2021, four months before the Fed. The Bank of Canada, also using conventional inflation targeting, began raising rates in March 2022. The Reserve Bank of New Zealand, with one of the most aggressive inflation-targeting frameworks, began raising rates in October 2021.
-
-The pattern is suggestive: central banks with conventional inflation-targeting frameworks responded earlier than central banks with make-up frameworks. The Fed and ECB, both of which had recently adopted versions of make-up frameworks, lagged most. This is consistent with the framework hypothesis: not all central banks were equally slow, and the slowness correlated with framework structure rather than with forecasting capability.
-
-VI. Implications for the 2025 Framework Review
-
-The Fed's framework reviews occur every five years; the next is scheduled for 2025. The 2021-2023 episode provides the most important real-world test of the 2020 framework. Several specific recommendations follow.
-
-First, the make-up commitment should be abandoned. The asymmetric tolerance for above-target inflation built into FAIT was reasonable as theoretical insurance against deflationary traps but produced catastrophic delay in an inflationary environment. A symmetric framework that aims for 2% inflation in each period (with normal forecast horizons) would have produced earlier action without sacrificing flexibility.
-
-Second, the 'shortfalls' framing should be reconsidered. The intent of the 2020 change was to prevent the Fed from tightening prematurely in anticipation of inflation that might not materialize. In practice, it biased the Fed toward inaction in the face of inflation that was clearly materializing. A return to the 'deviations' framing, with appropriate humility about overreaction to noise, would restore the symmetric mandate Congress actually wrote.
-
-Third, the use of 'transitory' as a category should be tightened. The Fed used 'transitory' through much of 2021 to describe inflation that turned out to be persistent. Better practice would specify time horizons (transitory means resolved within twelve months, not within an undefined future) and would not rely on supply-origin labeling. Inflation arising from supply shocks can still be persistent if it feeds through to wages and expectations.
-
-Fourth, the framework should be more robust across inflation regimes. A framework optimized for disinflation works badly in an inflation. The 2025 review should consider how the framework would perform under multiple scenarios, not just the one that immediately preceded its adoption.
-
-The cost of these changes is some loss of flexibility to support employment in genuine slack conditions. This is a real cost. The Fed's pre-2020 framework, in the view of many participants, had tightened too soon in 2015-2016 and again in 2018-2019. A return to that framework risks repeating those errors. But the alternative—a framework that systematically delays response to clear inflation—has now demonstrated its own costs, and those costs are larger and more difficult to reverse.
-
-VII. Counter-Arguments and Responses
-
-Three counter-arguments deserve direct response.
-
-The first counter-argument is that the supply shocks of 2021-2022 (Ukraine war, energy crisis, supply chain disruptions) were unforecastable, and any framework would have been slow in their face. This is partially true but does not vindicate the 2020 framework specifically. Inflation was already clearly elevated before the Ukraine invasion in February 2022. CPI hit 7.5% in January 2022, before the war. The Fed was already substantially behind by then. A different framework would have been acting before the supply shocks compounded the problem, leaving the supply shocks as additional pressure rather than the trigger for response. The framework's contribution was to make the Fed react late even to the demand-side inflation that was visible from mid-2021.
-
-The second counter-argument is that the Fed's framework permitted flexibility and that the framework should not be blamed for how it was applied. This is formally correct: nothing in the 2020 framework legally prevented the Fed from raising rates earlier. But the framework had been announced publicly, with explicit emphasis on make-up commitments and on employment shortfalls. Departing from it in early 2021 would have signaled instability in the Fed's framework just months after it had been adopted. The pressure on the FOMC to apply the framework as advertised was substantial, even if no single decision was strictly determined by it. The framework shaped the structure of choices the FOMC faced.
-
-The third counter-argument is that hindsight makes the case appear cleaner than it actually was. In real time, the 'transitory' interpretation was defensible. Many private-sector economists held similar views through mid-2021. The argument is fair but limited. The question is not whether anyone reasonably expected the inflation to be transitory; the question is whether the framework predisposed the Fed to favor that interpretation when the data became ambiguous. The argument here is that it did, and that a different framework would have favored caution in the opposite direction.
-
+Why Risk Models Failed in 2008: The Limits of Normal-Distribution Assumptions in Finance
+In the autumn of 2008, the global financial system came closer to collapse than at any time since 1929. Among the many actors implicated in the crisis (mortgage originators, rating agencies, regulators, central banks), one set of actors has received less attention than it deserves: the probability models. The risk-management apparatus of the world's largest banks rested on mathematical models that assigned tiny probabilities to the events that subsequently happened. Either the world is genuinely a stranger place than we thought, or the models were systematically wrong. This paper argues that the models were systematically wrong, and predictably so.
+The core failure was the assumption that financial returns are well described by the normal distribution and that dependencies between assets can be captured by a single correlation parameter. Both assumptions are mathematically tractable, both fit reasonably well in calm market conditions, and both fail in exactly the conditions that matter for risk management: the extreme tails of the distribution, where catastrophic losses live. The 2008 crisis was not a freakish black-swan event from outside the models' domain; it was a predictable consequence of misapplying probability theory to a domain that does not satisfy its assumptions.
+Background: The Appeal of Normality
+The normal distribution is the workhorse distribution of statistics and finance. Its appeal is mathematical: it is fully described by two parameters (mean and standard deviation), it is closed under addition (a sum of independent normals is normal), and it has well-understood quantiles. Under a normal model, 95% of outcomes lie within about two standard deviations of the mean, and 99.7% lie within three. Extreme events, defined as moves of five or more standard deviations, occur with probability less than one in a million.
+The theoretical justification for using normal distributions in finance comes from the central limit theorem: if asset returns are sums of many small independent influences, those returns should be approximately normal. Empirically, in calm market conditions, the approximation works reasonably well. Daily stock returns over normal periods do cluster around their mean with the bell-shaped distribution the theory predicts. The historical record of the 1990s and the early 2000s, the period during which modern risk management was institutionalized, was generally well-behaved enough that normal-distribution models gave sensible answers.
+Value-at-Risk: A Concrete Example
+Value-at-risk, or VaR, is the most widely used risk measure in banking. The VaR at confidence level alpha over a given horizon is the loss such that the probability of losing more than that amount is at most alpha. Daily VaR at 99% confidence is the loss that should be exceeded on at most 1% of days, or roughly 2.5 trading days per year.
+Under a normal-distribution model, VaR is easy to compute. If daily returns have standard deviation $\\sigma$, then 99% VaR is approximately 2.33 * $\\sigma$ (where 2.33 is the 99th percentile of the standard normal distribution). A portfolio with daily standard deviation of $10 million has a 99% VaR of about $23.3 million.
+This computation made VaR the dominant risk measure in the industry. Regulators built capital requirements around it; traders' positions were monitored against it; portfolio decisions were filtered through it. The number was concrete, comparable across institutions, and easy to compute. What it was not, was correct.
+The Empirical Failure of Normality
+Asset returns have fat tails. Extreme moves are much more common than a normal model predicts, by many orders of magnitude. The October 19, 1987 crash was a one-day move of about 22% in the S&P 500, equivalent to roughly 25 standard deviations under the volatility regime at the time. Under a normal model, a 25-$\\sigma$ event has probability so small that it should occur once every 10^137 years, vastly longer than the age of the universe. Yet it happened, and similar events have happened repeatedly: the 1998 Russian default and LTCM crisis, the 2008 crash, the August 2015 China-driven sell-off, the March 2020 COVID crash.
+The empirical reality is that returns are better described by distributions with heavier tails than the normal: the Student's t-distribution with low degrees of freedom, the stable distributions studied by Mandelbrot in the 1960s, or various mixture models. These distributions assign substantially higher probabilities to extreme moves while still fitting the central region of the distribution well. They are mathematically less convenient (no closed-form quantiles in some cases, more complex aggregation) but empirically better calibrated.
+This was known. Mandelbrot published his analysis of fat tails in cotton prices in 1963. Mandelbrot and Taylor analyzed extreme price movements in 1967. Nassim Taleb spent the 1990s and 2000s arguing that the standard normal-based models systematically underestimated tail risk. The intellectual case for moving beyond the normal distribution was made repeatedly. The institutional case for keeping the normal distribution was that it was easier to compute, easier to regulate around, and produced numbers that looked confident.
+The Copula Failure in CDO Pricing
+The other major failure was in the modeling of dependence between assets. Collateralized debt obligations (CDOs) are securities backed by pools of mortgages. The senior tranches of a CDO are designed to pay out unless an unusually large fraction of the underlying mortgages default. Pricing these tranches requires a model of how mortgage defaults are correlated: do they tend to occur together, or independently?
+The dominant approach was the Gaussian copula, popularized in finance by David Li in a 2000 paper. The Gaussian copula models the joint distribution of default times using a multivariate normal structure parameterized by a single correlation matrix. The mathematical elegance is significant: a complex joint distribution is captured by a number that can be estimated from historical data.
+In practice, the model was used with low correlation values, typically inferred from the calm housing market of the early 2000s. Under low-correlation assumptions, simultaneous mass defaults are very unlikely. Senior CDO tranches were therefore priced and rated as if they had near-zero default probability. They received AAA ratings, traded at prices reflecting that rating, and were held by banks, pension funds, and other regulated institutions.
+When the housing market turned, defaults did not occur at the modeled low-correlation rate. Defaults clustered: borrowers in the same metropolitan area, the same loan vintage, the same lender all began defaulting together. The correlations that mattered were not the low values estimated from calm periods, but the much higher values that emerged in distress. Senior tranches that were modeled as having effectively zero risk turned out to be worthless. AAA-rated structures were downgraded to junk in weeks. Banks holding them lost tens of billions of dollars.
+This is a specific manifestation of a general fact about correlation discussed in Discussion 7: correlation measures linear dependence, and is a poor measure of tail dependence. Two assets can have low correlation in normal times and still tend to crash together. The Gaussian copula structurally cannot capture this. Other copulas can (the t-copula, the Clayton copula, and others have heavier tail dependence), but they were not in widespread use, and many were considered too complicated for daily pricing.
+Why the Failure Was Predictable
+Defenders of the risk-management apparatus sometimes describe 2008 as a black swan: an event so unprecedented that it could not have been anticipated. This is incorrect. The specific timing was not predicted, but the kind of event was anticipated by anyone paying attention to the empirical literature on financial returns. Fat tails had been documented for decades. The limits of correlation-based dependence measures had been argued at length. The cyclical nature of correlations (low in calm times, high in crises) was known in the academic literature and in practitioner circles.
+The failure was not intellectual but institutional. Thin-tailed models were preferred because they produced confident-sounding numbers, regulatory capital requirements could be computed from them, and the bonuses of risk managers and traders depended on showing low VaR figures. A bank that adopted a fat-tailed model would have to hold more capital, would report higher risk to regulators, would pay traders less, and would be perceived as taking more risk than competitors using thin-tailed models. The market punished accuracy and rewarded false confidence.
+This is a general pattern in the application of probability theory. The mathematics is neutral. The choice of distribution, the choice of dependence structure, the choice of which events to model and which to ignore, are not mathematical questions. They are choices made by people in organizations with incentives. When the incentives reward optimism about tail risk, the chosen models will be optimistic about tail risk, regardless of what the data say.
+Counterargument: Were Other Failures More Important?
+A reasonable objection: the 2008 crisis was caused primarily by fraud in mortgage origination, by regulatory failures, by reckless leverage at the largest banks, and by the structure of the rating agencies' business model. The probability models were a small part of the story. Even with accurate fat-tailed models, the underlying structural problems would have produced a crisis.
+There is truth to this. The probability models were neither the only cause nor the deepest cause of the crisis. Fraud, leverage, and bad regulation were all genuine factors. But the probability models played a specific and important role: they provided the apparatus by which catastrophic risks were quantified as small, and by which institutions persuaded themselves and regulators that they were prudently managed. Without the false comfort of low VaR estimates and near-zero default probabilities for AAA tranches, the leverage levels and the concentration of risk would have been impossible to defend. The probability models did not cause the crisis, but they enabled the conditions under which the crisis became inevitable.
+A second objection: in the aftermath, the industry adopted stressed VaR, expected shortfall, and other measures designed to address the failures. The lesson has been learned. Future crises will be different.
+This is partly correct but premature. The reforms do address some specific weaknesses of pre-crisis models. Expected shortfall, in particular, captures the average loss in the tail rather than just the threshold, and is a meaningful improvement. Stressed VaR uses parameters from periods of crisis rather than calm periods, addressing the correlation-cyclicality problem. But the underlying tension remains: tractable models tend to be thin-tailed; realistic tail behavior is hard to estimate from limited data; and institutional incentives still favor the models that produce reassuring numbers. The next crisis will probably involve a different specific failure (perhaps in cyber risk, climate-related financial risk, or sovereign defaults) but the same general pattern: probability models built on convenient assumptions, applied confidently outside their domain, will reassure people right up until they fail.
 Conclusion
-
-The 2021-2023 inflation episode was the most consequential test of Federal Reserve policy since the early 1980s. The Fed's slow response is best understood as a framework failure rather than a forecasting failure. The 2020 framework, with its make-up commitment, employment-shortfalls focus, and reliance on long-run expectations as the relevant inflation variable, structurally biased the Fed toward delayed response. Different forecasts would not have produced different outcomes; the framework would have called for patience even with perfect foresight.
-
-The implications for the 2025 framework review are direct. The Fed needs to return to a more symmetric framework, abandon the make-up commitment, and develop greater robustness to inflation regime changes. The cost is some flexibility lost. The benefit is avoiding the next iteration of the same error: a framework optimized for the previous decade's problem, deployed in a decade when the problem has reversed.
-
-A central bank's framework is not just a technical specification. It is a public commitment that shapes how its decisions will be received and how its credibility accumulates. The 2020 framework was widely praised at adoption for its boldness and intellectual sophistication. Its real-world performance, in the conditions that immediately followed, was poor. The Federal Reserve's institutional credibility has survived the episode, partly because of the aggressive subsequent tightening and partly because of historical anchoring of expectations. But the credibility was tested. The lesson is to design frameworks for robustness across regimes, not optimization to the regime just past. The next framework will be tested by conditions we cannot now anticipate, and it should be designed to perform reasonably well in conditions other than the ones that produced it.`,
+Probability theory is among the most successful intellectual achievements of the last several centuries. Applied properly, it is the indispensable tool for reasoning about uncertainty. But probability theory does not tell you which distribution describes your data, what the correlations among your variables actually are, or what could happen outside the range of your historical sample. These choices are made by modelers, under institutional pressures, and they can be very wrong.
+The 2008 financial crisis was an unusually clean illustration of what happens when those choices are made badly. The mathematics did not fail. The central limit theorem still held; Bayes' theorem still worked; the variance formula was still correct. What failed was the assumption that asset returns are normally distributed and that dependencies can be captured by a single correlation parameter. Both assumptions were known to be wrong, both were maintained because they were convenient, and the cost of maintaining them turned out to be substantial.
+The deeper lesson is one of intellectual humility about probability models. A model is not the world. The numbers it produces are only as good as the assumptions it rests on, and those assumptions are usually about the tails of the distribution, which are exactly the regions where data is sparse and judgment must take over from estimation. Where probability theory is applied to high-stakes decisions, the choice of distribution, the choice of dependence structure, and the willingness to consider events outside the historical sample are the most consequential modeling decisions. They are also the ones most likely to be made for institutional rather than empirical reasons. Until that incentive structure changes, future failures of the kind that occurred in 2008 are not just possible but likely, regardless of how mathematically sophisticated the risk management apparatus becomes.`,
   },
 ];
 

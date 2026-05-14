@@ -54,7 +54,7 @@ export default function Support() {
               (Placeholder.)
             </li>
             <li>
-              <strong>Library</strong> — research databases, economics
+              <strong>Library</strong> — research databases, mathematics and statistics
               encyclopedia subscriptions, citation help. (Placeholder.)
             </li>
             <li>

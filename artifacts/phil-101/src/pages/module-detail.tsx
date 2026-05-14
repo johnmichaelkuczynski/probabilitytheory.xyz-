@@ -23,6 +23,7 @@ import { AIScoreBadge } from "@/components/ai-score-badge";
 import { DraftWorkshop } from "@/components/draft-workshop";
 import { IntegrityCanvas } from "@/components/integrity-canvas";
 import { IntegrityDisclosureGate } from "@/components/integrity-disclosure";
+import { MathText } from "@/components/math-text";
 import {
   ArrowRight,
   Bot,
@@ -126,9 +127,7 @@ export default function ModuleDetail() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
-                <pre className="whitespace-pre-wrap font-sans text-[15px] leading-relaxed text-stone-800">
-                  {m.reading}
-                </pre>
+                <MathText>{m.reading}</MathText>
 
                 <div className="space-y-2 border-t border-stone-200 pt-4">
                   <div className="mb-1 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-stone-500">
@@ -173,9 +172,7 @@ export default function ModuleDetail() {
               <CardTitle className="font-serif text-lg">Assignment</CardTitle>
             </CardHeader>
             <CardContent>
-              <pre className="whitespace-pre-wrap font-sans text-[15px] leading-relaxed text-stone-800">
-                {m.assignment}
-              </pre>
+              <MathText>{m.assignment}</MathText>
             </CardContent>
           </Card>
 
