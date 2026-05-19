@@ -20,6 +20,51 @@ export interface GPTZeroResult {
 const ENDPOINT = "https://api.gptzero.me/v2/predict/text";
 
 /**
+ * Diagnostic ping that surfaces the real failure reason (HTTP status,
+ * provider error message) instead of collapsing every failure to null.
+ * Use this only for the system diagnostic — production callers should
+ * use `checkWithGPTZero`, which never throws.
+ */
+export async function pingGPTZero(
+  document: string,
+): Promise<GPTZeroResult> {
+  const apiKey = process.env.GPTZERO_API_KEY;
+  if (!apiKey) throw new Error("GPTZERO_API_KEY not set");
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 20_000);
+  let res: Response;
+  try {
+    res = await fetch(ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": apiKey,
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ document, multilingual: false }),
+      signal: controller.signal,
+    });
+  } finally {
+    clearTimeout(timer);
+  }
+  if (!res.ok) {
+    const body = await res.text().catch(() => "");
+    let detail = body.slice(0, 300);
+    try {
+      const j = JSON.parse(body) as { error?: string; code?: string };
+      if (j.error) detail = j.code ? `${j.code}: ${j.error}` : j.error;
+    } catch {
+      /* ignore */
+    }
+    throw new Error(`HTTP ${res.status} — ${detail}`);
+  }
+  const json: unknown = await res.json();
+  const parsed = parseGPTZeroResponse(json);
+  if (!parsed) throw new Error("response missing class_probabilities.ai");
+  return parsed;
+}
+
+/**
  * Send a piece of writing to GPTZero. Returns null when the API key is
  * missing or the request fails — callers must treat that as "score
  * unavailable" rather than fail the user action.

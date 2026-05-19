@@ -9,7 +9,7 @@ import {
 } from "@workspace/db";
 import { anthropic } from "@workspace/integrations-anthropic-ai";
 import { modules, moduleById } from "../lib/curriculum";
-import { checkWithGPTZero } from "../lib/gptzero";
+import { pingGPTZero } from "../lib/gptzero";
 import {
   analyzeProcess,
   type ProcessEvent,
@@ -104,10 +104,9 @@ router.post("/diagnostic/run", async (req: Request, res: Response) => {
   checks.push(
     process.env.GPTZERO_API_KEY
       ? await run("GPTZero API: live ping", "system", async () => {
-          const r = await checkWithGPTZero(
+          const r = await pingGPTZero(
             "This is a short diagnostic ping. Please disregard.",
           );
-          if (!r) throw new Error("GPTZero returned no result");
           return `aiScore=${r.aiScore.toFixed(3)} class=${r.aiClass}`;
         })
       : skip(
